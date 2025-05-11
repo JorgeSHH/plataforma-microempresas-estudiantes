@@ -1,0 +1,47 @@
+:root{
+    --color-base: #151515;
+    --color-texto: #fff;
+    --fuente: arial;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{font-size: 100%;}
+body{font-size: 100%;}
+
+
+ /* ***************************codigo de el menu de navegacion******************************* */
+
+.menu{
+    display: flex;
+    height: 4rem;
+    width: 100vw;
+    background: var(--color-base);
+    font-family: var(--fuente);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 1rem;
+    position: fixed;
+}
+
+.menu .logo{
+    color: var(--color-texto);
+    font-size: 1.8em;
+}
+
+.menu .menu-navegacion {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    width: 50%;
+}
+.menu .menu-navegacion a{
+    color: var(--color-texto);
+    font-size: 1.2em;
+    text-decoration: none;
+    font-family: var(--fuente);
+}

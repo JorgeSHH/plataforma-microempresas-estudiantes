@@ -1,0 +1,292 @@
+:root{
+    --color-base: #151515;
+    --color-texto: #fff;
+    --fuente: arial;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 100%;
+    /* overflow-x:hidden; */
+    scroll-behavior: smooth;
+    font-family: var(--fuente);
+}
+body{font-size: 100%;}
+
+
+ /* ***************************codigo de el menu de navegacion******************************* */
+
+.menu{
+    display: flex;
+    height: 4rem;
+    width: 100vw;
+    background: var(--color-base);
+    font-family: var(--fuente);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 1rem;
+    position: fixed;
+}
+
+.menu .logo{
+    color: var(--color-texto);
+    font-size: 1.8em;
+}
+
+.menu .menu-navegacion {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    width: 50%;
+}
+.menu .menu-navegacion a{
+    color: var(--color-texto);
+    font-size: 1.2em;
+    text-decoration: none;
+    font-family: var(--fuente);
+}
+
+
+/* ***************************codigo seleccion de si es empresa o estudiante ******************************* */
+
+
+.empresa-estudiante{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--fuente);
+    color: var(--color-base);
+    padding: 2rem;
+    gap: 3rem;
+    text-align: center;
+}
+
+.container-targetas{
+     height: auto;
+     width: auto;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-wrap: wrap;
+     gap: 2rem;
+}
+
+.container-targetas .targeta{
+    height: auto;
+    width: 20rem;
+    padding: 5rem;
+    background: var(--color-base);
+    color: var(--color-texto);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.empresa-estudiante .targeta-dos{
+    height: auto;
+    width: 20rem;
+    padding: 5rem;
+    background: #4a4a4a;
+    color: var(--color-texto);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.targeta-dos a{
+    cursor: pointer;
+}
+
+.targeta a{
+    cursor: pointer;
+}
+
+.btn-basico{
+    color: var(--color-base);
+    font-size: 1em;
+    text-decoration: none;
+    font-family: var(--fuente);
+    padding: 0.9rem 3rem;
+    border-radius: 10px;
+    cursor: pointer;
+ }
+
+
+ /* ******************************Registro de empresas********************************* */
+
+
+ .formulario-empresa{
+    width: 200vw;
+    height: 100vh;
+    background: #4a4a4a;
+    display: flex;
+    align-items: center;  
+ }
+
+ .formulario-empresa .parte1{
+    width: 50%;
+    height: auto;
+    display: flex;
+    align-items: center;  
+    justify-content: center;
+    flex-direction: column;
+    background: #4a4a4a;
+ }
+
+.parte1 .barra-progreso {
+     height: 5%;
+ } 
+
+.tituloDos{
+    color: var(--color-texto);
+    font-size: 1.8em;
+    height: 5%;
+}
+
+ .parte1 .containerformulario{
+   height: 50%;
+   width: 90%;
+   padding: 2rem;
+}
+
+.container-inputs{
+    height: 100%;
+    width: 100%;
+   padding: 2rem;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+
+.container-inputs .imagen-empresa{
+    height: auto;
+    width: 20rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-texto);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+
+.container-inputs .datos-empresa{
+    height: 100%;
+    width: 50rem;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+ .input-basico{
+    border: none;
+    border-radius: 8px;
+    background: var(--color-texto);
+    height: 2.5rem;
+    width: 18rem;
+    color: #151515;
+    padding: 1rem;
+    outline: none;
+ }
+
+ .label-basico{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: #fff;
+ }
+
+ .formulario-empresa .btn-basico {
+    color: var(--color-texto);
+    font-size: 1em;
+    text-decoration: none;
+    font-family: var(--fuente);
+    padding: 0.9rem 3rem;
+    border-radius: 10px;
+    background: #151515;
+ }
+
+
+
+ .formulario-empresa .parte2{
+    width: 50%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #4a4a4a;
+    justify-content: center;
+    gap: 1rem;
+ }
+
+ .parte2 .containerFormulario2{
+    height: 40%;
+    width: 90%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5rem;
+    flex-wrap: wrap;
+ }
+
+ .containerFormulario2 .caja-inputs{
+    width: 25rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--color-texto);
+ }
+
+ .caja-inputs .dos-datos {
+    display: flex;
+    gap: 1rem;
+ }
+
+ .caja-inputs .dos-datos .input-basico-dos{
+    border: none;
+    border-radius: 8px;
+    background: var(--color-texto);
+    height: 2.5rem;
+    width: 8.2rem;
+    color: #151515;
+    padding: 1rem;
+    outline: none;
+ }
+
+.input-select{
+    border: none;
+    border-radius: 8px;
+    background: var(--color-texto);
+    height: 2.5rem;
+    width: 18rem;
+    color: #151515; 
+    outline: none;
+}
+
+
+ #ancla{
+    color: #4a4a4a;
+ }
+
+ #ancla2{
+    color: #4a4a4a;
+ }

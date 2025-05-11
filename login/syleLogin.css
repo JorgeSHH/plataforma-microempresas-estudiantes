@@ -1,0 +1,116 @@
+:root{
+    --color-base: #151515;
+    --color-texto: #fff;
+    --fuente: arial;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{font-size: 100%;}
+body{font-size: 100%;}
+
+
+ /* ***************************codigo de el menu de navegacion******************************* */
+
+.menu{
+    display: flex;
+    height: 4rem;
+    width: 100vw;
+    background: var(--color-base);
+    font-family: var(--fuente);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 1rem;
+    position: fixed;
+}
+
+.menu .logo{
+    color: var(--color-texto);
+    font-size: 1.8em;
+}
+
+.menu .menu-navegacion {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    width: 50%;
+}
+.menu .menu-navegacion a{
+    color: var(--color-texto);
+    font-size: 1.2em;
+    text-decoration: none;
+    font-family: var(--fuente);
+}
+
+ /* ******************************************codigo> login*********************************************** */
+
+ .login{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--fuente);
+    color: var(--color-texto);
+    padding: 1rem;
+ }
+
+ .login .container-login{
+    height: auto;
+    width: 25rem;
+    background: #151515;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+ }
+
+ .container-login .container-inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+ }
+
+ .container-inputs  .input-basico{
+    border: none;
+    border-radius: 8px;
+    background: var(--color-texto);
+    height: 2.5rem;
+    color: #151515;
+    padding: 1rem;
+    outline: none;
+ }
+
+ .container-inputs .opciones{
+   display: flex;
+   justify-content: space-between;
+   gap: 1rem;
+ }
+
+ .container-inputs .opciones a{
+    color: #d0d0d0;
+    font-size: 1em;
+    font-weight: 200;
+    text-decoration: none;
+    font-family: var(--fuente);
+ }
+
+
+.container-inputs .btn-basico{
+    color: var(--color-base);
+    font-size: 1em;
+    text-decoration: none;
+    font-family: var(--fuente);
+    padding: 0.9rem 3rem;
+    border-radius: 10px;
+ }
+
+
+ .btn-basico:active{
+    padding: 0.7rem 2rem;
+ }
