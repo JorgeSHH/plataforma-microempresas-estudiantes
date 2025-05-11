@@ -20,6 +20,13 @@
         </ul>
     </nav>
 </header>
+<section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Hello I`m el registro del estudiantes</h1>
+</section>
 
 </body>
 </html>
