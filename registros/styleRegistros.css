@@ -12,7 +12,8 @@
 
 html{
     font-size: 100%;
-    overflow-x:hidden;
+    overflow-x:hidden; 
+    overflow-y:hidden; 
     scroll-behavior: smooth;
     font-family: var(--fuente);
 }
@@ -128,7 +129,7 @@ body{font-size: 100%;}
 
 
  .formulario-empresa{
-    width: 200vw;
+    width: 300vw;
     height: 100vh;
     background: #4a4a4a;
     display: flex;
@@ -136,7 +137,7 @@ body{font-size: 100%;}
  }
 
  .formulario-empresa .parte1{
-    width: 50%;
+    width: 33%;
     height: auto;
     display: flex;
     align-items: center;  
@@ -227,7 +228,7 @@ body{font-size: 100%;}
 
 
  .formulario-empresa .parte2{
-    width: 50%;
+    width: 33%;
     height: auto;
     display: flex;
     align-items: center;
@@ -284,9 +285,61 @@ body{font-size: 100%;}
 
 
  #ancla{
-    color: #4a4a4a;
+    color: #ff000000;
  }
 
  #ancla2{
-    color: #4a4a4a;
+    color: #ff000000;
+
  }
+ #ancla2-1{
+    color: #ff000000;
+ }
+ #ancla3{
+    color: #ff000000;
+
+ }
+
+
+ .dos-datos-radio {
+    display: flex;
+    gap: 4rem;
+    padding: 1rem;
+ }
+
+
+
+ /* ******************************registro estudieate 3parte*************************************** */
+ .parte3{
+    width: 33%;
+    height: auto;
+    display: flex;
+    align-items: center;  
+    justify-content: center;
+    flex-direction: column;
+    background: #4a4a4a;
+ }
+
+
+ .caja-muestra{
+    background: #00000000;
+    padding: 20px;
+    border-radius: 8px;
+    width: 95vw;
+    margin: 0 auto;
+ }
+
+.caja-con-scroll {
+    width: 100%; /* O un ancho fijo, por ejemplo, 300px */
+    height: 75vh; /* **Altura fija o máxima obligatoria para que el scroll funcione** */
+    overflow-y: scroll; /* Habilita el scroll vertical */
+    padding: 15px;
+    background: #efe4e400;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.contenido-largo {
+    /* Contenido que excede la altura de la caja para activar el scroll */
+    padding-bottom: 50px; /* Espacio extra para que el scroll sea más notorio */
+}

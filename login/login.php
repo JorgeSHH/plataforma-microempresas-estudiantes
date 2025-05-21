@@ -28,7 +28,7 @@
             <input type="email" name="correo" id="correo" placeholder="Ingrese su Correo" class="input-basico">
             <input type="password" name="clave" id="clave" placeholder="Ingrese su Contraseña" class="input-basico">
             <div class="opciones">
-                <a href="/plataforma-estudiantes-microempresas/registros/registro.php">Registrarse</a>
+                <a href="/plataforma-microempresas-estudiantes/registros/registro.php">Registrarse</a>
                 <a href="#">Recuperar contraseña</a>
             </div>
             <input type="submit" value="Acceder" class="btn-basico">
