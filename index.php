@@ -61,7 +61,7 @@
                     <div class="text">
                         <h3>Empresas</h3>
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum, iure architecto? Ipsa rerum similique eum voluptatem quidem nihil? Fugiat sint ullam repudiandae quaerat vero incidunt.</p>
-                        <form action="/sabermas.html" method="get">
+                        <form action="/sabermas.html" method="post">
                 <button class="controls" type="submit" >Saber más</button>
             </form>
                     </div>

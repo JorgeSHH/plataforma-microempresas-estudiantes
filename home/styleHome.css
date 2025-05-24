@@ -91,7 +91,7 @@ li{font-size: 1.25em;}
 #hero{
     min-height: 100vh;
     object-fit: cover;
-    background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(21, 59, 113, 0.358)), url(img-home.png);
+    background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(21, 59, 113, 0.358)), url(/assets/img-home.png);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -262,13 +262,13 @@ li{font-size: 1.25em;}
 }
 .content-img .imagen-1{
     width: 100%;
-    background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(21, 59, 113, 0.358)), url(estudiante.png); 
+    background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(21, 59, 113, 0.358)), url(/assets/estudiante.png); 
     height: 50vh;
     }
 
     .content-img .imagen-2{
         width: 100%;
-        background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(21, 59, 113, 0.358)), url(microempresa.png); 
+        background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(21, 59, 113, 0.358)), url(/assets/microempresa.png); 
         background-position: center;
         background-size: cover;
         height: 50vh;
