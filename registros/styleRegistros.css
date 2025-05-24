@@ -334,13 +334,149 @@ body{font-size: 100%;}
     height: 75vh; /* **Altura fija o máxima obligatoria para que el scroll funcione** */
     overflow-y: scroll; /* Habilita el scroll vertical */
     padding: 15px;
-    background: #efe4e400;
     border-radius: 5px;
     margin-top: 20px;
 }
 
-.contenido-largo {
-    /* Contenido que excede la altura de la caja para activar el scroll */
-    padding-bottom: 50px; 
-    color:#00000000/* Espacio extra para que el scroll sea más notorio */
+.contenido-form3{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    background: #ffffff00;
+    gap: 3rem;
 }
+
+.containerFormulario3{
+    height: auto;
+    width: 90%; 
+    display: flex;    
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 5rem;
+    flex-wrap: wrap;
+    gap: 4rem;
+}
+
+.textoAdition{
+    text-align: center;
+    width: 18rem;
+}
+
+.caja-lateral{
+    display: flex;
+    gap: 20rem;
+}
+
+
+.boxAdition{
+    width: 100%;
+    margin-top: 4rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.boxAdition .habilidadesTecnicas{
+    width: 60%;
+}
+
+.boxAdition .preferenciaTrabajo{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.caja-generadora{
+    display: flex;
+    flex-direction: column;
+    width:90%;
+    background: #151515;
+    padding: 2rem;
+    border-radius: 10px;
+    gap: 1rem;
+}
+.caja-generadora .marco-inputs{
+    display: flex;
+    width: 80%;
+    background: #151515;
+    gap: 2rem;
+
+}
+
+.btn-basico-dos{
+    font-size: 1em;
+    text-decoration: none;
+    font-family: var(--fuente);
+    padding: 0.9rem 3rem;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #fff;
+    color: var(--color-base);
+}
+
+.btn-basico-tres{
+    font-size: 1em;
+    text-decoration: none;
+    font-family: var(--fuente);
+    padding: 0.9rem 3rem;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #fff;
+    color: var(--color-texto);
+    background: #151515;
+}
+
+/* ******************************tabla del registro curso e historial de empleos*************************************** */
+
+
+.tabla-contenedor {
+    width: 80%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th {
+    background-color: #151515;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #c0c0c0;
+    color: #333;
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.accion {
+    color: #4a6fa5;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.accion:hover {
+    text-decoration: underline;
+}
+
