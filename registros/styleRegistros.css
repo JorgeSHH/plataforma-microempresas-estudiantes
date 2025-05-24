@@ -12,8 +12,8 @@
 
 html{
     font-size: 100%;
-    overflow-x:hidden; 
-    overflow-y:hidden; 
+    /* overflow-x:hidden; 
+    overflow-y:hidden;  */
     scroll-behavior: smooth;
     font-family: var(--fuente);
 }
@@ -143,7 +143,7 @@ body{font-size: 100%;}
     align-items: center;  
     justify-content: center;
     flex-direction: column;
-    background: #4a4a4a;
+    background: #2f2f2f;
  }
 
 .parte1 .barra-progreso {

@@ -132,7 +132,10 @@
             </div>
 
         </div>
-       
+        <div class="dos-datos-radio">
+            <a href="/plataforma-microempresas-estudiantes/registros/registroEstudiantes.php#ancla2" class="btn-basico">volver</a>
+            <a href="/plataforma-microempresas-estudiantes/registros/registroEstudiantes.php#ancla3" class="btn-basico">Continuar</a>
+        </div>
       
        
     </article>

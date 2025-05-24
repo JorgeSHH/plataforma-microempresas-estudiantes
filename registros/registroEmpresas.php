@@ -13,10 +13,10 @@
             <h2>logo</h2>
         </div>
         <ul class="menu-navegacion">
-            <li><a href="/plataforma-microempresas-estudiantes/index.php">Home</a></li>
+            <li><a href="/plataforma-microempresas-estudiantess/index.php">Home</a></li>
             <li><a href="#">Empresas</a></li>
             <li><a href="#">Estudiantes</a></li>
-            <li><a href="/plataforma-microempresas-estudiantes/login/login.php">Login</a></li>
+            <li><a href="/plataforma-microempresas-estudiantess/login/login.php">Login</a></li>
         </ul>
     </nav>
 </header>
@@ -62,7 +62,7 @@
                 </div>  
                 
         </div>
-            <a href="/plataforma-microempresas-estudiantes/registros/registroEmpresas.php#ancla" class="btn-basico">Continuar</a>
+            <a href="/plataforma-microempresas-estudiantess/registros/registroEmpresas.php#ancla" class="btn-basico">Continuar</a>
         
        
     </article>
@@ -118,7 +118,7 @@
             </div>
 
         </div>
-        <a href="/plataforma-microempresas-estudiantes/registros/registroEmpresas.php#ancla2" class="btn-basico">volver</a>
+        <a href="/plataforma-microempresas-estudiantess/registros/registroEmpresas.php#ancla2" class="btn-basico">volver</a>
         <input type="submit" value="Enviar">
         </form>
     </article>
