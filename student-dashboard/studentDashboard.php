@@ -54,12 +54,109 @@
         
         <!-- Contenido principal -->
         <main class="main-content" id="mainContent">
-            <h1>Contenido Principal</h1>
-            <p>Selecciona una opción del menú para navegar.</p>
+            <div class="profile-header">
+            <div class="profile-info">
+            <img class="profile-pic">
+            <div class="user-details">
+            <!-- aca metemos el nombre del usuario -->
+                <div class="user-name">Armando</div> 
+                     <!-- aca metemos el Apellido del usuario -->
+                <div class="user-handle">Martinez</div>
+            </div>
+            </div>
+            </div>
+            <section class="welcome">
+                <h1>Bienvenido, Estudiante</h1>
+                <p>Selecciona una opción del menú para navegar.</p>
+            </section>
+                
             <div id="contentSection"></div>
+
+          <!-- Contenido Principal -->
+          <div class="main-content">
+          
+     
+        </div>
         </main>
+                  <!-- Contenido Principal -->
+
+          <!-- Columna Derecha -->
+          <div class="sidebar-right">
+    <!-- Barra de búsqueda -->
+    <div class="search-container">
+    <input type="search" placeholder="Buscar..." />
+    <svg class="search-icon" viewBox="0 0 24 24" >
+      <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.36 6.01 12.3 3 8.5 3S1.64 6.01 1.64 9.39c0 3.38 3.06 6.39 6.86 6.39 1.61 0 3.08-.59 4.19-1.56l.27.28v.79l5 4.99L20.49 19l-4.99-5zM8.5 14c-2.52 0-4.57-1.95-4.57-4.61S5.98 4.78 8.5 4.78s4.57 1.95 4.57 4.61S11.02 14 8.5 14z"/>
+    </svg>
+  </div>
+
+    <!-- Sección de Filtros -->
+    <div class="filters-section">
+        <div class="filter-buttons-container" style="max-height: 240px; overflow-y: auto;">
+        <h3>Filtros de búsqueda</h3>
+        <button class="filter-button">
+    <i class="icon">🌟</i> Diseño y creatividad
+</button>
+<button class="filter-button">
+    <i class="icon">💼</i> Administración y finanzas
+</button>
+<button class="filter-button">
+    <i class="icon">👨‍💻</i> Trabajo y mucho más
+</button>
+<button class="filter-button">
+    <i class="icon">💡</i> Tecnología e innovación
+</button>
+<button class="filter-button">
+    <i class="icon">📈</i> Marketing y publicidad
+</button>
+<button class="filter-button">
+    <i class="icon">👥</i> Recursos humanos
+</button>
+<button class="filter-button">
+    <i class="icon">📚</i> Educación y formación
+</button>
+<button class="filter-button">
+    <i class="icon">❤️</i> Salud y bienestar
+</button>
+<button class="filter-button">
+    <i class="icon">🚚</i> Logística y transporte
+</button>
+        </div>
     </div>
 
+    <!-- Sección de Contratos con scroll -->
+    <div class="contracts-section">
+        <h3>Contratos</h3>
+        <div class="contracts-container">
+            <!-- Elemento repetido de contrato -->
+            <div class="contract-item">
+                <div>
+                    <div class="company-name">Nombre de la empresa</div>
+                    <div class="job-title">Título del empleo</div>
+                </div>
+                <button class="view-button">Verr</button>
+            </div>
+            
+            <!-- Repetir elementos para demostrar el scroll -->
+            <div class="contract-item">
+                <div>
+                    <div class="company-name">Nombre de la empresa</div>
+                    <div class="job-title">Título del empleo</div>
+                </div>
+                <button class="view-button">Verr</button>
+            </div>
+            
+            <!-- Más elementos... (repetir estructura según necesidad) -->
+        </div>
+    </div>
+</div>
+         <!-- Columna Derecha -->
+       
+    </div>
+
+
+
+    
     <script src="./scriptDashboard.js"></script>
 </body>
 </html>
