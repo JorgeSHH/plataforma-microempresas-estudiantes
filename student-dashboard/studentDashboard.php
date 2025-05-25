@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./styleDashboar.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container-menu">
         <!-- Menú lateral -->
         <nav class="sidebar" id="sidebar">
             <div class="menu-toggle" id="menuToggle">
