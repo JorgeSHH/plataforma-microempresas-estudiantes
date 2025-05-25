@@ -93,7 +93,8 @@
     <!-- Sección de Filtros -->
     <div class="filters-section">
         <div class="filter-buttons-container" style="max-height: 240px; overflow-y: auto;">
-        <h3>Filtros de búsqueda</h3>
+       <h3>Filtros de búsqueda</h3>
+       
         <button class="filter-button">
     <i class="icon">🌟</i> Diseño y creatividad
 </button>
@@ -126,6 +127,8 @@
 
     <!-- Sección de Contratos con scroll -->
     <div class="contracts-section">
+        
+        <div class="filter-buttons-container" style="max-height: 240px; overflow-y: auto;">
         <h3>Contratos</h3>
         <div class="contracts-container">
             <!-- Elemento repetido de contrato -->
@@ -145,9 +148,9 @@
                 </div>
                 <button class="view-button">Verr</button>
             </div>
-            
-            <!-- Más elementos... (repetir estructura según necesidad) -->
+            </div>
         </div>
+         <!-- Más elementos... (repetir estructura según necesidad) -->
     </div>
 </div>
          <!-- Columna Derecha -->
