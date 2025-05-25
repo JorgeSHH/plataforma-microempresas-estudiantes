@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Estilos del menú lateral */
+.sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    transition: all 0.3s;
+    height: 100vh;
+    position: relative;
+}
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+.menu-toggle {
+    padding: 20px;
+    text-align: right;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.menu-items {
+    list-style: none;
+}
+
+.menu-item {
+    margin-bottom: 5px;
+}
+
+.menu-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    gap: 2rem;
+}
+
+.menu-link:hover {
+    background: #34495e;
+}
+
+.menu-link.active {
+    background: #3498db;
+}
+
+.icon {
+    font-size: 1.2rem;
+    margin-right: 15px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.menu-text {
+    transition: opacity 0.3s;
+}
+
+.sidebar.collapsed .menu-text {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+}
+
+/* Contenido principal */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+
+.sidebar.collapsed + .main-content {
+    margin-left: 70px;
+}
+
+.sidebar:not(.collapsed) + .main-content {
+    margin-left: 250px;
+}
+
+/* Secciones de contenido */
+.content-section {
+    display: none;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.content-section.active {
+    display: block;
+}
+
+/* Efecto de tooltip para el menú colapsado */
+.sidebar.collapsed .menu-link::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2c3e50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+.sidebar.collapsed .menu-link:hover::after {
+    opacity: 1;
+    visibility: visible;
+    margin-left: 15px;
+}
