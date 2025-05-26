@@ -167,13 +167,6 @@ body {
     transition: margin-left 0.3s;
 }
 
-.sidebar.collapsed + .main-content {
-
-}
-
-.sidebar:not(.collapsed) + .main-content {
-
-}
 
 
 
@@ -524,4 +517,3 @@ display: block;
 .view-button:hover {
     background: #0056b3;
 }
-
