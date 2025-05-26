@@ -51,12 +51,40 @@ body {
     color: white;
     transition: all 0.3s;
     height: 100vh;
-    position: relative;
-    
+    position: fixed;
+    z-index: 100;
 }
 
 .sidebar.collapsed {
     width: 70px;
+}
+
+/* Estilo para el contenedor del logo */
+.sidebar .logo {
+    text-align: center;
+    padding: 20px 0;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+/* Estilo para la imagen del logo */
+.sidebar .logo img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover; /* Mantiene la proporción del logo */
+    display: block;
+    margin: 0 auto;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Ajuste del logo cuando el sidebar está colapsado */
+.sidebar.collapsed .logo {
+    padding: 10px 0; /* Reduce el espacio alrededor del logo */
+}
+
+.sidebar.collapsed .logo img {
+    width: 50px; /* Reduce el tamaño del logo */
+    height: 50px;
 }
 
 .menu-toggle {
@@ -83,7 +111,7 @@ body {
     text-decoration: none;
     transition: all 0.3s;
     position: relative;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .menu-link:hover {
@@ -112,6 +140,44 @@ body {
     overflow: hidden;
     position: absolute;
 }
+
+/* Contenido principal */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 250px;
+    transition: margin-left 0.3s;
+}
+
+.sidebar.collapsed + .main-content {
+    margin-left: 70px;
+}
+
+/* Efecto de tooltip para el menú colapsado */
+.sidebar.collapsed .menu-link::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2c3e50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+.sidebar.collapsed .menu-link:hover::after {
+    opacity: 1;
+    visibility: visible;
+    margin-left: 15px;
+}
+
 
 /*Header con usuario*/
 .profile-header {

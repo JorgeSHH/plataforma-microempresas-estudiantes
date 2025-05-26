@@ -17,6 +17,9 @@
                 </svg>
             </div>
             
+            <div class="logo">
+                <img src="../assets/logo2.png" alt="Logo">
+            </div>
             <ul class="menu-items">
                 <li class="menu-item">
                     <a href="../index.php" class="menu-link" ondblclick="window.location.href='../index.php';">
@@ -51,6 +54,7 @@
                     </a>
                 </li>
             </ul>
+            
         </nav>
         
         <!-- Contenido principal con el curriculum -->

@@ -34,6 +34,34 @@ body {
     width: 70px;
 }
 
+/* Estilo para el contenedor del logo */
+.sidebar .logo {
+    text-align: center;
+    padding: 20px 0;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+/* Estilo para la imagen del logo */
+.sidebar .logo img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover; /* Mantiene la proporción del logo */
+    display: block;
+    margin: 0 auto;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Ajuste del logo cuando el sidebar está colapsado */
+.sidebar.collapsed .logo {
+    padding: 10px 0; /* Reduce el espacio alrededor del logo */
+}
+
+.sidebar.collapsed .logo img {
+    width: 50px; /* Reduce el tamaño del logo */
+    height: 50px;
+}
+
 .menu-toggle {
     padding: 20px;
     text-align: right;
@@ -419,4 +447,22 @@ footer p {
     .sidebar:not(.collapsed) {
         width: 250px;
     }
+}
+
+/* Logo en el menú lateral */
+.sidebar .logo {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.sidebar .logo img {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar .logo img:hover {
+    transform: scale(1.1);
 }
