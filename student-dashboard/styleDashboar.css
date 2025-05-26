@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -9,6 +8,36 @@
 body {
     background-color: #f5f5f5;
 }
+
+
+.container-menu {
+    display: flex;
+    height: 100vh; /* Asegura que ocupe el 100% del alto de la ventana */
+}
+
+/* Ajustar el main-content */
+.main-content {
+    flex: 1; /* Ocupa el espacio restante entre el sidebar y sidebar-right */
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Permite scroll si el contenido es demasiado grande */
+}
+
+/* Ajustar el sidebar-right */
+.sidebar-right {
+    width: 320px;
+    background: #262626;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto; /* Permite scroll si el contenido es demasiado grande */
+}
+
 
 .container {
     display: flex;
@@ -146,6 +175,10 @@ body {
 
 }
 
+
+
+
+
 /* Secciones de contenido */
 .content-section {
     display: none;
@@ -212,6 +245,92 @@ body {
     font-size: 1.2rem;
     margin-bottom: 1rem;
 }
+
+.job-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    padding: 25px;
+    margin: 20px;
+}
+
+.job-header {
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.job-title {
+    color: #2c3e50;
+    font-size: 24px;
+    margin: 0 0 5px 0;
+}
+
+.job-company {
+    color: #3498db;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+}
+
+.job-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 10px;
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.job-meta-item {
+    display: flex;
+    align-items: center;
+}
+
+.job-meta-item i {
+    margin-right: 5px;
+}
+
+.job-section {
+    margin-bottom: 15px;
+}
+
+.job-section-title {
+    color: #2c3e50;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.job-section-content {
+    color: #34495e;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.job-salary {
+    color: #27ae60;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.job-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eaeaea;
+    font-size: 13px;
+    color: #7f8c8d;
+}
+
+
+
+
 
 
 

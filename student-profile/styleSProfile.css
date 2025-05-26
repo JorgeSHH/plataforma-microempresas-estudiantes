@@ -297,27 +297,90 @@ body {
 }
 
 /* Pie de página del CV */
-.cv-footer {
+/* footer css */
+
+footer {
+    background-color: var(--bg);
+    color: var(--hvr3);
+    padding-top: 20px;
     text-align: center;
-    padding: 1rem;
-    background-color: #2c3e50;
-    color: white;
+    width: 100%;
+    height: auto;
 }
 
-.social-links {
-    margin-bottom: 0.5rem;
+footer .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;   
 }
 
-.social-links a {
-    color: white;
-    margin: 0 0.5rem;
-    font-size: 1.2rem;
-    transition: color 0.3s;
+
+footer .container ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content:space-around;
 }
 
-.social-links a:hover {
-    color: #3498db;
+footer .container ul li {
+    font-size: 1em;
+    
 }
+
+footer .container ul li a {
+    color: var(--hvr3);
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items:center ;
+    justify-content: center;
+}
+
+footer .container ul li a:hover {
+    color: var(--hvr1);
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+
+
+
+
+@media (min-width: 1000px) {
+
+    footer {
+        width: 100%;
+    }
+
+    footer .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        
+    }
+
+    footer .container ul {
+        list-style: none;
+        display: flex;
+    
+        justify-content: space-between;
+    }
+
+    footer .container ul li a:hover {
+        color: var(--hvr1);
+    }
+
+}
+
+/* footer css */
 
 /* Responsive */
 @media (max-width: 768px) {

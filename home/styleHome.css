@@ -1,11 +1,11 @@
 :root{
-    --color-base: #151515;
+    --color-base: #202020;
     --color-texto: #fff;
     --fuente: arial;
-    --bg: #0d0d0d;
-    --btm: #8c3616;
-    --hvr1: #a68f65;
-    --hvr2: #788abf;
+    --bg: #202020;
+    --btm: #052236;
+    --hvr1: #3b55a2;
+    --hvr2: #f7f3eb;
     --hvr3: #f5f5f5;
     --parra: 500;
 }
@@ -25,19 +25,20 @@ button{
     padding: 5px 10px;
 
     border: none;
-    color:#ffffff;
+    color: var(--hvr1);
+    background-color: var(--btm);
     background: none;
     cursor: pointer;
     margin: 10px;
 }
 
 button:hover{
-    color: var(--hvr2);
+    color: var(--hvr1);
     transform: scale(1.1);
     scroll-behavior: smooth;
     outline: none;
     border: 0;
-    border-bottom: 2px solid var(--hvr2);
+    border-bottom: 2px solid var(--hvr3);
     transition: 0.5s ease-in-out;
   
 }
@@ -48,30 +49,43 @@ button:hover{
     display: flex;
     height: 4rem;
     width: 100vw;
-    background: var(--color-base);
+    background: #0d0d0d64;
     font-family: var(--fuente);
     justify-content: space-between;
     align-items: center;
-    padding: 0rem 1rem;
+    padding: 0rem 2rem;
     position: fixed;
+    backdrop-filter: blur(3px);
 }
 
-.menu .logo{
-    color: var(--color-texto);
-    font-size: 1.8em;
+.logo img{
+    height: 50px;
+    width: auto;
+    display: block;
 }
 
 .menu .menu-navegacion {
     display: flex;
     justify-content: space-around;
     list-style: none;
-    width: 50%;
+    width: 20%;
+
 }
 .menu .menu-navegacion a{
     color: var(--color-texto);
     font-size: 1.2em;
     text-decoration: none;
     font-family: var(--fuente);
+}
+
+.menu .menu-navegacion a:hover{
+    color: var(--hvr3);
+    transform: scale(1.1);
+    scroll-behavior: smooth;
+    outline: none;
+    border: 0;
+    border-bottom: 2px solid var(--bg);
+    transition: 0.5s ease-in-out;
 }
 
 /*Aca vca el css del home/ Hero*/
@@ -91,7 +105,7 @@ li{font-size: 1.25em;}
 #hero{
     min-height: 100vh;
     object-fit: cover;
-    background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(21, 59, 113, 0.358)), url(/assets/img-home.png);
+    background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(38, 96, 178, 0.432)), url(img-home.png);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -168,22 +182,22 @@ li{font-size: 1.25em;}
 }
 
 .control:hover{
-    color:var(--hvr2);
+    color:var(--hvr3);
 }
 .control:focus{
     background-color: rgb(255, 255, 255);
-    color:var(--hvr2);
+    color:var(--hvr3);
 }
 
 .control:focus::placeholder {
-    color:var(--hvr2);
+    color:var(--hvr3);
 }
 
 .controls{
     padding: 18px 50px;
     border-radius: 10px;
     cursor: pointer;
-    background-color: var(--hvr2);
+    background-color: var(--hvr1);
     color: var(--hvr3);
     font-weight: bold;
     border: none;
@@ -211,6 +225,7 @@ li{font-size: 1.25em;}
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    background-color: var(--hvr3)
 
     
  }
@@ -262,13 +277,13 @@ li{font-size: 1.25em;}
 }
 .content-img .imagen-1{
     width: 100%;
-    background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(21, 59, 113, 0.358)), url(/assets/estudiante.png); 
+    background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(38, 96, 178, 0.432)), url(estudiante.png); 
     height: 50vh;
     }
 
     .content-img .imagen-2{
         width: 100%;
-        background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(21, 59, 113, 0.358)), url(/assets/microempresa.png); 
+        background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(38, 96, 178, 0.432)), url(microempresa.png); 
         background-position: center;
         background-size: cover;
         height: 50vh;
@@ -293,13 +308,196 @@ li{font-size: 1.25em;}
     cursor: pointer;
 }
 
+/*la otra seccion del home*/
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 100vw;
+    height: auto;
+    background-color: var(--hvr3);
+
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+}
+
+.tab-active {
+    color: #2563eb;
+    border-bottom: 3px solid #2563eb;
+}
+
+/* Ajustar la clase .container para que no afecte el hero y el footer */
+
+
+/* Especificar estilos para el container dentro de la sección de capacitación */
+section.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+
+}
+
+/* Asegurar que el hero y el footer no sean afectados */
+#hero .container {
+    max-width: 100%;
+    padding: 0;
+    background: none;
+}
+
+footer .container {
+    max-width: 100%;
+    padding: 0;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color:var(--btm);
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    font-size: 1rem;
+    color: var(--color-base);
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #666;
+}
+
+.tab-active {
+    color: #2563eb;
+    border-bottom: 3px solid #2563eb;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content:not(.hidden) {
+    display: block;
+}
+
+.grid {
+    display: grid;
+
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #1a415b;
+    width: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.icon-container {
+    background: #e0f2fe;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+    color: #2563eb;
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1rem;
+    color: var(--color-base);
+    margin-bottom: 20px;
+}
+
+.link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link:hover {
+    color: #1e40af;
+}
+
+h3{
+    font-size: 1.5em;
+    color: var(--hvr1);
+    text-align: center;
+    margin-top: 20px;
+}
+
+h2{
+    font-size: 2em;
+    color: var(--btm);
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
 
 /* footer css */
 
 footer {
-    background-color: var(--hvr3);
-    color: #000000;
-    padding: 10px 0;
+    background-color: var(--bg);
+    color: var(--hvr3);
+    padding-top: 20px;
     text-align: center;
     width: 100%;
     height: auto;
@@ -327,7 +525,8 @@ footer .container ul li {
 }
 
 footer .container ul li a {
-    color: #000000;
+    color: var(--hvr3);
+    font-size: 1.2em;
     text-decoration: none;
     transition: color 0.3s ease;
     display: flex;
@@ -336,27 +535,7 @@ footer .container ul li a {
 }
 
 footer .container ul li a:hover {
-    color: #66ccff;
-}
-
-footer .container .social-icons {
-    display: flex;
-    gap: 25px;
-    margin-top: 20px;
-    margin-right: 0;
-    padding-right: 0;
-    align-items:center ;
-    justify-content: center;
-}
-
-footer .container .social-icons a {
-    color: #fff;
-    font-size: 1.5em;
-    transition: color 0.3s ease;
-}
-
-footer .container .social-icons a:hover {
-    color: #66ccff;
+    color: var(--hvr1);
 }
 
 footer p {
@@ -379,37 +558,21 @@ footer p {
         justify-content: space-between;
         align-items: center;
 
+
         
     }
 
     footer .container ul {
         list-style: none;
         display: flex;
-        gap: 20px;
+    
         justify-content: space-between;
     }
 
     footer .container ul li a:hover {
-        color: var(--btm);
+        color: var(--hvr1);
     }
 
-    footer .container .social-icons {
-        display: flex;
-        gap: 25px;
-        align-items: center;
-        justify-content: space-between;
-        padding-bottom: 10px;
-    }
-
-    footer .container .social-icons a {
-        color: #fff;
-        font-size: 1.5em;
-        transition: color 0.3s ease;
-    }
-
-    footer .container .social-icons a:hover {
-        color: #66ccff;
-    }
 }
 
 /* footer css */

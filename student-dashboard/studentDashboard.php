@@ -70,7 +70,69 @@
                 <p>Selecciona una opción del menú para navegar.</p>
             </section>
                 
-            <div id="contentSection"></div>
+            <div id="contentSection">
+                <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta de Empleo</title>
+
+
+    <div class="job-card">
+        <div class="job-header">
+            <h1 class="job-title">Desarrollador Frontend Senior</h1>
+            <p class="job-company">Tech Solutions Inc.</p>
+            
+            <div class="job-meta">
+                <span class="job-meta-item">
+                    <i>📅</i> Publicado: 15/05/2023
+                </span>
+                <span class="job-meta-item">
+                    <i>⏳</i> Duración: 12 meses
+                </span>
+                <span class="job-meta-item">
+                    <i>📍</i> Remoto
+                </span>
+                <span class="job-meta-item">
+                    <i>💰</i> <span class="job-salary">$3,500/mes</span>
+                </span>
+            </div>
+        </div>
+        
+        <div class="job-section">
+            <h3 class="job-section-title">Resumen del puesto</h3>
+            <p class="job-section-content">
+                Buscamos un desarrollador Frontend Senior con experiencia en React.js para unirse a nuestro equipo de desarrollo de productos digitales. Trabajarás en proyectos innovadores para clientes internacionales.
+            </p>
+        </div>
+        
+        <div class="job-section">
+            <h3 class="job-section-title">Requisitos</h3>
+            <p class="job-section-content">
+                • 5+ años de experiencia en desarrollo Frontend<br>
+                • Dominio de React.js y Redux<br>
+                • Experiencia con APIs REST<br>
+                • Conocimientos de TypeScript<br>
+                • Inglés intermedio-avanzado<br>
+                • Capacidad para trabajar en equipo
+            </p>
+        </div>
+        
+        <div class="job-section">
+            <h3 class="job-section-title">Ubicación</h3>
+            <p class="job-section-content">
+                Av. Innovación 1234, Piso 5, Ciudad Tecnológica
+            </p>
+        </div>
+        
+        <div class="job-footer">
+            <span>ID de oferta: #JOB-12345</span>
+            <span>Válida hasta: 30/06/2023</span>
+        </div>
+    </div>
+
+            </div>
 
           <!-- Contenido Principal -->
           <div class="main-content">

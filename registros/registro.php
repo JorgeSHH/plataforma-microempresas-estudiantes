@@ -8,24 +8,24 @@
 </head>
 <body>
 <header>
+    <!-- inicio del header -->
     <nav class="menu">
-        <div class="logo">
-            <h2>logo</h2>
-        </div>
-        <ul class="menu-navegacion">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Empresas</a></li>
-            <li><a href="#">Estudiantes</a></li>
-            <li><a href="#">Login</a></li>
-        </ul>
-    </nav>
+    <div class="logo">
+        <img src="../assets/logo2.png" alt="Logo" style="height: 80px;">
+    </div>
+    <ul class="menu-navegacion">
+        <li><a href="../index.php">Inicio</a></li>
+    
+        <li><a href="../login/login.php">Login</a></li>
+    </ul>
+</nav>
 </header>
 
 <section class="empresa-estudiante">
-    <h2 class="titulo-dos">Eres Estudiante o Empresa?</h2>
+    <h2 class="titulo-dos">¿Eres Estudiante o Microempresa?</h2>
     <div class="container-targetas">
         <div class="targeta">
-            <h2 class="titulo-dos">Empresa</h2>
+            <h2 class="titulo-dos">Microempresa</h2>
             <div class="icono">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-buildings" viewBox="0 0 16 16">
                     <path d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022M6 8.694 1 10.36V15h5zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5z"/>

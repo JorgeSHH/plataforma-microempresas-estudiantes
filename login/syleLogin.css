@@ -1,7 +1,13 @@
 :root{
-    --color-base: #151515;
+    --color-base: #202020;
     --color-texto: #fff;
     --fuente: arial;
+    --bg: #202020;
+    --btm: #052236;
+    --hvr1: #3b55a2;
+    --hvr2: #f7f3eb;
+    --hvr3: #f5f5f5;
+    --parra: 500;
 }
 
 *{
@@ -10,34 +16,64 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'roboto', sans-serif;
+}
+
 html{font-size: 100%;}
 body{font-size: 100%;}
 
 
+button{
+    font-size: 1.20em;
+    padding: 5px 10px;
+
+    border: none;
+    color: var(--hvr1);
+    background-color: var(--btm);
+    background: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button:hover{
+    color: var(--hvr1);
+    transform: scale(1.1);
+    scroll-behavior: smooth;
+    outline: none;
+    border: 0;
+    border-bottom: 2px solid var(--hvr3);
+    transition: 0.5s ease-in-out;
+  
+}
+
  /* ***************************codigo de el menu de navegacion******************************* */
 
-.menu{
+ .menu{
     display: flex;
     height: 4rem;
     width: 100vw;
-    background: var(--color-base);
+    background: #0d0d0d64;
     font-family: var(--fuente);
     justify-content: space-between;
     align-items: center;
-    padding: 0rem 1rem;
+    padding: 0rem 2rem;
     position: fixed;
+    backdrop-filter: blur(3px);
 }
 
-.menu .logo{
-    color: var(--color-texto);
-    font-size: 1.8em;
+.logo img{
+    height: 50px;
+    width: auto;
+    display: block;
 }
 
 .menu .menu-navegacion {
     display: flex;
     justify-content: space-around;
     list-style: none;
-    width: 50%;
+    width: 20%;
+
 }
 .menu .menu-navegacion a{
     color: var(--color-texto);
@@ -45,6 +81,28 @@ body{font-size: 100%;}
     text-decoration: none;
     font-family: var(--fuente);
 }
+
+.menu .menu-navegacion a:hover{
+    color: var(--hvr3);
+    transform: scale(1.1);
+    scroll-behavior: smooth;
+    outline: none;
+    border: 0;
+    border-bottom: 2px solid var(--bg);
+    transition: 0.5s ease-in-out;
+}
+
+/*Aca vca el css del home/ Hero*/
+
+
+
+h1{font-size: 2.5em;}
+h2{font-size: 2.2em;}
+h3{font-size: 1.6em;}
+p{font-size: 1.25em;}
+ul{list-style: none;}
+li{font-size: 1.25em;}
+
 
  /* ******************************************codigo> login*********************************************** */
 
@@ -57,23 +115,46 @@ body{font-size: 100%;}
     font-family: var(--fuente);
     color: var(--color-texto);
     padding: 1rem;
+    background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(38, 96, 178, 0.432)), url(../assets/loginBg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-weight: 600;
  }
 
  .login .container-login{
-    height: auto;
-    width: 25rem;
-    background: #151515;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 50px 30px;
     border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    padding: 2rem;
+    gap: 20px;
+    opacity: 0.7;
+    margin-bottom: 45px; /* Added to lower the login by 20px */
+    color: var(--hvr1);
  }
+
+ .login .container-login:hover {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: scale(1.10);
+}
+
+.login .container-login {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
 
  .container-login .container-inputs{
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    
+
  }
 
  .container-inputs  .input-basico{
@@ -81,10 +162,19 @@ body{font-size: 100%;}
     border-radius: 8px;
     background: var(--color-texto);
     height: 2.5rem;
-    color: #151515;
+    color:var(--hvr1);
     padding: 1rem;
+    border: 2px solid var(--btm);
+    border-radius: 8px;
     outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
  }
+
+ .container-inputs  .input-basico:focus{
+    border-color: var(--hvr1);
+    box-shadow: 0 0 5px var(--bg);
+ }
+
 
  .container-inputs .opciones{
    display: flex;
@@ -93,24 +183,45 @@ body{font-size: 100%;}
  }
 
  .container-inputs .opciones a{
-    color: #d0d0d0;
+    color: var(--btm);
     font-size: 1em;
     font-weight: 200;
     text-decoration: none;
     font-family: var(--fuente);
+    font-weight: bold;
+ }
+
+ .container-inputs  .opciones a:hover{
+    color: var(--hvr1);
+    text-decoration: underline;
+    transition: color 0.3s ease-in-out;
  }
 
 
-.container-inputs .btn-basico{
-    color: var(--color-base);
-    font-size: 1em;
-    text-decoration: none;
-    font-family: var(--fuente);
-    padding: 0.9rem 3rem;
-    border-radius: 10px;
- }
+.container-inputs .btn-basico {
+    font-size: 1.2em;
 
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--btm);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; /* Set width to 100% */
+    height: 50px;
+    text-align: center; /* Center text inside the button */
+}
 
- .btn-basico:active{
+.btn-basico:active {
     padding: 0.7rem 2rem;
- }
+}
+
+.container-inputs .btn-basico:hover {
+
+    background-color: var(--hvr1);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: var(--color-texto);
+
+}

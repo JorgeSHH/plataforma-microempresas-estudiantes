@@ -8,17 +8,17 @@
 </head>
 <body>
 <header>
+    <!-- inicio del header -->
     <nav class="menu">
-        <div class="logo">
-            <h2>logo</h2>
-        </div>
-        <ul class="menu-navegacion">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Empresas</a></li>
-            <li><a href="#">Estudiantes</a></li>
-            <li><a href="#">Login</a></li>
-        </ul>
-    </nav>
+    <div class="logo">
+        <img src="../assets/logo2.png" alt="Logo" style="height: 80px;">
+    </div>
+    <ul class="menu-navegacion">
+        <li><a href="../index.php">Inicio</a></li>
+    
+        <li><a href="../login/login.php">Login</a></li>
+    </ul>
+</nav>
 </header>
 
  <section class="formulario-empresa">
@@ -41,7 +41,7 @@
                         </label>
                     <div class="datos-empresa">
                         <label for="correo" class="label-basico">
-                            Correo electronico(empresa)
+                            Correo electronico
                             <input type="email" name="correo-empresa" id="correo-empresa" class="input-basico">
                         </label>
                         <label for="contrasena" class="label-basico">

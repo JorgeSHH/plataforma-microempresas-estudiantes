@@ -8,17 +8,17 @@
 </head>
 <body>
 <header>
+    <!-- inicio del header -->
     <nav class="menu">
-        <div class="logo">
-            <h2>logo</h2>
-        </div>
-        <ul class="menu-navegacion">
-            <li><a href="/index.php">Home</a></li>
-            <li><a href="#">Empresas</a></li>
-            <li><a href="#">Estudiantes</a></li>
-            <li><a href="./login/login.php">Login</a></li>
-        </ul>
-    </nav>
+    <div class="logo">
+        <img src="../assets/logo2.png" alt="Logo" style="height: 80px;">
+    </div>
+    <ul class="menu-navegacion">
+        <li><a href="../index.php">Inicio</a></li>
+    
+        <li><a href="../login/login.php">Login</a></li>
+    </ul>
+</nav>
 </header>
 
 <section class="login">
@@ -29,11 +29,12 @@
             <input type="password" name="clave" id="clave" placeholder="Ingrese su Contraseña" class="input-basico">
             <div class="opciones">
                 <a href="/plataforma-microempresas-estudiantes/registros/registro.php">Registrarse</a>
-                <a href="#">Recuperar contraseña</a>
+   
             </div>
             <input type="submit" value="Acceder" class="btn-basico">
         </form>
     </article>
+    
 </section>
 
     

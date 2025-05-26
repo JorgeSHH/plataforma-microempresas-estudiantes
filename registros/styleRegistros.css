@@ -1,7 +1,13 @@
 :root{
-    --color-base: #151515;
+    --color-base: #202020;
     --color-texto: #fff;
     --fuente: arial;
+    --bg: #202020;
+    --btm: #052236;
+    --hvr1: #3b55a2;
+    --hvr2: #f7f3eb;
+    --hvr3: #f5f5f5;
+    --parra: 500;
 }
 
 *{
@@ -10,40 +16,42 @@
     box-sizing: border-box;
 }
 
-html{
-    font-size: 100%;
-    /* overflow-x:hidden; 
-    overflow-y:hidden;  */
-    scroll-behavior: smooth;
-    font-family: var(--fuente);
+body {
+    font-family: 'roboto', sans-serif;
 }
+
+html{font-size: 100%;}
 body{font-size: 100%;}
 
 
- /* ***************************codigo de el menu de navegacion******************************* */
 
-.menu{
+
+ /* ***************************codigo de el menu de navegacion******************************* */
+ .menu{
     display: flex;
     height: 4rem;
     width: 100vw;
-    background: var(--color-base);
+    background: #0d0d0d64;
     font-family: var(--fuente);
     justify-content: space-between;
     align-items: center;
-    padding: 0rem 1rem;
+    padding: 0rem 2rem;
     position: fixed;
+    backdrop-filter: blur(3px);
 }
 
-.menu .logo{
-    color: var(--color-texto);
-    font-size: 1.8em;
+.logo img{
+    height: 50px;
+    width: auto;
+    display: block;
 }
 
 .menu .menu-navegacion {
     display: flex;
     justify-content: space-around;
     list-style: none;
-    width: 50%;
+    width: 20%;
+
 }
 .menu .menu-navegacion a{
     color: var(--color-texto);
@@ -51,6 +59,28 @@ body{font-size: 100%;}
     text-decoration: none;
     font-family: var(--fuente);
 }
+
+.menu .menu-navegacion a:hover{
+    color: var(--hvr3);
+    transform: scale(1.1);
+    scroll-behavior: smooth;
+    outline: none;
+    border: 0;
+    border-bottom: 2px solid var(--bg);
+    transition: 0.5s ease-in-out;
+}
+
+/*Aca vca el css del home/ Hero*/
+
+
+
+h1{font-size: 2.5em;}
+h2{font-size: 2.2em;
+color: var(--hvr2);}
+h3{font-size: 1.6em;}
+p{font-size: 1.25em;}
+ul{list-style: none;}
+li{font-size: 1.25em;}
 
 
 /* ***************************codigo seleccion de si es empresa o estudiante ******************************* */
@@ -68,6 +98,11 @@ body{font-size: 100%;}
     padding: 2rem;
     gap: 3rem;
     text-align: center;
+    background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(103, 149, 214, 0.489)), url(../assets/registro.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-weight: 600;
 }
 
 .container-targetas{
@@ -84,8 +119,8 @@ body{font-size: 100%;}
     height: auto;
     width: 20rem;
     padding: 5rem;
-    background: var(--color-base);
-    color: var(--color-texto);
+    background: #052236d0;
+    color: var(--hvr2);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -97,13 +132,18 @@ body{font-size: 100%;}
     height: auto;
     width: 20rem;
     padding: 5rem;
-    background: #4a4a4a;
-    color: var(--color-texto);
+    background: #f7f3ebda;
+    color: var(--bg);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+}
+
+.empresa-estudiante .targeta-dos h2{
+    color: var(--color-base);
+    font-size: 1.8em;
 }
 
 .targeta-dos a{
@@ -122,18 +162,60 @@ body{font-size: 100%;}
     padding: 0.9rem 3rem;
     border-radius: 10px;
     cursor: pointer;
+    background: var(--hvr2);
+    border: 2px solid var(--hvr1);
+    transition: 0.3s ease-in-out;
+    font-weight: bold;
+ }
+
+ .targeta-dos .btn-basico{
+    color: var(--color-texto);
+    font-size: 1em;
+    text-decoration: none;
+    font-family: var(--fuente);
+    padding: 0.9rem 3rem;
+    border-radius: 10px;
+    cursor: pointer;
+    background: var(--color-base);
+    border: 2px solid var(--hvr1);
+    transition: 0.3s ease-in-out;
+    font-weight: bold;
+ }
+
+ .targeta .btn-basico:hover{
+    color: var(--hvr2);
+    background: var(--btm);
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
+ }
+
+ .btn-basico:hover{
+    color: var(--hvr1);
+    background: var(--color-texto);
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
  }
 
 
  /* ******************************Registro de empresas********************************* */
 
+ .formulario-empresa .btn-basico:hover{
+    color: var(--hvr1);
+    background: var(--color-texto);
+    transition: 0.3s ease-in-out;
+    transform: scale(1.1);
+ }
 
  .formulario-empresa{
     width: 300vw;
     height: 100vh;
-    background: #4a4a4a;
+    background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(103, 149, 214, 0.489)), url(../assets/registroEmpresa.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;  
+    font-weight: 600;
  }
 
  .formulario-empresa .parte1{
@@ -143,17 +225,25 @@ body{font-size: 100%;}
     align-items: center;  
     justify-content: center;
     flex-direction: column;
-    background: #2f2f2f;
+    background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgba(103, 149, 214, 0.489)), url(../assets/registroUni.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
  }
 
 .parte1 .barra-progreso {
-     height: 5%;
- } 
+    height: 5%;
+    position: relative;
+    top: 60px;
+}
 
-.tituloDos{
+.tituloDos {
     color: var(--color-texto);
     font-size: 1.8em;
     height: 5%;
+    position: relative;
+    top: 70px;
 }
 
  .parte1 .containerformulario{
