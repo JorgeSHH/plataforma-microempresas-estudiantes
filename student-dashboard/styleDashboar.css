@@ -1,12 +1,53 @@
-* {
+:root{
+    --color-base: #202020;
+    --color-texto: #fff;
+    --fuente: arial;
+    --bg: #202020;
+    --btm: #052236;
+    --hvr1: #3b55a2;
+    --hvr2: #f7f3eb;
+    --hvr3: #f5f5f5;
+    --parra: 500;
+}
+
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
 }
 
 body {
-    background-color: #f5f5f5;
+    font-family: 'roboto', sans-serif;
+    background-color: var(--hvr2);
+
+
+}
+
+html{font-size: 100%;}
+body{font-size: 100%;}
+
+/* 
+button{
+    font-size: 1.20em;
+    padding: 5px 10px;
+
+    border: none;
+    color: var(--hvr1);
+    background-color: var(--btm);
+    background: none;
+    cursor: pointer;
+    margin: 10px;
+} */
+
+button:hover{
+    color: var(--hvr1);
+    transform: scale(1.1);
+    scroll-behavior: smooth;
+    outline: none;
+    border: 0;
+    border-bottom: 2px solid var(--hvr3);
+    transition: 0.5s ease-in-out;
+  
 }
 
 
@@ -19,40 +60,27 @@ body {
 .main-content {
     flex: 1; /* Ocupa el espacio restante entre el sidebar y sidebar-right */
     padding: 20px;
-    background: white;
+
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto; /* Permite scroll si el contenido es demasiado grande */
 }
 
 /* Ajustar el sidebar-right */
-.sidebar-right {
-    width: 320px;
-    background: #262626;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    overflow-y: auto; /* Permite scroll si el contenido es demasiado grande */
-}
 
-
-.container {
-    display: flex;
-    min-height: 100vh;
-}
 
 /* Estilos del menú lateral */
 .sidebar {
     width: 250px;
-    background: #2c3e50;
+    background: var(--hvr2);
     color: white;
     transition: all 0.3s;
     height: 100vh;
     position: fixed;
     z-index: 100;
+    border: var(--btm) 2px solid;
+    overflow: hidden;
+
 }
 
 .sidebar.collapsed {
@@ -91,7 +119,7 @@ body {
     padding: 20px;
     text-align: right;
     cursor: pointer;
-    color: white;
+    color: var(--hvr1);
     font-size: 1.5rem;
 }
 
@@ -107,7 +135,7 @@ body {
     display: flex;
     align-items: center;
     padding: 15px 20px;
-    color: white;
+    color: var(--hvr1);
     text-decoration: none;
     transition: all 0.3s;
     position: relative;
@@ -115,11 +143,13 @@ body {
 }
 
 .menu-link:hover {
-    background: #34495e;
+    background:var(--btm);
+    color: var(--hvr2);
 }
 
 .menu-link.active {
-    background: #3498db;
+    background:var(--hvr1);
+    color: white;
 }
 
 .icon {
@@ -145,8 +175,9 @@ body {
 .main-content {
     flex: 1;
     padding: 20px;
-    margin-left: 250px;
+    margin-left: 270px;
     transition: margin-left 0.3s;
+   
 }
 
 .sidebar.collapsed + .main-content {
@@ -181,7 +212,7 @@ body {
 
 /*Header con usuario*/
 .profile-header {
-    background: linear-gradient(to left, rgba(255, 255, 255, 0.212) 14%, #1d1c1cec 75%);
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.212) 14%, #3d569f 75%);
 
     display: flex;
     align-items: center;
@@ -227,11 +258,7 @@ body {
 
 
 /* Contenido principal */
-.main-content {
-    flex: 1;
-    padding: 20px;
-    transition: margin-left 0.3s;
-}
+
 
 
 
@@ -259,8 +286,8 @@ body {
     left: 100%;
     top: 50%;
     transform: translateY(-50%);
-    background: #2c3e50;
-    color: white;
+    background: var(--hvr2);
+    color: var(--hvr1);
     padding: 5px 10px;
     border-radius: 4px;
     white-space: nowrap;
@@ -282,15 +309,10 @@ body {
 
 /* main-content */
 
-.main-content {
-    flex: 1;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
+
 
 .welcome h1{
-    color: #333;
+    color: var(--hvr1);
     margin-bottom: 0.2rem;
     font-weight: 600;
     text-align: center;
@@ -299,24 +321,34 @@ body {
 }
 
 .welcome p{
-    color: #666;
+    color: var(--hvr1);
     text-align: center;
     font-size: 1.2rem;
     margin-bottom: 1rem;
 }
 
+/* Ajuste para la job-card */
 .job-card {
-    background-color: white;
+    background-color: var(--hvr2);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
     width: 100%;
-    max-width: 600px;
+    max-width: 600px; /* Tamaño máximo cuando el sidebar está expandido */
     padding: 25px;
-    margin: 20px;
+    margin: 20px auto; /* Centra la job-card horizontalmente */
+    transition: all 0.3s ease-in-out;
+    border: 3px solid var(--btm);
+   
+}
+
+/* Ajuste para la job-card cuando el sidebar está colapsado */
+.sidebar.collapsed + .main-content .job-card {
+    max-width: 100%; /* Abarca el 100% del ancho del contenedor */
+    margin: 20px 0; /* Ajusta el margen para que no se desplace */
 }
 
 .job-header {
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid var(--btm);
     padding-bottom: 15px;
     margin-bottom: 15px;
 }
@@ -328,7 +360,7 @@ body {
 }
 
 .job-company {
-    color: #3498db;
+    color: var(--hvr1);
     font-size: 18px;
     font-weight: 600;
     margin: 0 0 10px 0;
@@ -339,7 +371,7 @@ body {
     flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 10px;
-    color: #7f8c8d;
+    color: var(--btm);
     font-size: 14px;
 }
 
@@ -357,21 +389,21 @@ body {
 }
 
 .job-section-title {
-    color: #2c3e50;
+    color: var(--btm);
     font-size: 16px;
     font-weight: 600;
     margin: 0 0 8px 0;
 }
 
 .job-section-content {
-    color: #34495e;
+    color: var(--btm);
     font-size: 14px;
     line-height: 1.5;
     margin: 0;
 }
 
 .job-salary {
-    color: #27ae60;
+    color: var(--hvr1);
     font-weight: bold;
     font-size: 18px;
 }
@@ -384,19 +416,40 @@ body {
     padding-top: 15px;
     border-top: 1px solid #eaeaea;
     font-size: 13px;
-    color: #7f8c8d;
+    color: var(--hvr1);
+    font-weight: 600;
 }
 
+/* Estilo para la categoría del trabajo */
+.job-category {
+    margin: 10px 0; /* Ajusta el margen para que no ocupe demasiado espacio */
+    padding: 8px 12px; /* Espaciado interno */
+    background: var(--hvr2);
+    border-radius: 8px;
+    display: inline-block; /* Cambia a inline-block para que no ocupe todo el ancho */
+    font-size: 0.9rem; /* Tamaño de fuente más pequeño para integrarse mejor */
+    font-weight: bold;
+    color: var(--hvr1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
+/* Ajuste para la etiqueta y el valor de la categoría */
+.job-category .category-label {
+    font-weight: bold;
+    color: var(--btm);
+    margin-right: 5px; /* Espaciado entre la etiqueta y el valor */
+}
 
-
-
-
+.job-category .category-value {
+    font-weight: normal;
+    color: var(--hvr1);
+}
 
 /* Columna derecha - Filtros */
 .sidebar-right {
     width: 320px;
-    background: #262626;
+    background-color: var(--hvr2);
+    border: 2px solid var(--btm);
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -409,13 +462,14 @@ body {
 .search-container {
     position: relative;
 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     border-radius: 40px;
-    background-color: #fff;
+    background-color:var(--hvr2);
     padding: 6px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1.5rem;
   }
 
   .search-container input[type="search"] {
@@ -426,7 +480,9 @@ body {
     font-size: 16px;
     outline: none;
     transition: box-shadow 0.3s ease;
-    
+
+    background-color: var(--hvr2);
+    color: var(--hvr1);
   }
 
   .search-container input[type="search"]:focus {
@@ -457,9 +513,11 @@ body {
     max-height: 200px;
     overflow-y: auto;
     padding: 10px 18px 10px 10px; /* Aumentamos padding derecho para el scroll */
-    background: #171717;
+    background: #afb7ce9b;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--btm);
+    /* Scrollbar para navegadores modernos */
     
     /* Scrollbar para Firefox */
     scrollbar-width: thin;
@@ -472,21 +530,21 @@ body {
 }
 
 .filter-buttons-container::-webkit-scrollbar-track {
-    background: #333;
+    background: var(--hvr1);
     border-radius: 4px;
 }
 
 .filter-buttons-container::-webkit-scrollbar-thumb {
-    background: #666;
+    background: var(--hvr1);
     border-radius: 4px;
 }
 
 .filter-buttons-container::-webkit-scrollbar-thumb:hover {
-    background: #999;
+    background: var(--hvr1);
 }
 
 .filter-buttons-container h3 {
-    color: white;
+    color: var(--btm);
     font-size: 1.1rem;
     margin-bottom: 10px;
 }
@@ -496,8 +554,8 @@ body {
 }
 
 .filter-button {
-    background: white;
-    color: black;
+    background: var(--hvr1);
+    color: var(--hvr2);
     border: 1px solid #ccc;
     padding: 10px 20px;
     border-radius: 25px;
@@ -509,21 +567,14 @@ body {
 }
 
 .filter-button:hover {
-    background: #f0f0f0;
-    border-color: #aaa;
+    background: var(--btm);
+    color: var(--hvr2);
+    border-color: var(--hvr1);
 }
 
-.filter-button .circle {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgb(255, 255, 255);
-    margin-right: 10px;
-}
+
 
 /* Sección de filtros */
-
-
 
 /* Sección de Contratos */
 .contracts-section{
@@ -551,27 +602,27 @@ display: block;
     align-items: center;
     padding: 1rem;
     margin-bottom: 1rem;
-    background: #f8f9fa;
+    background: var(--hvr2);
     border-radius: 8px;
     transition: transform 0.2s;
 }
 
 .contract-item:hover {
-    transform: translateX(5px);
+    transform: translateX(15px);
 }
 
 .company-name {
     font-weight: 600;
-    color: #333;
+    color: var(--btm);
 }
 
 .job-title {
     font-size: 0.9rem;
-    color: #666;
+    color: #404040;
 }
 
 .view-button {
-    background: #007bff;
+    background: var(--hvr1);
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -581,5 +632,29 @@ display: block;
 }
 
 .view-button:hover {
-    background: #0056b3;
+    background: var(--btm);
+    color: var(--hvr2);
+}
+
+/* Botón de postularse */
+.apply-button {
+    background: var(--hvr1);
+    color: var(--hvr2);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.apply-button:hover {
+    background: var(--btm);
+    color: var(--hvr2);
+    transform: scale(1.05);
+}
+
+.apply-button:active {
+    transform: scale(0.95);
 }

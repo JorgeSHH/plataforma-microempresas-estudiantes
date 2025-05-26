@@ -41,3 +41,7 @@ menuLinks.forEach(link => {
     link.setAttribute('data-tooltip', text);
 });
 
+document.querySelector('.menu-link').addEventListener('dblclick', function () {
+    window.location.href = '../studentProfile.php';
+});
+

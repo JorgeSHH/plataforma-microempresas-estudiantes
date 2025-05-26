@@ -17,7 +17,7 @@
             </div>
             
             <div class="logo">
-                <img src="../assets/logo2.png" alt="Logo">
+                <img src="../assets/logo.png" alt="Logo">
             </div>
             <ul class="menu-items">
                 <li class="menu-item">
@@ -37,12 +37,12 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#perfil" class="menu-link active">
+                    <div class="menu-link" ondblclick="window.location.href='../student-profile/studentProfile.php';">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
                         </svg>
                         <span class="menu-text">Perfil</span>
-                    </a>
+                    </div>
                 </li>
                 <li class="menu-item">
                     <a href="#cerrar-sesion" class="menu-link">
@@ -104,6 +104,12 @@
             </div>
         </div>
         
+            <!-- Nueva sección para la categoría -->
+    <div class="job-category">
+        <span class="category-label">Categoría:</span>
+        <span class="category-value">Tecnología e innovación</span>
+    </div>
+
         <div class="job-section">
             <h3 class="job-section-title">Resumen del puesto</h3>
             <p class="job-section-content">
@@ -133,16 +139,13 @@
         <div class="job-footer">
             <span>ID de oferta: #JOB-12345</span>
             <span>Válida hasta: 30/06/2023</span>
+            <button class="apply-button">Postularse</button>
         </div>
     </div>
 
             </div>
 
-          <!-- Contenido Principal -->
-          <div class="main-content">
-          
-     
-        </div>
+   
         </main>
                   <!-- Contenido Principal -->
 
