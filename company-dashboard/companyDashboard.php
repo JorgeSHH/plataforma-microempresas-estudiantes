@@ -33,7 +33,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-suitcase-lg-fill" viewBox="0 0 16 16">
                             <path d="M7 0a2 2 0 0 0-2 2H1.5A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14H2a.5.5 0 0 0 1 0h10a.5.5 0 0 0 1 0h.5a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2H11a2 2 0 0 0-2-2zM6 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zM3 13V3h1v10zm9 0V3h1v10z"/>
                         </svg>
-                        <span class="menu-text">Propuestas realizadas</span>
+                        <span class="menu-text">Trabajos Publicados</span>
                     </a>
                 </li>
                 <li class="menu-item">
@@ -45,7 +45,7 @@
                     </div>
                 </li>
                 <li class="menu-item">
-                    <a href="#cerrar-sesion" class="menu-link">
+                <a href="'../index.php';" class="menu-link" ondblclick="window.location.href='../index.php';">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
                         </svg>
@@ -70,8 +70,8 @@
             </div>
             </div>
             <section class="welcome">
-                <h1>Bienvenido, Estudiante</h1>
-                <p>Selecciona una opción del menú para navegar.</p>
+                <h1>Bienvenido, Haz crecer tu Microempresa</h1>
+                <p>Crea ofertas de trabajo.</p>
             </section>
                 
             <div id="contentSection">
@@ -152,47 +152,9 @@
           <!-- Columna Derecha -->
           <div class="sidebar-right">
     <!-- Barra de búsqueda -->
-    <div class="search-container">
-    <input type="search" placeholder="Buscar..." />
-    <svg class="search-icon" viewBox="0 0 24 24" >
-      <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.36 6.01 12.3 3 8.5 3S1.64 6.01 1.64 9.39c0 3.38 3.06 6.39 6.86 6.39 1.61 0 3.08-.59 4.19-1.56l.27.28v.79l5 4.99L20.49 19l-4.99-5zM8.5 14c-2.52 0-4.57-1.95-4.57-4.61S5.98 4.78 8.5 4.78s4.57 1.95 4.57 4.61S11.02 14 8.5 14z"/>
-    </svg>
-  </div>
+    
 
-    <!-- Sección de Filtros -->
-    <div class="filters-section">
-        <div class="filter-buttons-container" style="max-height: 240px; overflow-y: auto;">
-       <h3>Filtros de búsqueda</h3>
-       
-        <button class="filter-button">
-    <i class="icon">🌟</i> Diseño y creatividad
-</button>
-<button class="filter-button">
-    <i class="icon">💼</i> Administración y finanzas
-</button>
-<button class="filter-button">
-    <i class="icon">👨‍💻</i> Trabajo y mucho más
-</button>
-<button class="filter-button">
-    <i class="icon">💡</i> Tecnología e innovación
-</button>
-<button class="filter-button">
-    <i class="icon">📈</i> Marketing y publicidad
-</button>
-<button class="filter-button">
-    <i class="icon">👥</i> Recursos humanos
-</button>
-<button class="filter-button">
-    <i class="icon">📚</i> Educación y formación
-</button>
-<button class="filter-button">
-    <i class="icon">❤️</i> Salud y bienestar
-</button>
-<button class="filter-button">
-    <i class="icon">🚚</i> Logística y transporte
-</button>
-        </div>
-    </div>
+   
 
     <!-- Sección de Contratos con scroll -->
     <div class="contracts-section">
@@ -217,6 +179,21 @@
                 </div>
                 <button class="view-button">Verr</button>
             </div>
+            <div class="contract-item">
+                <div>
+                    <div class="company-name">Nombre de la empresa</div>
+                    <div class="job-title">Título del empleo</div>
+                </div>
+                <button class="view-button">Verr</button>
+            </div>
+            <div class="contract-item">
+                <div>
+                    <div class="company-name">Nombre de la empresa</div>
+                    <div class="job-title">Título del empleo</div>
+                </div>
+                <button class="view-button">Verr</button>
+            </div>
+            
             </div>
         </div>
          <!-- Más elementos... (repetir estructura según necesidad) -->
