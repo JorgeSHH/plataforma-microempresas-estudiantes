@@ -21,7 +21,7 @@
             </div>
             <ul class="menu-items">
                 <li class="menu-item">
-                    <a href="../index.php" class="menu-link">
+                <a href="../index.php" class="menu-link" ondblclick="window.location.href='../company-dashboard/companyDashboard.php';">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
                             <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
                         </svg>    
@@ -45,7 +45,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#cerrar-sesion" class="menu-link">
+                <a href="'../index.php';" class="menu-link" ondblclick="window.location.href='../index.php';">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
                         </svg>
@@ -105,15 +105,7 @@
             </div>
 
             <!-- Pie de página -->
-            <footer class="company-footer">
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                </div>
-                <p class="copyright">© 2023 Nombre de la Empresa. Todos los derechos reservados.</p>
-            </footer>
+           
         </div>
     </div>
         </main>
