@@ -105,6 +105,11 @@
                 showConfirmButton: false,
                 timer: 1500
               });
+
+              //redirigir
+                setTimeout(() => {
+                    window.location.href = "../login/login.php";
+                }, 1500);
          }
      })
     });

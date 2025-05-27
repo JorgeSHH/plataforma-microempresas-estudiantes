@@ -24,19 +24,20 @@
 <section class="login">
     <article class="container-login">
         <h2>Iniciar Sesion</h2>
-        <form action="" class="container-inputs">
+        <form action="" class="container-inputs" id="formularioLogin" method="post">
             <input type="email" name="correo" id="correo" placeholder="Ingrese su Correo" class="input-basico">
             <input type="password" name="clave" id="clave" placeholder="Ingrese su Contraseña" class="input-basico">
             <div class="opciones">
                 <a href="/plataforma-microempresas-estudiantes/registros/registro.php">Registrarse</a>
    
             </div>
-            <input type="submit" value="Acceder" class="btn-basico">
+            <input type="submit" value="Acceder" class="btn-basico" id="btn-login">
         </form>
     </article>
     
 </section>
-
-    
+        <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.all.min.js "></script>
+        <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.min.css " rel="stylesheet">
+    <script src="./login.js"></script>
 </body>
 </html>

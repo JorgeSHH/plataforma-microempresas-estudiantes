@@ -1,6 +1,5 @@
 <?php
 if (isset($_POST)){
-
     require("../config/database.php");
     $correo = $_POST['correo_empresa'];
     $nombre_empresa = $_POST['nombre_empresa'];
@@ -31,9 +30,6 @@ if (isset($_POST)){
         exit;
     }
 
-
-
-   
     $query = $pdo->prepare("INSERT INTO companies (company_password, company_name, company_rif, company_email, company_phone, job_requirements, contract_type) VALUES (:con, :nom, :rif, :cor, :tel, :req, :tip)");
     $query->bindParam(":con", $contrasena);
     $query->bindParam(":nom", $nombre_empresa);
