@@ -24,7 +24,7 @@
 <section class="login">
     <article class="container-login">
         <h2>Iniciar Sesion</h2>
-        <form action="" class="container-inputs">
+        <form action="" class="container-inputs" id="formLogin">
             <input type="email" name="correo" id="correo" placeholder="Ingrese su Correo" class="input-basico">
             <input type="password" name="clave" id="clave" placeholder="Ingrese su Contraseña" class="input-basico">
             <div class="opciones">
@@ -36,7 +36,10 @@
     </article>
     
 </section>
-
-    
+   
+    <script src="./loginScript.js"></script>
+    <!-- alertas de sweetalert2 -->
+    <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.all.min.js "></script>
+    <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.min.css " rel="stylesheet">
 </body>
 </html>
