@@ -344,12 +344,42 @@ button:hover{
     border-radius: 8px;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
     width: 100%;
-    max-width: 600px; /* Tamaño máximo cuando el sidebar está expandido */
+    max-width: 600px; /* Tamaño máximo */
     padding: 25px;
     margin: 20px auto; /* Centra la job-card horizontalmente */
     transition: all 0.3s ease-in-out;
     border: 3px solid var(--btm);
-   
+    word-wrap: break-word; /* Permite que las palabras largas se ajusten */
+    overflow-wrap: break-word; /* Asegura que el texto largo no desborde */
+}
+
+/* Ajuste para el contenido de texto dentro de la job-card */
+.job-section-content {
+    color: var(--btm);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    width: 100%;
+    word-wrap: break-word; /* Ajusta palabras largas */
+    overflow-wrap: break-word; /* Asegura que el texto largo no desborde */
+    white-space: pre-wrap; /* Mantiene los saltos de línea y ajusta el texto */
+}
+
+/* Ajuste para el título del trabajo */
+.job-title {
+    color: #2c3e50;
+    font-size: 24px;
+    margin: 0 0 5px 0;
+    word-wrap: break-word; /* Ajusta palabras largas */
+    overflow-wrap: break-word; /* Asegura que el texto largo no desborde */
+    white-space: pre-wrap; /* Mantiene los saltos de línea */
+}
+
+/* Ajuste para la descripción */
+.job-description {
+    word-wrap: break-word; /* Ajusta palabras largas */
+    overflow-wrap: break-word; /* Asegura que el texto largo no desborde */
+    white-space: pre-wrap; /* Mantiene los saltos de línea */
 }
 
 /* Ajuste para la job-card cuando el sidebar está colapsado */
@@ -416,6 +446,10 @@ button:hover{
     font-size: 14px;
     line-height: 1.5;
     margin: 0;
+    width: 100%;
+    word-wrap: break-word; /* Ajusta palabras largas */
+    overflow-wrap: break-word; /* Asegura que el texto largo no desborde */
+    white-space: pre-wrap; /* Mantiene los saltos de línea y ajusta el texto */
 }
 
 .job-salary {

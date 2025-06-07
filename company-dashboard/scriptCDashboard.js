@@ -67,15 +67,27 @@ jobForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     // Obtener los valores del formulario
-    const title = document.getElementById('job-title').value;
-    const company = document.getElementById('job-company').value;
+    const title = document.getElementById('job-title').value.trim();
+    const company = document.getElementById('job-company').value.trim();
     const category = document.getElementById('job-category').value;
     const type = document.getElementById('job-type').value;
-    const salary = document.getElementById('job-salary').value;
-    const duration = document.getElementById('job-duration').value;
-    const location = document.getElementById('job-location').value;
-    const requirements = document.getElementById('job-requirements').value;
-    const description = document.getElementById('job-description').value;
+    const salary = document.getElementById('job-salary').value.trim();
+    const duration = document.getElementById('job-duration').value.trim();
+    const location = document.getElementById('job-location').value.trim();
+    const requirements = document.getElementById('job-requirements').value.trim();
+    const description = document.getElementById('job-description').value.trim();
+
+    // Validar que todos los campos requeridos estén completos
+    if (!title || !company || !category || !type || !salary || !duration || !location || !requirements || !description) {
+        alert('Por favor, completa todos los campos del formulario.');
+        return;
+    }
+
+    // Generar un ID único para el trabajo
+    const jobId = `JOB-${Math.floor(Math.random() * 100000)}`;
+    const validUntil = new Date();
+    validUntil.setDate(validUntil.getDate() + 30); // Válido por 30 días
+    const validUntilFormatted = validUntil.toISOString().split('T')[0];
 
     // Crear una nueva job-card
     const jobCard = document.createElement('div');
@@ -87,9 +99,8 @@ jobForm.addEventListener('submit', (e) => {
             <div class="job-meta">
                 <span class="job-meta-item"><i>📅</i> Publicado: Hoy</span>
                 <span class="job-meta-item"><i>⏳</i> Duración: ${duration}</span>
-                <span class="job-meta-item"><i>📍</i> ${location}</span>
+                       <span class="job-meta-item"><i>📍</i> Tipo: ${type}</span>
                 <span class="job-meta-item"><i>💰</i> <span class="job-salary">${salary}</span></span>
-                <span class="job-meta-item"><i>🏢</i> Tipo: ${type}</span>
             </div>
         </div>
         <div class="job-category">
@@ -97,12 +108,21 @@ jobForm.addEventListener('submit', (e) => {
             <span class="category-value">${category}</span>
         </div>
         <div class="job-section">
+            <h3 class="job-section-title">Descripción</h3>
+            <p class="job-section-content">${description}</p>
+        </div>
+        <div class="job-section">
             <h3 class="job-section-title">Requisitos</h3>
             <p class="job-section-content">${requirements}</p>
         </div>
         <div class="job-section">
-            <h3 class="job-section-title">Descripción</h3>
-            <p class="job-section-content">${description}</p>
+            <h3 class="job-section-title">Ubicación</h3>
+            <p class="job-section-content">${location}</p>
+        </div>
+        <div class="job-footer">
+            <span>ID de oferta: ${jobId}</span>
+            <span>Válida hasta: ${validUntilFormatted}</span>
+            <button class="apply-button" onclick="alert('Funcionalidad de postulación en desarrollo')">Postularse</button>
         </div>
     `;
 

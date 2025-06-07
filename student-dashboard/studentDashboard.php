@@ -82,7 +82,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oferta de Empleo</title>
 
-
+<!-- Cartas de trabajo que se van actualizando  -->
     <div class="job-card">
         <div class="job-header">
             <h1 class="job-title">Desarrollador Frontend Senior</h1>
