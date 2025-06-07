@@ -15,9 +15,6 @@ login.addEventListener('submit', (e) => {
      //console.log(datosForm.get('correo'));
      //console.log(datosForm.get('clave'));
 
-
-
-
     if (correo === "" && clave === "" ) {
         Swal.fire({
             title: "Ingrese los datos solicitados!",
