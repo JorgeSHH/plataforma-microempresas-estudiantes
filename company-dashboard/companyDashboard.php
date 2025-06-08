@@ -125,7 +125,7 @@
                 • Experiencia con APIs REST<br>
                 • Conocimientos de TypeScript<br>
                 • Inglés intermedio-avanzado<br>
-                • Capacidad para trabajar en equipo
+                • Capacidad para trabajar en equipo 
             </p>
         </div>
         
@@ -209,6 +209,9 @@
 </div>
 
 <!-- Ventana modal -->
+ <!-- Ventana modal -->
+  <!-- Ventana modal -->
+   <!-- Ventana modal -->
 <div class="modal" id="modal">
     <div class="modal-content">
         <span class="close-button" id="closeModalButton">&times;</span>
@@ -217,31 +220,33 @@
             <label for="job-title">Título del empleo:</label>
             <input type="text" id="job-title" name="job-title" placeholder="Ejemplo: Desarrollador Frontend Senior" required>
             
-            <label for="job-company">Nombre de la empresa:</label>
-            <input type="text" id="job-company" name="job-company" placeholder="Ejemplo: Tech Solutions Inc." required>
-            
+            <!-- <label for="job-company">Nombre de la empresa:</label> -->
+                 <!-- <label for="job-company">Nombre de la empresa:</label> -->
             <label for="job-category">Categoría:</label>
             <select id="job-category" name="job-category" required>
-                <option value="tecnologia">Tecnología e innovación</option>
-                <option value="marketing">Marketing y publicidad</option>
-                <option value="recursos-humanos">Recursos humanos</option>
-                <option value="educacion">Educación y formación</option>
-                <option value="salud">Salud y bienestar</option>
-                <option value="logistica">Logística y transporte</option>
+                <option value="1">Tecnología e innovación</option>
+                <option value="2">Marketing y publicidad</option>
+                <option value="3">Recursos humanos</option>
+                <option value="4">Educación y formación</option>
+                <option value="5">Salud y bienestar</option>
+                <option value="6">Logística y transporte</option>
             </select>
             
             <label for="job-type">Tipo de trabajo:</label>
             <select id="job-type" name="job-type" required>
                 <option value="presencial">Presencial</option>
                 <option value="remoto">Remoto</option>
-                <option value="hibrido">Híbrido</option>
+
             </select>
             
             <label for="job-salary">Salario:</label>
             <input type="text" id="job-salary" name="job-salary" placeholder="Ejemplo: $3,500/mes" required>
             
-            <label for="job-duration">Tiempo limite:</label>
+            <label for="job-duration">Duracion del trabajo:</label>
             <input type="text" id="job-duration" name="job-duration" placeholder="Ejemplo: 12 meses" required>
+                      
+            <label for="job-duration">Tiempo limite:</label>
+            <input type="date" id="time-limit" name="time-limit" placeholder="Ejemplo: Hasta el 15 de mayo" required>
             
             <label for="job-location">Ubicación:</label>
             <input type="text" id="job-location" name="job-location" placeholder="Ejemplo: Remoto" required>

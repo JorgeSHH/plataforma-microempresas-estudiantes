@@ -68,44 +68,55 @@ jobForm.addEventListener('submit', (e) => {
 
     // Obtener los valores del formulario
     const title = document.getElementById('job-title').value.trim();
-    const company = document.getElementById('job-company').value.trim();
+
     const category = document.getElementById('job-category').value;
     const type = document.getElementById('job-type').value;
     const salary = document.getElementById('job-salary').value.trim();
     const duration = document.getElementById('job-duration').value.trim();
+    const time = document.getElementById('time-limit').value.trim();
     const location = document.getElementById('job-location').value.trim();
     const requirements = document.getElementById('job-requirements').value.trim();
     const description = document.getElementById('job-description').value.trim();
 
     // Validar que todos los campos requeridos estén completos
-    if (!title || !company || !category || !type || !salary || !duration || !location || !requirements || !description) {
+    if (!title || !category || !type || !salary || !duration || !location || !requirements || !description) {
         alert('Por favor, completa todos los campos del formulario.');
         return;
     }
 
-    // Generar un ID único para el trabajo
-    const jobId = `JOB-${Math.floor(Math.random() * 100000)}`;
-    const validUntil = new Date();
-    validUntil.setDate(validUntil.getDate() + 30); // Válido por 30 días
-    const validUntilFormatted = validUntil.toISOString().split('T')[0];
+    // console.log( title, companyId, category, type, salary, duration, location, requirements, description);
+    // // Generar un ID único para el trabajo
+    
+const datosFormulirio = new FormData(jobForm);
 
-    // Crear una nueva job-card
+fetch('./saveJob.php', {
+    method: 'POST',
+    body: datosFormulirio
+})
+.then(response => response.text())
+.then(data => {
+     console.log(data);
+})
+
+
+
+    // Crear una nueva job-card en el frontend
     const jobCard = document.createElement('div');
     jobCard.classList.add('job-card');
     jobCard.innerHTML = `
         <div class="job-header">
             <h1 class="job-title">${title}</h1>
-            <p class="job-company">${company}</p>
+        
             <div class="job-meta">
                 <span class="job-meta-item"><i>📅</i> Publicado: Hoy</span>
                 <span class="job-meta-item"><i>⏳</i> Duración: ${duration}</span>
-                       <span class="job-meta-item"><i>📍</i> Tipo: ${type}</span>
+                <span class="job-meta-item"><i>📍</i> Tipo: ${type}</span>
                 <span class="job-meta-item"><i>💰</i> <span class="job-salary">${salary}</span></span>
             </div>
         </div>
         <div class="job-category">
             <span class="category-label">Categoría:</span>
-            <span class="category-value">${category}</span>
+            <span class="category-value">${document.querySelector(`#job-category option[value="${category}"]`).textContent}</span>
         </div>
         <div class="job-section">
             <h3 class="job-section-title">Descripción</h3>
@@ -120,8 +131,8 @@ jobForm.addEventListener('submit', (e) => {
             <p class="job-section-content">${location}</p>
         </div>
         <div class="job-footer">
-            <span>ID de oferta: ${jobId}</span>
-            <span>Válida hasta: ${validUntilFormatted}</span>
+            <label for="job-duration">Tiempo límite:</label>
+            <span class="time-limit">${time}</span>
             <button class="apply-button" onclick="alert('Funcionalidad de postulación en desarrollo')">Postularse</button>
         </div>
     `;
@@ -134,5 +145,9 @@ jobForm.addEventListener('submit', (e) => {
 
     // Limpiar el formulario
     jobForm.reset();
+})
+.catch((error) => {
+    console.error('Error al guardar la oferta de trabajo en la base de datos:', error);
+    alert('Hubo un error al guardar la oferta de trabajo en la base de datos.');
 });
 
