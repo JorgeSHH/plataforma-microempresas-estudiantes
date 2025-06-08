@@ -13,7 +13,7 @@ login.addEventListener('submit', (e) => {
 
      // prueba si el javascript recive datos
      //console.log(datosForm.get('correo'));
-     //console.log(datosForm.get('clave'));
+    //  console.log(datosForm.get('clave'));
 
     if (correo === "" && clave === "" ) {
         Swal.fire({

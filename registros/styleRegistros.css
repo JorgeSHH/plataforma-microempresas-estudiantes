@@ -323,7 +323,7 @@ li{font-size: 1.25em;}
     display: flex;
     align-items: center;
     flex-direction: column;
-    background: #4a4a4a;
+    background: #00000053;
     justify-content: center;
     gap: 1rem;
  }
