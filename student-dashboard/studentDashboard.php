@@ -1,3 +1,11 @@
+<?php
+require_once '../database/conexion.php';
+
+// Consultar las ofertas de trabajo desde la base de datos
+$query = "SELECT * FROM jobs";
+$result = $conexion->query($query);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -56,8 +64,8 @@
             
         </nav>
         
-        <!-- Contenido principal -->
-        <main class="main-content" id="mainContent">
+           <!-- Contenido principal -->
+           <main class="main-content" id="mainContent">
             <div class="profile-header">
             <div class="profile-info">
             <img class="profile-pic">
@@ -71,83 +79,107 @@
             </div>
             <section class="welcome">
                 <h1>Bienvenido, Estudiante</h1>
-                <p>Selecciona una opción del menú para navegar.</p>
+                <p>Vamos a encontrar ofertas de trabajo.</p>
             </section>
                 
             <div id="contentSection">
-                <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oferta de Empleo</title>
+                <!-- Job card principal -->
+            <div class="job-card">
+                <div class="job-header">
+                    <h1 class="job-title">Desarrollador Frontend Senior</h1>
+                    <p class="job-company">Tech Solutions Inc.</p>
+                    <div class="job-meta">
+                        <span class="job-meta-item"><i>📅</i> Publicado: 15/05/2023</span>
+                        <span class="job-meta-item"><i>⏳</i> Tiempo limite: 12 meses</span>
+                        <span class="job-meta-item"><i>📍</i> Remoto</span>
+                        <span class="job-meta-item"><i>💰</i> <span class="job-salary">$3,500/mes</span></span>
+                    </div>
+                </div>
+                <div class="job-category">
+                    <span class="category-label">Categoría:</span>
+                    <span class="category-value">Tecnología e innovación</span>
+                </div>
+                <div class="job-section">
+                    <h3 class="job-section-title">Resumen del puesto</h3>
+                    <p class="job-section-content">
+                        Buscamos un desarrollador Frontend Senior con experiencia en React.js para unirse a nuestro equipo de desarrollo de productos digitales. Trabajarás en proyectos innovadores para clientes internacionales.
+                    </p>
+                </div>
+                <div class="job-section">
+                    <h3 class="job-section-title">Requisitos</h3>
+                    <p class="job-section-content">
+                        • 5+ años de experiencia en desarrollo Frontend<br>
+                        • Dominio de React.js y Redux<br>
+                        • Experiencia con APIs REST<br>
+                        • Conocimientos de TypeScript<br>
+                        • Inglés intermedio-avanzado<br>
+                        • Capacidad para trabajar en equipo 
+                    </p>
+                </div>
+                <div class="job-section">
+                    <h3 class="job-section-title">Ubicación</h3>
+                    <p class="job-section-content">
+                        Av. Innovación 1234, Piso 5, Ciudad Tecnológica
+                    </p>
+                </div>
+                <div class="job-footer">
+                    <span>ID de oferta: #JOB-12345</span>
+                    <span>Válida hasta: 30/06/2023</span>
+                    <button class="apply-button">Postularse</button>
+                </div>
+            </div>
 
-<!-- Cartas de trabajo que se van actualizando  -->
+           <!-- Job cards dinámicas -->
+           <?php while ($row = $result->fetch_assoc()): ?>
     <div class="job-card">
         <div class="job-header">
-            <h1 class="job-title">Desarrollador Frontend Senior</h1>
-            <p class="job-company">Tech Solutions Inc.</p>
-            
+            <h1 class="job-title"><?php echo htmlspecialchars($row['job_title']); ?></h1>
+            <p class="job-company">Empresa</p> <!-- Puedes agregar un campo de empresa si lo tienes en la base de datos -->
             <div class="job-meta">
-                <span class="job-meta-item">
-                    <i>📅</i> Publicado: 15/05/2023
-                </span>
-                <span class="job-meta-item">
-                    <i>⏳</i> Duración: 12 meses
-                </span>
-                <span class="job-meta-item">
-                    <i>📍</i> Remoto
-                </span>
-                <span class="job-meta-item">
-                    <i>💰</i> <span class="job-salary">$3,500/mes</span>
-                </span>
+                <span class="job-meta-item"><i>📅</i> Publicado: <?php echo htmlspecialchars($row['published_job_date']); ?></span>
+                <span class="job-meta-item"><i>⏳</i> Duración: <?php echo htmlspecialchars($row['duration_job']); ?></span>
+                <span class="job-meta-item"><i>📍</i> Tipo de Trabajo: <?php echo htmlspecialchars($row['type_job']); ?></span>
+                <span class="job-meta-item"><i>💰</i> <span class="job-salary"><?php echo htmlspecialchars($row['salary']); ?></span></span>
             </div>
         </div>
-        
-            <!-- Nueva sección para la categoría -->
-    <div class="job-category">
-        <span class="category-label">Categoría:</span>
-        <span class="category-value">Tecnología e innovación</span>
-    </div>
-
-        <div class="job-section">
-            <h3 class="job-section-title">Resumen del puesto</h3>
-            <p class="job-section-content">
-                Buscamos un desarrollador Frontend Senior con experiencia en React.js para unirse a nuestro equipo de desarrollo de productos digitales. Trabajarás en proyectos innovadores para clientes internacionales.
-            </p>
+        <div class="job-category">
+            <span class="category-label">Categoría:</span>
+            <?php
+            // Obtener el nombre de la categoría basado en el id
+            $categoryNames = [
+                1 => 'Tecnología e innovación',
+                2 => 'Marketing y publicidad',
+                3 => 'Recursos humanos',
+                4 => 'Educación y formación',
+                5 => 'Salud y bienestar',
+                6 => 'Logística y transporte'
+            ];
+            $categoryName = isset($categoryNames[$row['id_job_category']]) ? $categoryNames[$row['id_job_category']] : 'Categoría desconocida';
+            ?>
+            <span class="category-value"><?php echo htmlspecialchars($categoryName); ?></span>
         </div>
-        
+        <div class="job-section">
+            <h3 class="job-section-title">Descripción</h3>
+            <p class="job-section-content"><?php echo htmlspecialchars($row['job_summary']); ?></p>
+        </div>
         <div class="job-section">
             <h3 class="job-section-title">Requisitos</h3>
-            <p class="job-section-content">
-                • 5+ años de experiencia en desarrollo Frontend<br>
-                • Dominio de React.js y Redux<br>
-                • Experiencia con APIs REST<br>
-                • Conocimientos de TypeScript<br>
-                • Inglés intermedio-avanzado<br>
-                • Capacidad para trabajar en equipo
-            </p>
+            <p class="job-section-content"><?php echo htmlspecialchars($row['job_requirements']); ?></p>
         </div>
-        
         <div class="job-section">
             <h3 class="job-section-title">Ubicación</h3>
-            <p class="job-section-content">
-                Av. Innovación 1234, Piso 5, Ciudad Tecnológica
-            </p>
+            <p class="job-section-content"><?php echo htmlspecialchars($row['job_address']); ?></p>
         </div>
-        
         <div class="job-footer">
-            <span>ID de oferta: #JOB-12345</span>
-            <span>Válida hasta: 30/06/2023</span>
-            <button class="apply-button">Postularse</button>
+            <span>Válida hasta: <?php echo htmlspecialchars($row['time_limit']); ?></span>
+            <button class="apply-button" onclick="alert('Funcionalidad de postulación en desarrollo')">Postularse</button>
         </div>
     </div>
-
-            </div>
-
-   
-        </main>
+<?php endwhile; ?>
+        </div>
+    </main>
                   <!-- Contenido Principal -->
+
 
           <!-- Columna Derecha -->
           <div class="sidebar-right">
