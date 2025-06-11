@@ -131,10 +131,10 @@ $result = $conexion->query($query);
 
            <!-- Job cards dinámicas -->
            <?php while ($row = $result->fetch_assoc()): ?>
-    <div class="job-card">
+    <div class="job-card" data-category="<?php echo htmlspecialchars($row['id_job_category']); ?>">
         <div class="job-header">
             <h1 class="job-title"><?php echo htmlspecialchars($row['job_title']); ?></h1>
-            <p class="job-company">Empresa</p> <!-- Puedes agregar un campo de empresa si lo tienes en la base de datos -->
+            <p class="job-company">Empresa</p>
             <div class="job-meta">
                 <span class="job-meta-item"><i>📅</i> Publicado: <?php echo htmlspecialchars($row['published_job_date']); ?></span>
                 <span class="job-meta-item"><i>⏳</i> Duración: <?php echo htmlspecialchars($row['duration_job']); ?></span>
@@ -145,7 +145,6 @@ $result = $conexion->query($query);
         <div class="job-category">
             <span class="category-label">Categoría:</span>
             <?php
-            // Obtener el nombre de la categoría basado en el id
             $categoryNames = [
                 1 => 'Tecnología e innovación',
                 2 => 'Marketing y publicidad',
@@ -184,47 +183,41 @@ $result = $conexion->query($query);
           <!-- Columna Derecha -->
           <div class="sidebar-right">
     <!-- Barra de búsqueda -->
-    <div class="search-container">
-    <input type="search" placeholder="Buscar..." />
+    <form method="POST" action="studentDashboard.php">
+    <div class="search-container">     
+    <input type="search" placeholder="Buscar..." name="buscar" value="<?php echo $_POST["buscar"] ?>" />
     <svg class="search-icon" viewBox="0 0 24 24" >
       <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.36 6.01 12.3 3 8.5 3S1.64 6.01 1.64 9.39c0 3.38 3.06 6.39 6.86 6.39 1.61 0 3.08-.59 4.19-1.56l.27.28v.79l5 4.99L20.49 19l-4.99-5zM8.5 14c-2.52 0-4.57-1.95-4.57-4.61S5.98 4.78 8.5 4.78s4.57 1.95 4.57 4.61S11.02 14 8.5 14z"/>
     </svg>
   </div>
-
+  </form>
     <!-- Sección de Filtros -->
     <div class="filters-section">
-        <div class="filter-buttons-container" style="max-height: 240px; overflow-y: auto;">
-       <h3>Filtros de búsqueda</h3>
-       
-        <button class="filter-button">
-    <i class="icon">🌟</i> Diseño y creatividad
-</button>
-<button class="filter-button">
-    <i class="icon">💼</i> Administración y finanzas
-</button>
-<button class="filter-button">
-    <i class="icon">👨‍💻</i> Trabajo y mucho más
-</button>
-<button class="filter-button">
-    <i class="icon">💡</i> Tecnología e innovación
-</button>
-<button class="filter-button">
-    <i class="icon">📈</i> Marketing y publicidad
-</button>
-<button class="filter-button">
-    <i class="icon">👥</i> Recursos humanos
-</button>
-<button class="filter-button">
-    <i class="icon">📚</i> Educación y formación
-</button>
-<button class="filter-button">
-    <i class="icon">❤️</i> Salud y bienestar
-</button>
-<button class="filter-button">
-    <i class="icon">🚚</i> Logística y transporte
-</button>
-        </div>
+    <div class="filter-buttons-container" style="max-height: 240px; overflow-y: auto;">
+        <h3>Filtros de búsqueda</h3>
+        <button class="filter-button" data-category="1">
+            <i class="icon">💡</i> Tecnología e innovación
+        </button>
+        <button class="filter-button" data-category="2">
+            <i class="icon">📈</i> Marketing y publicidad
+        </button>
+        <button class="filter-button" data-category="3">
+            <i class="icon">👥</i> Recursos humanos
+        </button>
+        <button class="filter-button" data-category="4">
+            <i class="icon">📚</i> Educación y formación
+        </button>
+        <button class="filter-button" data-category="5">
+            <i class="icon">❤️</i> Salud y bienestar
+        </button>
+        <button class="filter-button" data-category="6">
+            <i class="icon">🚚</i> Logística y transporte
+        </button>
+        <button class="filter-button" data-category="all">
+            <i class="icon">🌍</i> Mostrar todos
+        </button>
     </div>
+</div>
 
     <!-- Sección de Contratos con scroll -->
     <div class="contracts-section">
