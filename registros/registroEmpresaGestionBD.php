@@ -8,6 +8,10 @@ $telefono = $_POST['telf'];
 $rif = $_POST['rif'];
 $tipoContrato = $_POST['opciones'];
 $requisitos = $_POST['requisitos'];
+$rol = "2";
+
+//encriptar la contrasena
+$contrasena_hash = password_hash($clave, PASSWORD_DEFAULT);
 
 
 $estado = $_POST['estado'];
@@ -44,8 +48,9 @@ $insertCompanyQuery = "INSERT INTO `companies` (
     `company_email`,
     `company_phone`,
     `job_requirements`,
-    `contract_type`
-) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    `contract_type`,
+    `role_id`
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmtCompany = $conexion->prepare($insertCompanyQuery);
 
@@ -56,14 +61,15 @@ if (!$stmtCompany) {
 }
 
 // Vincula los parámetros para la tabla `companies`
-$stmtCompany->bind_param("sssssss",
-    $clave,       // Recuerda hashear esto
+$stmtCompany->bind_param("ssssssss",
+    $contrasena_hash,       // Recuerda hashear esto
     $nombre,
     $rif,
     $correo,
     $telefono,
     $requisitos,
-    $tipoContrato
+    $tipoContrato,
+    $rol
 );
 
 if ($stmtCompany->execute()) {
@@ -103,7 +109,7 @@ if ($stmtCompany->execute()) {
     $stmtAddress->close(); // Cierra la sentencia de la dirección
 
 } else {
-    echo "0Error al registrar la compañía: " . $stmtCompany->error;
+    echo "0" . $stmtCompany->error;
 }
 
 $conexion->close(); // Cierra la conexión a la base de datos

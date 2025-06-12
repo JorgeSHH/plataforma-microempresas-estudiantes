@@ -64,8 +64,17 @@ login.addEventListener('submit', (e) => {
                     icon: "error",
                     draggable: true
                   });
+
             }
         })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            Swal.fire({
+                title: "Upss...",
+                text: "Hubo un problema al intentar iniciar sesión. Intenta de nuevo más tarde.",
+                icon: "info",
+                draggable: true
+              });
+        });
     }
-    
 })
