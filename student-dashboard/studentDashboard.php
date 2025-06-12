@@ -1,6 +1,25 @@
 <?php
 require_once '../database/conexion.php';
 
+session_start();
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    // Si no ha iniciado sesión, redirigir al login
+    header('Location: login.php');
+    exit();
+}
+
+// Opcional: Verificar el rol si la página es específica para un rol
+// Por ejemplo, para dashboard_estudiante.php:
+if ($_SESSION['user_rol'] !== 'estudiante') {
+    // Redirigir a una página de acceso denegado o al dashboard principal
+    header('Location: ../index.php'); // O dashboard_empresa.php si es empresa
+    exit();
+}
+
+// Si todo está bien, el resto del código de la página puede ejecutarse
+// ...
 // Consultar las ofertas de trabajo desde la base de datos
 $query = "SELECT * FROM jobs";
 $result = $conexion->query($query);

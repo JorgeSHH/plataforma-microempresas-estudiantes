@@ -1,3 +1,24 @@
+<?php 
+session_start();
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    // Si no ha iniciado sesión, redirigir al login
+    header('Location: login.php');
+    exit();
+}
+
+// Opcional: Verificar el rol si la página es específica para un rol
+
+if ($_SESSION['user_rol'] !== 'empresa') {
+    // Redirigir a una página de acceso denegado o al dashboard principal
+    header('Location: ../index.php'); // O dashboard_empresa.php si es empresa
+    exit();
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
