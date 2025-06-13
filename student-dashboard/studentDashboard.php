@@ -3,20 +3,20 @@ require_once '../database/conexion.php';
 
 session_start();
 
-// Verificar si el usuario ha iniciado sesión
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    // Si no ha iniciado sesión, redirigir al login
-    header('Location: login.php');
-    exit();
-}
+// // Verificar si el usuario ha iniciado sesión
+// if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+//     // Si no ha iniciado sesión, redirigir al login
+//     header('Location: login.php');
+//     exit();
+// }
 
-// Opcional: Verificar el rol si la página es específica para un rol
-// Por ejemplo, para dashboard_estudiante.php:
-if ($_SESSION['user_rol'] !== 'estudiante') {
-    // Redirigir a una página de acceso denegado o al dashboard principal
-    header('Location: ../index.php'); // O dashboard_empresa.php si es empresa
-    exit();
-}
+// // Opcional: Verificar el rol si la página es específica para un rol
+// // Por ejemplo, para dashboard_estudiante.php:
+// if ($_SESSION['user_rol'] !== 'estudiante') {
+//     // Redirigir a una página de acceso denegado o al dashboard principal
+//     header('Location: ../index.php'); // O dashboard_empresa.php si es empresa
+//     exit();
+// }
 
 // Si todo está bien, el resto del código de la página puede ejecutarse
 // ...
@@ -204,7 +204,7 @@ $result = $conexion->query($query);
     <!-- Barra de búsqueda -->
     <form method="POST" action="studentDashboard.php">
     <div class="search-container">     
-    <input type="search" placeholder="Buscar..." name="buscar" value="<?php echo $_POST["buscar"] ?>" />
+    <input type="search" placeholder="Buscar..." name="buscar" />
     <svg class="search-icon" viewBox="0 0 24 24" >
       <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.36 6.01 12.3 3 8.5 3S1.64 6.01 1.64 9.39c0 3.38 3.06 6.39 6.86 6.39 1.61 0 3.08-.59 4.19-1.56l.27.28v.79l5 4.99L20.49 19l-4.99-5zM8.5 14c-2.52 0-4.57-1.95-4.57-4.61S5.98 4.78 8.5 4.78s4.57 1.95 4.57 4.61S11.02 14 8.5 14z"/>
     </svg>
