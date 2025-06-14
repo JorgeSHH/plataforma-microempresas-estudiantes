@@ -109,7 +109,7 @@ $result = $conexion->query($query);
                         <span class="job-meta-item"><i>📅</i> Publicado: 15/05/2023</span>
                         <span class="job-meta-item"><i>⏳</i> Tiempo limite: 12 meses</span>
                         <span class="job-meta-item"><i>📍</i> Remoto</span>
-                        <span class="job-meta-item"><i>💰</i> <span class="job-salary">$3,500/mes</span></span>
+                        <span class="job-meta-item"><i>💲</i> <span class="job-salary">$3,500/mes</span></span>
                     </div>
                 </div>
                 <div class="job-category">
@@ -156,7 +156,7 @@ $result = $conexion->query($query);
                 <span class="job-meta-item"><i>📅</i> Publicado: <?php echo htmlspecialchars($row['published_job_date']); ?></span>
                 <span class="job-meta-item"><i>⏳</i> Duración: <?php echo htmlspecialchars($row['duration_job']); ?></span>
                 <span class="job-meta-item"><i>📍</i> Tipo de Trabajo: <?php echo htmlspecialchars($row['type_job']); ?></span>
-                <span class="job-meta-item"><i>💰</i> <span class="job-salary"><?php echo htmlspecialchars($row['salary']); ?></span></span>
+                <span class="job-meta-item"><i>💲</i> <span class="job-salary"><?php echo htmlspecialchars($row['salary']); ?></span></span>
             </div>
         </div>
         <div class="job-category">

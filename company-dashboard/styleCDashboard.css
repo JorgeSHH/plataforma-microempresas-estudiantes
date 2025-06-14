@@ -809,3 +809,24 @@ min-height: 100vh;
 .modal-content form .submit-button:hover {
     background: var(--btm);
 }
+
+h4 {
+    color: var(--btm);
+    font-size: 2.2rem;
+    margin-bottom: 35px;
+    text-align: center;
+    font-weight: 600;
+
+
+
+}
+
+
+button {
+    padding: 8px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
