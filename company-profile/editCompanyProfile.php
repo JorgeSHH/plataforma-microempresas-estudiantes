@@ -16,8 +16,6 @@ if ($_SESSION['user_rol'] !== 'empresa') {
 
 // Obtener los datos actuales de la compañía desde la base de datos
 $userId = $_SESSION['user_id'];
-
-// Obtener datos de la tabla companies
 $queryCompany = "SELECT * FROM companies WHERE id_company = ?";
 $stmtCompany = $conexion->prepare($queryCompany);
 $stmtCompany->bind_param("i", $userId);
@@ -37,20 +35,18 @@ $address = $resultAddress->fetch_assoc();
 $company = array_merge($company, $address);
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de la Compañía</title>
+    <title>Editar Perfil de la Compañía</title>
     <link rel="stylesheet" href="./styleCProfile.css">
 </head>
 <body>
     <div class="container">
-        <!-- Menú lateral -->
-        <nav class="sidebar" id="sidebar">
+ <!-- Menú lateral -->
+ <nav class="sidebar" id="sidebar">
             <div class="menu-toggle" id="menuToggle">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
@@ -88,61 +84,57 @@ $company = array_merge($company, $address);
         </nav>
 
         <!-- Contenido principal -->
+ 
+
+        <!-- Contenido principal -->
         <main class="main-content" id="mainContent">
             <div class="company-card-container">
-                <div class="company-card">
-                    <!-- Encabezado con logo y datos básicos -->
-                    <div class="company-header">
-                        <div class="company-logo">
-                            <?php
-                            if (!empty($company['img_perfil'])) {
-                                $imgData = base64_encode($company['img_perfil']);
-                                echo '<img src="data:image/jpeg;base64,' . $imgData . '" alt="Logo de la empresa" id="company-logo-img">';
-                            } else {
-                                echo '<img src="../assets/default-logo.png" alt="Logo por defecto" id="company-logo-img">';
-                            }
-                            ?>
-                        </div>
-                        <div class="company-basic-info">
-                            <h1 class="company-name"><?php echo htmlspecialchars($company['company_name']); ?></h1>
-                            <p class="company-rif"><strong>RIF:</strong> <?php echo htmlspecialchars($company['company_rif']); ?></p>
-                            <div class="contact-info">
-                                <p class="company-email"><strong>Correo Electrónico:</strong> <?php echo htmlspecialchars($company['company_email']); ?></p>
-                                <p class="company-phone"><strong>Teléfono:</strong> <?php echo htmlspecialchars($company['company_phone']); ?></p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="company-card-E">
+                    <h1>Editar Perfil de la Compañía</h1>
+                    <form method="POST" action="updateCompanyProfile.php" enctype="multipart/form-data">
+                        <!-- Campo para cambiar la foto de perfil -->
+                        <label for="img_perfil">Foto de Perfil:</label>
+                        <input type="file" id="img_perfil" name="img_perfil" accept="image/*">
 
-                    <!-- Información detallada -->
-                    <div class="company-details">
-                        <section class="address-section">
-                            <h2>Dirección</h2>
-                            <div class="address-details">
-                                <p><strong>Estado:</strong> <?php echo htmlspecialchars($company['state']); ?></p>
-                                <p><strong>Parroquia:</strong> <?php echo htmlspecialchars($company['parish']); ?></p>
-                                <p><strong>Sector:</strong> <?php echo htmlspecialchars($company['sector']); ?></p>
-                                <p><strong>Calle:</strong> <?php echo htmlspecialchars($company['street']); ?></p>
-                            </div>
-                        </section>
-                        <section class="additional-info">
-                            <h2>Información Adicional</h2>
-                            <p><strong>Requisitos del Trabajo:</strong> <?php echo htmlspecialchars($company['job_requirements']); ?></p>
-                            <p><strong>Tipo de Contrato:</strong> <?php echo htmlspecialchars($company['contract_type']); ?></p>
-                        </section>
+                        <label for="company_name">Nombre de la Empresa:</label>
+                        <input type="text" id="company_name" name="company_name" value="<?php echo htmlspecialchars($company['company_name']); ?>" required>
 
-                        <!-- Botón para editar el perfil -->
-                        <div class="edit-profile-button-container">
-                            <a href="editCompanyProfile.php" class="edit-profile-button">Editar Perfil</a>
-                        </div>
-                    </div>
+                        <label for="company_rif">RIF:</label>
+                        <input type="text" id="company_rif" name="company_rif" value="<?php echo htmlspecialchars($company['company_rif']); ?>" required>
+
+                        <label for="company_email">Correo Electrónico:</label>
+                        <input type="email" id="company_email" name="company_email" value="<?php echo htmlspecialchars($company['company_email']); ?>" required>
+
+                        <label for="company_phone">Teléfono:</label>
+                        <input type="text" id="company_phone" name="company_phone" value="<?php echo htmlspecialchars($company['company_phone']); ?>" required>
+
+                        <label for="state">Estado:</label>
+                        <input type="text" id="state" name="state" value="<?php echo htmlspecialchars($company['state']); ?>" required>
+
+                        <label for="parish">Parroquia:</label>
+                        <input type="text" id="parish" name="parish" value="<?php echo htmlspecialchars($company['parish']); ?>" required>
+
+                        <label for="sector">Sector:</label>
+                        <input type="text" id="sector" name="sector" value="<?php echo htmlspecialchars($company['sector']); ?>" required>
+
+                        <label for="street">Calle:</label>
+                        <input type="text" id="street" name="street" value="<?php echo htmlspecialchars($company['street']); ?>" required>
+
+                        <label for="job_requirements">Requisitos del Trabajo:</label>
+                        <textarea id="job_requirements" name="job_requirements" required><?php echo htmlspecialchars($company['job_requirements']); ?></textarea>
+
+                        <label for="job-type">Tipo de Contrato:</label>
+                        <select id="job-type" name="job-type" required>
+                            <option value="presencial" <?php echo ($company['contract_type'] === 'presencial') ? 'selected' : ''; ?>>Presencial</option>
+                            <option value="remoto" <?php echo ($company['contract_type'] === 'remoto') ? 'selected' : ''; ?>>Remoto</option>
+                        </select>
+
+                        <button type="submit" class="submit-button">Guardar Cambios</button>
+                    </form>
                 </div>
             </div>
         </main>
     </div>
-
-
-
-    
     <script src="./scriptCProfile.js"></script>
 </body>
 </html>

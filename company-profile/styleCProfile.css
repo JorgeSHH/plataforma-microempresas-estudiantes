@@ -380,6 +380,112 @@ h3 {
     opacity: 0.8;
 }
 
+/* Botón de editar perfil */
+.edit-profile-button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.edit-profile-button {
+    display: inline-block;
+    background-color: #356cca; /* Usa una variable de color existente */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+}
+
+.edit-profile-button:hover {
+    background-color: #0f264e; /* Cambia el color al pasar el cursor */
+    color: #5c87d1;
+}
+
+/* Estilo para el contenedor principal de edición */
+.company-card-E {
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 30px; /* Espaciado interno */
+    max-width: 800px; /* Ancho máximo */
+    margin: 20px auto; /* Centrado horizontal */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaciado entre elementos */
+}
+
+/* Título del formulario */
+.company-card-E h1 {
+    font-size: 2rem;
+    color: var(--btm); /* Color principal */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los labels */
+.company-card-E label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--btm); /* Color principal */
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Estilo para los inputs */
+.company-card-E input[type="text"],
+.company-card-E input[type="email"],
+.company-card-E input[type="file"],
+.company-card-E textarea {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 1rem; /* Tamaño de fuente */
+    color: #333; /* Color del texto */
+    background-color: #f9f9f9; /* Fondo claro */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estilo para los inputs al enfocar */
+.company-card-E input[type="text"]:focus,
+.company-card-E input[type="email"]:focus,
+.company-card-E input[type="file"]:focus,
+.company-card-E textarea:focus {
+    border-color: var(--btm); /* Cambia el color del borde */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Sombra al enfocar */
+    outline: none; /* Elimina el borde predeterminado */
+}
+
+/* Estilo para el textarea */
+.company-card-E textarea {
+    resize: none; /* Deshabilita el redimensionamiento */
+    height: 100px; /* Altura predeterminada */
+}
+
+/* Botón de guardar cambios */
+.company-card-E .submit-button {
+    background-color: #2980b9;; /* Color de fondo principal */
+    color: #f9f9f9; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    margin-top: 20px; /* Espacio superior */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 1rem; /* Tamaño de fuente */
+    font-weight: bold;
+    cursor: pointer; /* Cambia el cursor al pasar */
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+/* Botón al pasar el cursor */
+.company-card-E .submit-button:hover {
+    background-color: #1b4662; /* Cambia el color de fondo */
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .company-header {
@@ -412,4 +518,62 @@ h3 {
     .company-name {
         font-size: 1.5rem;
     }
+}
+
+#job-type {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#job-type:focus {
+    border-color: var(--btm);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+#job-type option {
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+}
+
+#img_perfil {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+#img_perfil:focus {
+    border-color: var(--btm);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+#img_perfil::-webkit-file-upload-button {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#img_perfil::-webkit-file-upload-button:hover {
+    background-color: #1b4662;
 }
