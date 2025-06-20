@@ -21,6 +21,17 @@ if ($_SESSION['user_rol'] !== 'empresa') {
 // Consultar las ofertas de trabajo desde la base de datos
 $query = "SELECT * FROM jobs";
 $result = $conexion->query($query);
+
+
+// Obtener datos de la tabla companies
+$userId = $_SESSION['user_id']; // Asegúrate de que 'user_id' esté configurado en la sesión al iniciar sesión
+$queryCompany = "SELECT * FROM companies WHERE id_company = ?";
+$stmtCompany = $conexion->prepare($queryCompany);
+$stmtCompany->bind_param("i", $userId);
+$stmtCompany->execute();
+$resultCompany = $stmtCompany->get_result();
+$company = $resultCompany->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
@@ -85,12 +96,19 @@ $result = $conexion->query($query);
         <main class="main-content" id="mainContent">
             <div class="profile-header">
             <div class="profile-info">
-            <img class="profile-pic">
+            <?php
+            if (!empty($company['img_perfil'])) {
+                $imgData = base64_encode($company['img_perfil']);
+                echo '<img src="data:image/jpeg;base64,' . $imgData . '" alt="Foto de perfil" class="profile-pic">';
+            } else {
+                echo '<img src="../assets/default-logo.png" alt="Foto de perfil por defecto" class="profile-pic">';
+            }
+            ?>
             <div class="user-details">
             <!-- aca metemos el nombre del usuario -->
-                <div class="user-name">Armando</div> 
+                <div class="user-name"><?php echo htmlspecialchars($company['company_name']); ?></div> 
                      <!-- aca metemos el Apellido del usuario -->
-                <div class="user-handle">Martinez</div>
+                <div class="user-handle"><?php echo htmlspecialchars($company['company_email']); ?></div>
             </div>
             </div>
             </div>
