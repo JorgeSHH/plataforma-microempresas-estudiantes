@@ -19,12 +19,44 @@ $parroquia = $_POST['parroquia'];
 $sector = $_POST['sector'];
 $calle = $_POST['calle'];
 
+$imageData = null; // Inicializar en null
+$imageType = null; // Inicializar en null
+
+if (isset($_FILES['imagenPerfil']) && $_FILES['imagenPerfil']['error'] === UPLOAD_ERR_OK) {
+    $fileTmpPath = $_FILES['imagenPerfil']['tmp_name'];
+    $fileSize = $_FILES['imagenPerfil']['size'];
+    $fileType = $_FILES['imagenPerfil']['type']; // Tipo MIME (image/jpeg, image/png, etc.)
+
+    // Validaciones básicas para la imagen
+    $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    // El límite para MEDIUMBLOB es 16MB (16 * 1024 * 1024 bytes)
+    $maxFileSize = 16 * 1024 * 1024; 
+
+    if (!in_array($fileType, $allowedTypes)) {
+        echo "001"; // Código de error para tipo de archivo no permitido
+        $conexion->close();
+        exit();
+    } elseif ($fileSize > $maxFileSize) {
+        echo "002"; // Código de error para tamaño de imagen excedido
+        $conexion->close();
+        exit();
+    } else {
+        // Leer el contenido binario del archivo solo si las validaciones pasan
+        $imageData = file_get_contents($fileTmpPath);
+        $imageType = $fileType; // Guardar el tipo MIME para la DB
+    }
+} else if (isset($_FILES['imagenPerfil']) && $_FILES['imagenPerfil']['error'] !== UPLOAD_ERR_NO_FILE) {
+    // Si hubo un error en la subida que no sea "no se seleccionó archivo"
+    echo "003"; // Otro error en la subida de la imagen
+    $conexion->close();
+    exit();
+}
 
 $queryValidacion = "SELECT company_rif, company_email FROM companies WHERE company_rif = ? OR company_email = ?";
 $stmtValidacion = $conexion->prepare($queryValidacion);
 
 if (!$stmtValidacion) {
-    echo "0" . $conexion->error;
+    echo "0" . $conexion->error; // Error al preparar la consulta de validación
     $conexion->close();
     exit(); 
 }
@@ -49,8 +81,10 @@ $insertCompanyQuery = "INSERT INTO `companies` (
     `company_phone`,
     `job_requirements`,
     `contract_type`,
-    `role_id`
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    `role_id`,
+    `img_perfil`,
+    `img_perfil_type`
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmtCompany = $conexion->prepare($insertCompanyQuery);
 
@@ -61,7 +95,7 @@ if (!$stmtCompany) {
 }
 
 // Vincula los parámetros para la tabla `companies`
-$stmtCompany->bind_param("ssssssss",
+$stmtCompany->bind_param("sssssssssb",
     $contrasena_hash,       // Recuerda hashear esto
     $nombre,
     $rif,
@@ -69,7 +103,9 @@ $stmtCompany->bind_param("ssssssss",
     $telefono,
     $requisitos,
     $tipoContrato,
-    $rol
+    $rol,
+    $imageData,
+    $imageType
 );
 
 if ($stmtCompany->execute()) {

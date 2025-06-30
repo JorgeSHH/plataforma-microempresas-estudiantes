@@ -29,16 +29,16 @@
         </div>
         <h2 class="tituloDos">Creacion de la cuentas</h2>
         <div class="containerformulario">
-            <form action=""  id="registroEmpresa">
+            <form action=""  id="registroEmpresa" enctype="multipart/form-data">
                 <div class="container-inputs">
-                    <!-- <label class="imagen-empresa">
+                    <label class="imagen-empresa">
                         <svg xmlns="http://www.w3.org/2000/svg" color="white" width="100" height="100" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
                             <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5"/>
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                           </svg>
-                          agrege imagen de su empresa
-                        <input type="file" name="imagen-empresa" id="imagen-empresa" style="display: none;">
-                        </label> -->
+                          Click aquí para agrege imagen
+                        <input type="file" name="imagenPerfil"  id="imagenPerfil" style="display: none;" accept="image/*">
+                        </label>
                     <div class="datos-empresa">
                         <label for="correo" class="label-basico">
                             Correo electronico(empresa)

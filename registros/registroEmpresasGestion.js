@@ -47,6 +47,8 @@ registroForm.addEventListener('submit', (e)=> {
      })
      .then(response => response.text())
      .then(data => {
+      console.log(data);
+      
           if (data === "12e") {
             Swal.fire({
                 title: "Verifique Rif o el Correo",
@@ -55,11 +57,10 @@ registroForm.addEventListener('submit', (e)=> {
                 draggable: true
               });
           } else if(data === "0"){
-            console.log(data);
-            
+            //error ver la consola, para conocer el error
+            console.log(data); 
           }else if(data === "1"){
             const delayTime = 1500; 
-
             Swal.fire({
                 title: "Registro exitoso",
                 icon: "success",
