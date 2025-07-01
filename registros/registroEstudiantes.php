@@ -29,28 +29,29 @@
         </div>
         <h2 class="tituloDos">Creacion de la cuentas</h2>
         <div class="containerformulario">
-<form action="">
+        <!-- enctype="multipart/form-data"  -->
+<form  id="registroEstudiante">
                 <div class="container-inputs">
-                    <label class="imagen-empresa">
+                    <label class="imagenEstudiante">
                         <svg xmlns="http://www.w3.org/2000/svg" color="white" width="100" height="100" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
                             <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5"/>
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                           </svg>
                           agrege imagen para el perfil
-                        <input type="file" name="imagen-estudiante" id="imagen-estudiante" style="display: none;">
-                        </label>
+                        <input type="file" name="imagenEstudiante" id="imagenEstudiante" style="display: none;">
+                    </label>
                     <div class="datos-empresa">
-                        <label for="correo" class="label-basico">
+                        <label for="correoEstudiante" class="label-basico">
                             Correo electronico
-                            <input type="email" name="correo-empresa" id="correo-empresa" class="input-basico">
+                            <input type="email" name="correoEstudiante" id="correoEstudiante" class="input-basico">
                         </label>
                         <label for="contrasena" class="label-basico">
                             Contraseña
                             <input type="password" name="contresena" id="contresena" class="input-basico">
                         </label>
-                        <label for="contrasena-vr" class="label-basico">
+                        <label for="contrasenaVr" class="label-basico">
                             Confirmar contraseña
-                            <input type="password" name="contresena-vr" id="contresena-vr" class="input-basico">
+                            <input type="password" name="contresenaVr" id="contresenaVr" class="input-basico">
                         </label>
                     </div>
 
@@ -67,46 +68,46 @@
         <div class="barra-progreso">
             Soy la barra de progreso
         </div>
-        <h2 class="tituloDos">Creacion de la cuentas</h2>
+        <h2 class="tituloDos"></h2>
         <div class="containerFormulario2">
             <div class="caja-inputs">
                 <h3>Datos personales</h3>
-                <label for="telf" class="label-basico">
+                <label for="nombre" class="label-basico">
                     Nombre
-                    <input type="text" name="telf" id="telf" class="input-basico">
+                    <input type="text" name="nombre" id="nombre" class="input-basico">
                 </label>
-                <label for="rif" class="label-basico">
+                <label for="apellido" class="label-basico">
                     Apellido
-                    <input type="text" name="rif" id="rif" class="input-basico">
+                    <input type="text" name="apellido" id="apellido" class="input-basico">
                 </label>
-                <label for="rif" class="label-basico">
+                <label for="cedula" class="label-basico">
                     Cedula de identidad
-                    <input type="text" name="rif" id="rif" class="input-basico">
+                    <input type="text" name="cedula" id="cedula" class="input-basico">
                 </label>
             </div>
             <div class="caja-inputs">
               <h3>  </h3>
-                <label for="sector" class="label-basico">
+                <label for="telefono" class="label-basico">
                     Telefono
-                    <input type="text" name="sector" id="sector" class="input-basico">
+                    <input type="text" name="telefono" id="telefono" class="input-basico">
                 </label>
-                <label for="sector" class="label-basico">
+                <label for="fechaNacimiento" class="label-basico">
                     Fecha de nacimiento
-                    <input type="date"  name="sector" id="sector" class="input-basico">
+                    <input type="date"  name="fechaNacimiento" id="fechaNacimiento" class="input-basico">
                 </label>
-                <label for="calle" class="label-basico">
-                    Sexo
-                    <div class="dos-datos-radio">
-                    <label for="estado">
-                        Masculino
-                        <input type="radio" name="genero" id="estado" class="input-basico-dos">
+                <label for="sexo" class="label-basico">
+                        Sexo
+                        <div class="dos-datos-radio">
+                            <label for="masculino">
+                                Masculino
+                                <input type="radio" name="sexo" id="masculino" value="masculino" class="input-basico-dos">
+                            </label>
+                            <label for="femenino">
+                                Femenino
+                                <input type="radio" name="sexo" id="femenino" value="femenino" class="input-basico-dos">
+                            </label>
+                        </div>
                     </label>
-                    <label for="parroquia">
-                        Femenino
-                        <input type="radio" name="genero" id="parroquia" class="input-basico-dos">
-                    </label>
-                    </div>
-                </label>
             </div>
             
             <div class="caja-inputs">
@@ -156,40 +157,40 @@
                         <div class="caja-inputs">
                             <h3>Informacion personal</h3>
                             <br>
-                            <label for="telf" class="label-basico">
+                            <label for="educacion" class="label-basico">
                                 Nivel de educacion
-                                <input type="text" name="telf" id="telf" class="input-basico">
+                                <input type="text" name="educacion" id="educacion" class="input-basico">
                             </label>
                             <br>
-                            <label for="requisitos" class="label-basico">
+                            <label for="resumen" class="label-basico">
                                 Resumen profesional
-                                 <textarea name="requisitos" id="requisitos" cols="5" rows="5"></textarea>
+                                 <textarea name="resumen" id="resumen" cols="5" rows="5"></textarea>
                             </label>
                         </div>
                         <hr>
                         <div class="caja-inputs">
                             <div class="caja-lateral">
-                                <label for="sector" class="label-basico">
-                                    Telefono
-                                    <input type="text" name="sector" id="sector" class="input-basico">
+                                <label for="portafolio" class="label-basico">
+                                    Link de portafolio
+                                    <input type="text" name="portafolio" id="portafolio" class="input-basico">
                                 </label>
-                                <label for="sector" class="label-basico">
-                                    Fecha de nacimiento
-                                    <input type="text"  name="sector" id="sector" class="input-basico">
+                                <label for="sintesis" class="label-basico">
+                                    Link de sintesis curricular
+                                    <input type="text"  name="sintesis" id="sintesis" class="input-basico">
                                 </label>
                             </div>
                             <div class="boxAdition">
                                 <div class="habilidadesTecnicas">
-                                    <label for="requisitos" class="label-basico">
-                                        Resumen profesional
-                                        <textarea name="requisitos" id="requisitos" cols="5" rows="8"></textarea>
+                                    <label for="habilidades" class="label-basico">
+                                        Habilidades técnicas
+                                        <textarea name="habilidades" id="habilidades" cols="5" rows="8"></textarea>
                                     </label>
                                 </div>
                                 <div class="preferenciaTrabajo">
                                     <label for="requisitos" class="label-basico">
-                                        Resumen profesional
+                                         Preferencias de trabajo
                                         <p class="textoAdition">
-                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure nesciunt dolorem odio!
+                                        Haz click en el botom para seleccionar tus preferencias
                                         </p>
                                         <button type="button" class="btn-basico">elegir</button>
                                     </label>
@@ -328,5 +329,10 @@
 </form>
 
 </section>
+
+
+<script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.all.min.js "></script>
+<link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.min.css " rel="stylesheet">
+<script src="./registroEstudianteGestion.js"></script>
 </body>
 </html>
