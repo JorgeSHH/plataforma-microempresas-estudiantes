@@ -47,18 +47,30 @@ registroForm.addEventListener('submit', (e)=> {
      })
      .then(response => response.text())
      .then(data => {
-      console.log(data);
-      
-          if (data === "12e") {
-            Swal.fire({
-                title: "Verifique Rif o el Correo",
-                text: "El rif o el correo ya se encuentran registrados en la plataforma",
-                icon: "warning",
-                draggable: true
-              });
-          } else if(data === "0"){
+          if (data === "0") {
             //error ver la consola, para conocer el error
             console.log(data); 
+          } else if(data === "12e"){
+            Swal.fire({
+              title: "Verifique Rif o el Correo",
+              text: "El rif o el correo ya se encuentran registrados en la plataforma",
+              icon: "warning",
+              draggable: true
+            });
+          }else if(data === "11e"){
+            Swal.fire({
+                title: "Error en la imagen",
+                text: "Por favor ingrese una imagen con formato jpg, jpeg o png",
+                icon: "error",
+                draggable: true
+              });
+          }else if(data === "10e"){
+            Swal.fire({
+                title: "Error en la imagen",
+                text: "Por favor ingrese una imagen mas ligera(menor a 10mb)",
+                icon: "error",
+                draggable: true
+              });
           }else if(data === "1"){
             const delayTime = 1500; 
             Swal.fire({
@@ -71,8 +83,4 @@ registroForm.addEventListener('submit', (e)=> {
             }, delayTime);
           }
      })
-
-
-
-
 })

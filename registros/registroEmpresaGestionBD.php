@@ -33,11 +33,11 @@ if (isset($_FILES['imagenPerfil']) && $_FILES['imagenPerfil']['error'] === UPLOA
     $maxFileSize = 16 * 1024 * 1024; 
 
     if (!in_array($fileType, $allowedTypes)) {
-        echo "001"; // Código de error para tipo de archivo no permitido
+        echo "11e"; // Código de error para tipo de archivo no permitido
         $conexion->close();
         exit();
     } elseif ($fileSize > $maxFileSize) {
-        echo "002"; // Código de error para tamaño de imagen excedido
+        echo "10e"; // Código de error para tamaño de imagen excedido
         $conexion->close();
         exit();
     } else {
@@ -47,7 +47,7 @@ if (isset($_FILES['imagenPerfil']) && $_FILES['imagenPerfil']['error'] === UPLOA
     }
 } else if (isset($_FILES['imagenPerfil']) && $_FILES['imagenPerfil']['error'] !== UPLOAD_ERR_NO_FILE) {
     // Si hubo un error en la subida que no sea "no se seleccionó archivo"
-    echo "003"; // Otro error en la subida de la imagen
+    echo "0"; // Otro error en la subida de la imagen
     $conexion->close();
     exit();
 }
@@ -56,7 +56,7 @@ $queryValidacion = "SELECT company_rif, company_email FROM companies WHERE compa
 $stmtValidacion = $conexion->prepare($queryValidacion);
 
 if (!$stmtValidacion) {
-    echo "0" . $conexion->error; // Error al preparar la consulta de validación
+    echo "0" . $conexion->error ; // Error al preparar la consulta de validación
     $conexion->close();
     exit(); 
 }
