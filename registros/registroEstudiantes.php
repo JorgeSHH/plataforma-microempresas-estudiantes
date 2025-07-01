@@ -188,11 +188,18 @@
                                 </div>
                                 <div class="preferenciaTrabajo">
                                     <label for="requisitos" class="label-basico">
-                                         Preferencias de trabajo
+                                        Preferencias de trabajo
                                         <p class="textoAdition">
-                                        Haz click en el botom para seleccionar tus preferencias
+                                            Selecciona una de las siguientes opciones:
                                         </p>
-                                        <button type="button" class="btn-basico">elegir</button>
+                                        <select name="requisitos" id="requisitos" class="input-basico">
+                                            <option value="tecnologia">Tecnología e innovación</option>
+                                            <option value="marketing">Marketing y Publicidad</option>
+                                            <option value="recursos_humanos">Recursos humanos</option>
+                                            <option value="educacion">Educación y formación</option>
+                                            <option value="salud">Salud y bienestar</option>
+                                            <option value="logistica">Logística y transporte</option>
+                                        </select>
                                     </label>
                                 </div>
                             </div>
@@ -204,15 +211,15 @@
                             <div class="caja-generadora">
                                 <div class="marco-inputs">
                                     <label for="sector" class="label-basico">
-                                        Telefono
+                                    Nombre del curso
                                         <input type="text" name="sector" id="sector" class="input-basico">
                                     </label>
                                     <label for="sector" class="label-basico">
-                                        Telefono
+                                    Institución
                                         <input type="text" name="sector" id="sector" class="input-basico">
                                     </label>
                                     <label for="sector" class="label-basico">
-                                        Telefono
+                                    Duración
                                         <input type="text" name="sector" id="sector" class="input-basico">
                                     </label>
                                 </div>
@@ -258,19 +265,19 @@
                             
                         </div>
                         <div class="caja-inputs">
-                            <h4>Cursos realizados</h4>
+                            <h4>Historial de empleos anteriores</h4>
                             <div class="caja-generadora">
                                 <div class="marco-inputs">
                                     <label for="sector" class="label-basico">
-                                        Telefono
+                                    Empresa
                                         <input type="text" name="sector" id="sector" class="input-basico">
                                     </label>
                                     <label for="sector" class="label-basico">
-                                        Telefono
-                                        <input type="text" name="sector" id="sector" class="input-basico">
+                                    Puesto
+                                       <input type="text" name="sector" id="sector" class="input-basico">
                                     </label>
                                     <label for="sector" class="label-basico">
-                                        Telefono
+                                    Duracion
                                         <input type="text" name="sector" id="sector" class="input-basico">
                                     </label>
                                 </div>
