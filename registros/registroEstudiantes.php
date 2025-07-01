@@ -30,7 +30,7 @@
         <h2 class="tituloDos">Creacion de la cuentas</h2>
         <div class="containerformulario">
         <!-- enctype="multipart/form-data"  -->
-<form  id="registroEstudiante">
+<form  id="registroEstudiante" enctype="multipart/form-data">
                 <div class="container-inputs">
                     <label class="imagenEstudiante">
                         <svg xmlns="http://www.w3.org/2000/svg" color="white" width="100" height="100" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
@@ -122,9 +122,9 @@
                         <input type="text" name="parroquia" id="parroquia" class="input-basico-dos">
                     </label>
                 </div>
-                <label for="sector" class="label-basico">
+                <label for="sectore" class="label-basico">
                     Sector
-                    <input type="text" name="sector" id="sector" class="input-basico">
+                    <input type="text" name="sectore" id="sectore" class="input-basico">
                 </label>
                 <label for="calle" class="label-basico">
                     Calle

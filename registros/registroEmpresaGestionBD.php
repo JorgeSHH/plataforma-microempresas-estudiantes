@@ -19,9 +19,8 @@ $parroquia = $_POST['parroquia'];
 $sector = $_POST['sector'];
 $calle = $_POST['calle'];
 
-$imageData = null; // Inicializar en null
-$imageType = null; // Inicializar en null
-
+$imageData = null; // Inicializar en null importante
+$imageType = null; 
 if (isset($_FILES['imagenPerfil']) && $_FILES['imagenPerfil']['error'] === UPLOAD_ERR_OK) {
     $fileTmpPath = $_FILES['imagenPerfil']['tmp_name'];
     $fileSize = $_FILES['imagenPerfil']['size'];

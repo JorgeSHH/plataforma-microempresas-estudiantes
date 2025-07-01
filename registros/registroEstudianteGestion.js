@@ -11,7 +11,7 @@ registroEstuddiante.addEventListener('submit', (e) => {
     const cedula = document.getElementById('cedula').value;
     const estado = document.getElementById('estado').value;
     const parroquia = document.getElementById('parroquia').value;
-    const sector = document.getElementById('sector').value;
+    const sector = document.getElementById('sectore').value;
     const calle = document.getElementById('calle').value;
     const fechaNacimiento = document.getElementById('fechaNacimiento').value;
     const nivelEducacion = document.getElementById('educacion').value;
@@ -43,25 +43,40 @@ registroEstuddiante.addEventListener('submit', (e) => {
     .then(response => response.text())
     .then(data => {
         if (data === "0") {
-            // Error, ver la consola para conocer el error
+            //error ver la consola, para conocer el error
             console.log(data); 
-        } else if(data === "12e") {
+          } else if(data === "12e"){
             Swal.fire({
-                title: "Verifique Cédula o Correo",
-                text: "La cédula o el correo ya se encuentran registrados en la plataforma",
-                icon: "warning",
-                draggable: true
+              title: "Verifique Rif o el Correo",
+              text: "El rif o el correo ya se encuentran registrados en la plataforma",
+              icon: "warning",
+              draggable: true
             });
-        } else if(data === "1") {
+          }else if(data === "11e"){
+            Swal.fire({
+                title: "Error en la imagen",
+                text: "Por favor ingrese una imagen con formato jpg, jpeg o png",
+                icon: "error",
+                draggable: true
+              });
+          }else if(data === "10e"){
+            Swal.fire({
+                title: "Error en la imagen",
+                text: "Por favor ingrese una imagen mas ligera(menor a 10mb)",
+                icon: "error",
+                draggable: true
+              });
+          }else if(data === "1"){
+            const delayTime = 1500; 
             Swal.fire({
                 title: "Registro exitoso",
-                text: "El estudiante ha sido registrado correctamente",
                 icon: "success",
                 draggable: true
-            }).then(() => {
-                window.location.href = "./index.html";
-            });
-        }
+              });
+              setTimeout(() => {   
+                location.href = '../login/login.php';
+            }, delayTime);
+          }
     })
 
 
