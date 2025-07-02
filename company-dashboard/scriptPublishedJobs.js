@@ -4,13 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const editJobForm = document.getElementById('editJobForm');
     const jobCards = document.querySelectorAll('.job-card');
     const jobIdInput = document.getElementById('job-id');
-    const sidebar = document.getElementById('sidebar');
-    const menuToggle = document.getElementById('menuToggle');
-
-    // Alternar la barra lateral
-    menuToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('collapsed');
-    });
 
     // Abrir la ventana modal para editar
     document.querySelectorAll('.edit-button').forEach(button => {
@@ -68,6 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const jobId = button.getAttribute('data-id');
 
+            // Deshabilitar el botón para evitar múltiples clics
+            button.disabled = true;
+
             if (confirm('¿Estás seguro de que deseas eliminar este trabajo?')) {
                 fetch('./deleteJob.php', {
                     method: 'POST',
@@ -82,8 +78,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         alert('Error al eliminar el trabajo.');
                     }
+                })
+                .finally(() => {
+                    // Rehabilitar el botón después de la operación
+                    button.disabled = false;
                 });
+            } else {
+                // Rehabilitar el botón si se cancela la confirmación
+                button.disabled = false;
             }
-        });
+        }, { once: true }); // Asegura que el evento se ejecute solo una vez
     });
 });

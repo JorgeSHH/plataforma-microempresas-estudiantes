@@ -72,10 +72,18 @@ $result = $stmt->get_result();
                     <div class="job-card" data-id="<?php echo $row['id_job']; ?>">
                         <div class="job-header">
                             <h1 class="job-title"><?php echo htmlspecialchars($row['job_title']); ?></h1>
-                            <p class="job-company">Empresa</p>
+                            <?php
+                            $companyQuery = "SELECT company_name FROM companies WHERE id_company = ?";
+                            $companyStmt = $conexion->prepare($companyQuery);
+                            $companyStmt->bind_param("i", $row['id_company']);
+                            $companyStmt->execute();
+                            $companyResult = $companyStmt->get_result();
+                            $companyName = $companyResult->num_rows > 0 ? $companyResult->fetch_assoc()['company_name'] : 'Nombre de empresa desconocido';
+                            ?>
+                            <p class="job-company">Empresa: <?php echo htmlspecialchars($companyName); ?></p>
                             <div class="job-meta">
                                 <span class="job-meta-item"><i>📅</i> Publicado: <?php echo htmlspecialchars($row['published_job_date']); ?></span>
-                                <span class="job-meta-item"><i>⏳</i> Duración: <?php echo htmlspecialchars($row['duration_job']); ?></span>
+                                <span class="job-meta-item"><i>⏳</i> Disponibilidad: <?php echo $row['duration_job'] ? 'Disponible' : 'No disponible'; ?></span>
                                 <span class="job-meta-item"><i>📍</i> Tpo de trabajo: <?php echo htmlspecialchars($row['type_job']); ?></span>
                                 <span class="job-meta-item"><i>💲</i> <span class="job-salary"><?php echo htmlspecialchars($row['salary']); ?></span></span>
                             </div>
@@ -184,8 +192,11 @@ $result = $stmt->get_result();
                 <label for="job-salary">Salario:</label>
                 <input type="text" id="job-salary" name="job-salary" required>
                 
-                <label for="job-duration">Duración:</label>
-                <input type="text" id="job-duration" name="job-duration" required>
+              <label for="job-duration">¿Está disponible el trabajo?</label>
+            <select id="job-duration" name="job-duration" required>
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
                 
                 <label for="job-location">Ubicación:</label>
                 <input type="text" id="job-location" name="job-location" required>

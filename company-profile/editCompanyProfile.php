@@ -134,7 +134,7 @@ $company = array_merge($company, $address);
                         <textarea id="job_requirements" name="job_requirements" required><?php echo htmlspecialchars($company['job_requirements']); ?></textarea>
 
                         <label for="job-type">Tipo de Contrato:</label>
-                        <select id="job-type" name="job-type" required>
+                        <select id="job-type" name="contract_type" required>
                             <option value="presencial" <?php echo ($company['contract_type'] === 'presencial') ? 'selected' : ''; ?>>Presencial</option>
                             <option value="remoto" <?php echo ($company['contract_type'] === 'remoto') ? 'selected' : ''; ?>>Remoto</option>
                         </select>

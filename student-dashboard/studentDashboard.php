@@ -18,10 +18,10 @@ if ($_SESSION['user_rol'] !== 'estudiante') {
     exit();
 }
 
-// Si todo está bien, el resto del código de la página puede ejecutarse
-// ...
 // Consultar las ofertas de trabajo desde la base de datos
-$query = "SELECT * FROM jobs";
+$query = "SELECT jobs.*, companies.company_name 
+          FROM jobs 
+          INNER JOIN companies ON jobs.id_company = companies.id_company";
 $result = $conexion->query($query);
 
 // Obtener datos de la tabla students
@@ -32,10 +32,7 @@ $stmtStudent->bind_param("i", $userId);
 $stmtStudent->execute();
 $resultStudent = $stmtStudent->get_result();
 $student = $resultStudent->fetch_assoc();
-
 ?>
-
-
 
 
 
@@ -125,7 +122,7 @@ $student = $resultStudent->fetch_assoc();
                 
             <div id="contentSection">
                 <!-- Job card principal -->
-            <div class="job-card">
+            <!-- <div class="job-card">
                 <div class="job-header">
                     <h1 class="job-title">Desarrollador Frontend Senior</h1>
                     <p class="job-company">Tech Solutions Inc.</p>
@@ -168,17 +165,17 @@ $student = $resultStudent->fetch_assoc();
                     <span>Válida hasta: 30/06/2023</span>
                     <button class="apply-button">Postularse</button>
                 </div>
-            </div>
+            </div> -->
 
            <!-- Job cards dinámicas -->
            <?php while ($row = $result->fetch_assoc()): ?>
     <div class="job-card" data-category="<?php echo htmlspecialchars($row['id_job_category']); ?>">
         <div class="job-header">
             <h1 class="job-title"><?php echo htmlspecialchars($row['job_title']); ?></h1>
-            <p class="job-company">Empresa</p>
+            <p class="job-company"><?php echo htmlspecialchars($row['company_name']); ?></p>
             <div class="job-meta">
                 <span class="job-meta-item"><i>📅</i> Publicado: <?php echo htmlspecialchars($row['published_job_date']); ?></span>
-                <span class="job-meta-item"><i>⏳</i> Duración: <?php echo htmlspecialchars($row['duration_job']); ?></span>
+                <span class="job-meta-item"><i>⏳</i> Disponibilidad: <?php echo $row['duration_job'] ? 'Disponible' : 'No disponible'; ?></span>
                 <span class="job-meta-item"><i>📍</i> Tipo de Trabajo: <?php echo htmlspecialchars($row['type_job']); ?></span>
                 <span class="job-meta-item"><i>💰</i> <span class="job-salary"><?php echo htmlspecialchars($row['salary']); ?></span></span>
             </div>

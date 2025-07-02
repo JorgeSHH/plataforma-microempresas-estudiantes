@@ -119,60 +119,17 @@ $company = $resultCompany->fetch_assoc();
                 
             <div id="contentSection">
                 <!-- Job card principal -->
-            <div class="job-card">
-                <div class="job-header">
-                    <h1 class="job-title">Desarrollador Frontend Senior</h1>
-                    <p class="job-company">Tech Solutions Inc.</p>
-                    <div class="job-meta">
-                        <span class="job-meta-item"><i>📅</i> Publicado: 15/05/2023</span>
-                        <span class="job-meta-item"><i>⏳</i> Tiempo limite: 12 meses</span>
-                        <span class="job-meta-item"><i>📍</i> Remoto</span>
-                        <span class="job-meta-item"><i>💲</i> <span class="job-salary">$3,500/mes</span></span>
-                    </div>
-                </div>
-                <div class="job-category">
-                    <span class="category-label">Categoría:</span>
-                    <span class="category-value">Tecnología e innovación</span>
-                </div>
-                <div class="job-section">
-                    <h3 class="job-section-title">Resumen del puesto</h3>
-                    <p class="job-section-content">
-                        Buscamos un desarrollador Frontend Senior con experiencia en React.js para unirse a nuestro equipo de desarrollo de productos digitales. Trabajarás en proyectos innovadores para clientes internacionales.
-                    </p>
-                </div>
-                <div class="job-section">
-                    <h3 class="job-section-title">Requisitos</h3>
-                    <p class="job-section-content">
-                        • 5+ años de experiencia en desarrollo Frontend<br>
-                        • Dominio de React.js y Redux<br>
-                        • Experiencia con APIs REST<br>
-                        • Conocimientos de TypeScript<br>
-                        • Inglés intermedio-avanzado<br>
-                        • Capacidad para trabajar en equipo 
-                    </p>
-                </div>
-                <div class="job-section">
-                    <h3 class="job-section-title">Ubicación</h3>
-                    <p class="job-section-content">
-                        Av. Innovación 1234, Piso 5, Ciudad Tecnológica
-                    </p>
-                </div>
-                <div class="job-footer">
-                    <span>ID de oferta: #JOB-12345</span>
-                    <span>Válida hasta: 30/06/2023</span>
-                    <button class="apply-button">Postularse</button>
-                </div>
-            </div>
+          
 
             <!-- Job cards dinámicas -->
             <?php while ($row = $result->fetch_assoc()): ?>
     <div class="job-card">
         <div class="job-header">
             <h1 class="job-title"><?php echo htmlspecialchars($row['job_title']); ?></h1>
-            <p class="job-company">Empresa</p> <!-- Puedes agregar un campo de empresa si lo tienes en la base de datos -->
+            <p class="job-company">Empresa: <?php echo htmlspecialchars($company['company_name']); ?></p>
             <div class="job-meta">
                 <span class="job-meta-item"><i>📅</i> Publicado: <?php echo htmlspecialchars($row['published_job_date']); ?></span>
-                <span class="job-meta-item"><i>⏳</i> Duración: <?php echo htmlspecialchars($row['duration_job']); ?></span>
+                <span class="job-meta-item"><i>⏳</i> Disponibilidad: <?php echo $row['duration_job'] ? 'Disponible' : 'No disponible'; ?></span>
                 <span class="job-meta-item"><i>📍</i> Tipo de Trabajo: <?php echo htmlspecialchars($row['type_job']); ?></span>
                 <span class="job-meta-item"><i>💲</i> <span class="job-salary"><?php echo htmlspecialchars($row['salary']); ?></span></span>
             </div>
@@ -295,9 +252,13 @@ $company = $resultCompany->fetch_assoc();
             <label for="job-salary">Salario:</label>
             <input type="text" id="job-salary" name="job-salary" placeholder="Ejemplo: $3,500/mes" required>
             
-            <label for="job-duration">Duracion del trabajo:</label>
-            <input type="text" id="job-duration" name="job-duration" placeholder="Ejemplo: 12 meses" required>
-                      
+            <label for="job-duration">¿Está disponible el trabajo?</label>
+            <select id="job-duration" name="job-duration" required>
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+
+            
             <label for="job-duration">Tiempo limite:</label>
             <input type="date" id="time-limit" name="time-limit" placeholder="Ejemplo: Hasta el 15 de mayo" required>
             
