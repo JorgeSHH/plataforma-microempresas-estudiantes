@@ -185,8 +185,8 @@ registroEstuddiante.addEventListener('submit', (e) => {
             console.log(data); 
           } else if(data === "12e"){
             Swal.fire({
-              title: "Verifique Rif o el Correo",
-              text: "El rif o el correo ya se encuentran registrados en la plataforma",
+              title: "Verifique la Cedula o el Correo",
+              text: "El cedula, correo o el telefono ya se encuentran registrados en la plataforma",
               icon: "warning",
               draggable: true
             });
