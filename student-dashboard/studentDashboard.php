@@ -23,7 +23,21 @@ if ($_SESSION['user_rol'] !== 'estudiante') {
 // Consultar las ofertas de trabajo desde la base de datos
 $query = "SELECT * FROM jobs";
 $result = $conexion->query($query);
+
+// Obtener datos de la tabla students
+$userId = $_SESSION['user_id']; // Asegúrate de que 'user_id' esté configurado en la sesión al iniciar sesión
+$queryStudent = "SELECT * FROM student WHERE id_student = ?";
+$stmtStudent = $conexion->prepare($queryStudent);
+$stmtStudent->bind_param("i", $userId);
+$stmtStudent->execute();
+$resultStudent = $stmtStudent->get_result();
+$student = $resultStudent->fetch_assoc();
+
 ?>
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -87,12 +101,20 @@ $result = $conexion->query($query);
            <main class="main-content" id="mainContent">
             <div class="profile-header">
             <div class="profile-info">
-            <img class="profile-pic">
+            <?php
+            if (!empty($student['img_profile'])) {
+                $imgData = base64_encode($student['img_profile']);
+                echo '<img src="data:image/jpeg;base64,' . $imgData . '" alt="Foto de perfil" class="profile-pic">';
+            } else {
+                echo '<img src="../assets/default-logo.png" alt="Foto de perfil por defecto" class="profile-pic">';
+            }
+            ?>
+   
             <div class="user-details">
             <!-- aca metemos el nombre del usuario -->
-                <div class="user-name">Armando</div> 
+            <div class="user-name"><?php echo htmlspecialchars($student['studen_name']); ?></div> 
                      <!-- aca metemos el Apellido del usuario -->
-                <div class="user-handle">Martinez</div>
+                     <div class="user-handle"><?php echo htmlspecialchars($student['student_email']); ?></div>
             </div>
             </div>
             </div>
@@ -250,7 +272,7 @@ $result = $conexion->query($query);
                     <div class="company-name">Nombre de la empresa</div>
                     <div class="job-title">Título del empleo</div>
                 </div>
-                <button class="view-button">Verr</button>
+                <button class="view-button">Ver</button>
             </div>
             
             <!-- Repetir elementos para demostrar el scroll -->
@@ -259,7 +281,7 @@ $result = $conexion->query($query);
                     <div class="company-name">Nombre de la empresa</div>
                     <div class="job-title">Título del empleo</div>
                 </div>
-                <button class="view-button">Verr</button>
+                <button class="view-button">Ver</button>
             </div>
             </div>
         </div>

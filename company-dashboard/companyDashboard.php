@@ -243,7 +243,7 @@ $company = $resultCompany->fetch_assoc();
                     <div class="company-name">Nombre del Estudiante</div>
                     <div class="job-title">Título del tranajo</div>
                 </div>
-                <button class="view-button">Verr</button>
+                <button class="view-button">Ver</button>
             </div>
      
             
