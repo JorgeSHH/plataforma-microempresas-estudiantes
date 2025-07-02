@@ -14,6 +14,7 @@ $sintesis = $_POST['sintesis'];
 $habilidades = $_POST['habilidades'];
 $sexo = $_POST['sexo'];
 $fechaNacimiento = $_POST['fechaNacimiento'];
+$preferenciasTrabajo = $_POST['requisitos'];
 
 $rol = "1";
 
@@ -24,6 +25,15 @@ $estado = $_POST['estado'];
 $parroquia = $_POST['parroquia'];
 $sector = $_POST['sectore'];
 $calle = $_POST['calle'];
+
+
+//datos del curso y empleos
+
+$cursosJSON = $_POST['cursos'] ?? '[]';
+$empleosJSON = $_POST['empleos'] ?? '[]';
+
+$cursos = json_decode($cursosJSON, true);
+$empleos = json_decode($empleosJSON, true);
 
 // prueba de que lleguen los datos
 //echo $nombre . " " . $apellido . " " . $correoEstudiante . " " . $clave . " " . $telefono . " " . $cedula . " " . $educacion . " " . $resumen . " " . $portafolio . " " . $sintesis . " " . $habilidades . " " . $sexo . " " . $estado . " " . $parroquia . " " . $sector . " " . $calle;
@@ -99,8 +109,9 @@ $insertStudentQuery = "INSERT INTO `student` (
     `summary`,
     `role_id`,
     `img_profile`,
-    `img_perfil_type`
-) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    `img_perfil_type`,
+    `job_preferences`
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmtStudent = $conexion->prepare($insertStudentQuery);
 
@@ -112,12 +123,12 @@ if (!$stmtStudent) {
 
 // Vincula los parámetros para la tabla `Student`
 $contrasena_hash = password_hash($clave, PASSWORD_DEFAULT); // Hashea la contraseña
-$stmtStudent->bind_param("sssssssssssssisb",
+$stmtStudent->bind_param("sssssssssssssisbs",
     $nombre,
     $apellido,
     $cedula,
     $correoEstudiante,
-    $contrasena_hash, // Recuerda hashear esto
+    $contrasena_hash, // Recuerda que  ya esta hasheado 
     $habilidades,
     $educacion,
     $telefono,
@@ -128,13 +139,14 @@ $stmtStudent->bind_param("sssssssssssssisb",
     $resumen,
     $rol,
     $imageData,
-    $imageType
+    $imageType,
+    $preferenciasTrabajo
 );
 
-
+// Ejecuta la inserción de datos del estudiante y verifica si fue exitosa
 if ($stmtStudent->execute()) {
     $student_id = $conexion->insert_id;
-    $stmtStudent->close(); // Cierra la sentencia de la compañía
+   // $stmtStudent->close(); // Cierra la sentencia de la compañía
 
     // --- 5. Inserción de Datos de la Dirección Usando el ID de la Compañía ---
     $insertAddressQuery = "INSERT INTO `student_address` (
@@ -161,15 +173,60 @@ if ($stmtStudent->execute()) {
         $student_id 
     );
 
-    if ($stmtAddress->execute()) {
-        echo "1"; // Indica éxito completo del registro
-    } else {
+    if (!$stmtAddress->execute()) {
         echo "0" . $stmtAddress->error;
+        $stmtAddress->close();
+        $conexion->close();
+        exit();
     }
-    $stmtAddress->close(); // Cierra la sentencia de la dirección
+    $stmtAddress->close();
+   
 
+
+    if (!empty($cursos)) {
+    $insertCourseQuery = "INSERT INTO `courses_taken` (`id_student`, `name_curso`, `institution`, `duration`) VALUES (?, ?, ?, ?)";
+    $stmtCourse = $conexion->prepare($insertCourseQuery);
+    if (!$stmtCourse) {
+        echo "0" . $conexion->error;
+        $conexion->close();
+        exit();
+    }
+    foreach ($cursos as $curso) {
+        $stmtCourse->bind_param("isss", $student_id, $curso['nombre'], $curso['institucion'], $curso['duracion']);
+        if (!$stmtCourse->execute()) {
+            echo "0" . $stmtCourse->error;
+            $stmtCourse->close();
+            $conexion->close();
+            exit();
+        }
+    }
+    $stmtCourse->close();
+    }
+
+    // Inserción de Empleos (si hay alguno)
+    if (!empty($empleos)) {
+    $insertEmploymentQuery = "INSERT INTO `job_history` (`id_student`, `company`, `job_position`, `period`) VALUES (?, ?, ?, ?)";
+    $stmtEmployment = $conexion->prepare($insertEmploymentQuery);
+    if (!$stmtEmployment) {
+        echo "0" . $conexion->error;
+        $conexion->close();
+        exit();
+    }
+    foreach ($empleos as $empleo) {
+        $stmtEmployment->bind_param("isss", $student_id, $empleo['empresa'], $empleo['puesto'], $empleo['duracion']);
+        if (!$stmtEmployment->execute()) {
+            echo "0" . $stmtEmployment->error;
+            $stmtEmployment->close();
+            $conexion->close();
+            exit();
+        }
+    }
+    $stmtEmployment->close();
+    }
+
+  echo "1"; // Inserción exitosa
 } else {
-    echo "0" . $stmtCompany->error;
+echo "0" . $stmtStudent->error;
 }
 
-$conexion->close(); // Cierra la conexión a la base de datos
+$conexion->close();

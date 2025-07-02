@@ -208,125 +208,83 @@
                         <!-- registros individuales manejar lo del registro individual con atencion -->
                         <div class="caja-inputs">
                             <h4>Cursos realizados</h4>
-                            <div class="caja-generadora">
-                                <div class="marco-inputs">
-                                    <label for="sector" class="label-basico">
-                                    Nombre del curso
-                                        <input type="text" name="sector" id="sector" class="input-basico">
+                            <div class="caja-generadora-cursos">
+                                <div class="marco-inputs-curso">
+                                    <label for="cursoNombre" class="label-basico">
+                                        Nombre del curso
+                                        <input type="text" id="cursoNombre" class="input-basico">
                                     </label>
-                                    <label for="sector" class="label-basico">
-                                    Institución
-                                        <input type="text" name="sector" id="sector" class="input-basico">
+                                    <label for="cursoInstitucion" class="label-basico">
+                                        Institución
+                                        <input type="text" id="cursoInstitucion" class="input-basico">
                                     </label>
-                                    <label for="sector" class="label-basico">
-                                    Duración
-                                        <input type="text" name="sector" id="sector" class="input-basico">
+                                    <label for="cursoDuracion" class="label-basico">
+                                        Duración
+                                        <input type="text" id="cursoDuracion" class="input-basico">
                                     </label>
                                 </div>
-                                        <div class="dos-datos-radio">
-                                            <button type="button" class="btn-basico-tres">cancelar</button>
-                                            <button type="button" class="btn-basico-dos">enviar</button>
-                                         </div>
+                                <div class="dos-datos-radio">
+                                    <button type="button" class="btn-basico-dos" id="addCurso">Agregar Curso</button>
+                                </div>
                             </div>
                             <br>
                             <div class="tabla-contenedor">
-                                <table>
+                                <table id="tablaCursos">
                                     <thead>
                                         <tr>
-                                            <th>Telefono</th>
-                                            <th>Telefono</th>
-                                            <th>Telefono</th>
+                                            <th>Nombre del Curso</th>
+                                            <th>Institución</th>
+                                            <th>Duración</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>María González</td>
-                                            <td>maria@ejemplo.com</td>
-                                            <td >Editar</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Carlos Pérez</td>
-                                            <td>carlos@ejemplo.com</td>
-                                            <td>Editar</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ana López</td>
-                                            <td>ana@ejemplo.com</td>
-                                            <td>Editar</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Juan Martínez</td>
-                                            <td>juan@ejemplo.com</td>
-                                            <td>Editar</td>
-                                        </tr>
-                                    </tbody>
+                                        </tbody>
                                 </table>
                             </div>
-                            
                         </div>
+
                         <div class="caja-inputs">
                             <h4>Historial de empleos anteriores</h4>
-                            <div class="caja-generadora">
-                                <div class="marco-inputs">
-                                    <label for="sector" class="label-basico">
-                                    Empresa
-                                        <input type="text" name="sector" id="sector" class="input-basico">
+                            <div class="caja-generadora-empleos">
+                                <div class="marco-inputs-empleo">
+                                    <label for="empleoEmpresa" class="label-basico">
+                                        Empresa
+                                        <input type="text" id="empleoEmpresa" class="input-basico">
                                     </label>
-                                    <label for="sector" class="label-basico">
-                                    Puesto
-                                       <input type="text" name="sector" id="sector" class="input-basico">
+                                    <label for="empleoPuesto" class="label-basico">
+                                        Puesto
+                                        <input type="text" id="empleoPuesto" class="input-basico">
                                     </label>
-                                    <label for="sector" class="label-basico">
-                                    Duracion
-                                        <input type="text" name="sector" id="sector" class="input-basico">
+                                    <label for="empleoDuracion" class="label-basico">
+                                        Duración
+                                        <input type="text" id="empleoDuracion" class="input-basico">
                                     </label>
                                 </div>
-                                        <div class="dos-datos-radio">
-                                            <button type="button" class="btn-basico-tres">cancelar</button>
-                                            <button type="button" class="btn-basico-dos">enviar</button>
-                                         </div>
+                                <div class="dos-datos-radio">
+                                    <button type="button" class="btn-basico-dos" id="addEmpleo">Agregar Empleo</button>
+                                </div>
                             </div>
                             <br>
                             <div class="tabla-contenedor">
-                                <table>
+                                <table id="tablaEmpleos">
                                     <thead>
                                         <tr>
-                                            <th>Telefono</th>
-                                            <th>Telefono</th>
-                                            <th>Telefono</th>
+                                            <th>Empresa</th>
+                                            <th>Puesto</th>
+                                            <th>Duración</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>María González</td>
-                                            <td>maria@ejemplo.com</td>
-                                            <td >Editar</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Carlos Pérez</td>
-                                            <td>carlos@ejemplo.com</td>
-                                            <td>Editar</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ana López</td>
-                                            <td>ana@ejemplo.com</td>
-                                            <td>Editar</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Juan Martínez</td>
-                                            <td>juan@ejemplo.com</td>
-                                            <td>Editar</td>
-                                        </tr>
-                                    </tbody>
+                                        </tbody>
                                 </table>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
             </div>
-            
-        </div>
+        </div>       
         <div class="dos-datos-radio">
             <a href="/plataforma-microempresas-estudiantes/registros/registroEstudiantes.php#ancla2-1" class="btn-basico">volver</a>
             <button class="btn-basico">Enviar</button>
