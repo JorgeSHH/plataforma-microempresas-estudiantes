@@ -235,6 +235,116 @@ $stmtStudent->close(); // Cerrar el statement del estudiante
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+        <div class="job-category">
+            <span class="category-label">Categoría:</span>
+            <?php
+            $categoryNames = [
+                1 => 'Tecnología e innovación',
+                2 => 'Marketing y publicidad',
+                3 => 'Recursos humanos',
+                4 => 'Educación y formación',
+                5 => 'Salud y bienestar',
+                6 => 'Logística y transporte'
+            ];
+            $categoryName = isset($categoryNames[$row['id_job_category']]) ? $categoryNames[$row['id_job_category']] : 'Categoría desconocida';
+            ?>
+            <span class="category-value"><?php echo htmlspecialchars($categoryName); ?></span>
+        </div>
+        <div class="job-section">
+            <h3 class="job-section-title">Descripción</h3>
+            <p class="job-section-content"><?php echo htmlspecialchars($row['job_summary']); ?></p>
+        </div>
+        <div class="job-section">
+            <h3 class="job-section-title">Requisitos</h3>
+            <p class="job-section-content"><?php echo htmlspecialchars($row['job_requirements']); ?></p>
+        </div>
+        <div class="job-section">
+            <h3 class="job-section-title">Ubicación</h3>
+            <p class="job-section-content"><?php echo htmlspecialchars($row['job_address']); ?></p>
+        </div>
+        <div class="job-footer">
+            <span>Válida hasta: <?php echo htmlspecialchars(date('Y-m-d', strtotime($row['time_limit']))); ?></span>
+            <button class="apply-button" onclick="alert('Funcionalidad de postulación en desarrollo')">Postularse</button>
+        </div>
+    </div>
+<?php endwhile; ?>
+        </div>
+    </main>
+                  <!-- Contenido Principal -->
+
+
+          <!-- Columna Derecha -->
+          <div class="sidebar-right">
+    <!-- Barra de búsqueda -->
+    <form method="POST" action="studentDashboard.php">
+    <div class="search-container">     
+    <input type="search" placeholder="Buscar..." name="buscar" />
+    <svg class="search-icon" viewBox="0 0 24 24" >
+      <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.36 6.01 12.3 3 8.5 3S1.64 6.01 1.64 9.39c0 3.38 3.06 6.39 6.86 6.39 1.61 0 3.08-.59 4.19-1.56l.27.28v.79l5 4.99L20.49 19l-4.99-5zM8.5 14c-2.52 0-4.57-1.95-4.57-4.61S5.98 4.78 8.5 4.78s4.57 1.95 4.57 4.61S11.02 14 8.5 14z"/>
+    </svg>
+  </div>
+  </form>
+    <!-- Sección de Filtros -->
+    <div class="filters-section">
+    <div class="filter-buttons-container" style="max-height: 240px; overflow-y: auto;">
+        <h3>Filtros de búsqueda</h3>
+        <button class="filter-button" data-category="1">
+            <i class="icon">💡</i> Tecnología e innovación
+        </button>
+        <button class="filter-button" data-category="2">
+            <i class="icon">📈</i> Marketing y publicidad
+        </button>
+        <button class="filter-button" data-category="3">
+            <i class="icon">👥</i> Recursos humanos
+        </button>
+        <button class="filter-button" data-category="4">
+            <i class="icon">📚</i> Educación y formación
+        </button>
+        <button class="filter-button" data-category="5">
+            <i class="icon">❤️</i> Salud y bienestar
+        </button>
+        <button class="filter-button" data-category="6">
+            <i class="icon">🚚</i> Logística y transporte
+        </button>
+        <button class="filter-button" data-category="all">
+            <i class="icon">🌍</i> Mostrar todos
+        </button>
+    </div>
+</div>
+
+    <!-- Sección de Contratos con scroll -->
+    <div class="contracts-section">
+        
+        <div class="filter-buttons-container" style="max-height: 240px; overflow-y: auto;">
+        <h3>Contratos</h3>
+        <div class="contracts-container">
+            <!-- Elemento repetido de contrato -->
+            <div class="contract-item">
+                <div>
+                    <div class="company-name">Nombre de la empresa</div>
+                    <div class="job-title">Título del empleo</div>
+                </div>
+                <button class="view-button">Ver</button>
+            </div>
+            
+            <!-- Repetir elementos para demostrar el scroll -->
+            <div class="contract-item">
+                <div>
+                    <div class="company-name">Nombre de la empresa</div>
+                    <div class="job-title">Título del empleo</div>
+                </div>
+                <button class="view-button">Ver</button>
+            </div>
+            </div>
+        </div>
+         <!-- Más elementos... (repetir estructura según necesidad) -->
+    </div>
+</div>
+         <!-- Columna Derecha -->
+       
+>>>>>>> 8ad085bca9d5f6ff11b98b1b7c35ca0bcba697fc
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.all.min.js"></script>

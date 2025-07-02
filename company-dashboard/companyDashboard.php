@@ -22,6 +22,12 @@ if ($_SESSION['user_rol'] !== 'empresa') {
 $query = "SELECT * FROM jobs";
 $result = $conexion->query($query);
 
+// Obtener datos de la tabla jobs
+$queryJobs = "SELECT * FROM jobs WHERE id_company = ?";
+$stmtJobs = $conexion->prepare($queryJobs);
+$stmtJobs->bind_param("i", $userId);
+$stmtJobs->execute();
+$resultJobs = $stmtJobs->get_result();
 
 // Obtener datos de la tabla companies
 $userId = $_SESSION['user_id']; // Asegúrate de que 'user_id' esté configurado en la sesión al iniciar sesión
@@ -126,7 +132,16 @@ $company = $resultCompany->fetch_assoc();
     <div class="job-card">
         <div class="job-header">
             <h1 class="job-title"><?php echo htmlspecialchars($row['job_title']); ?></h1>
-            <p class="job-company">Empresa: <?php echo htmlspecialchars($company['company_name']); ?></p>
+            <?php
+            // Obtener el nombre de la empresa basado en el id_company del trabajo
+            $companyQuery = "SELECT company_name FROM companies WHERE id_company = ?";
+            $companyStmt = $conexion->prepare($companyQuery);
+            $companyStmt->bind_param("i", $row['id_company']);
+            $companyStmt->execute();
+            $companyResult = $companyStmt->get_result();
+            $companyName = $companyResult->fetch_assoc()['company_name'] ?? 'Empresa desconocida';
+            ?>
+            <p class="job-company">Empresa: <?php echo htmlspecialchars($companyName); ?></p>
             <div class="job-meta">
                 <span class="job-meta-item"><i>📅</i> Publicado: <?php echo htmlspecialchars($row['published_job_date']); ?></span>
                 <span class="job-meta-item"><i>⏳</i> Disponibilidad: <?php echo $row['duration_job'] ? 'Disponible' : 'No disponible'; ?></span>
@@ -163,7 +178,7 @@ $company = $resultCompany->fetch_assoc();
             <p class="job-section-content"><?php echo htmlspecialchars($row['job_address']); ?></p>
         </div>
         <div class="job-footer">
-            <span>Válida hasta: <?php echo htmlspecialchars($row['time_limit']); ?></span>
+        <span>Válida hasta: <?php echo htmlspecialchars(date('Y-m-d', strtotime($row['time_limit']))); ?></span>
         
         </div>
     </div>

@@ -30,7 +30,30 @@ $stmtAddress->execute();
 $resultAddress = $stmtAddress->get_result();
 $address = $resultAddress->fetch_assoc();
 
-$student = array_merge($student, $address);
+// Obtener datos de la tabla courses_taken
+$queryCourses = "SELECT * FROM courses_taken WHERE id_student = ?";
+$stmtCourses = $conexion->prepare($queryCourses);
+$stmtCourses->bind_param("i", $userId);
+$stmtCourses->execute();
+$resultCourses = $stmtCourses->get_result();
+$courses = [];
+while ($row = $resultCourses->fetch_assoc()) {
+    $courses[] = $row;
+}
+
+// Obtener datos de la tabla job_history
+$queryJobHistory = "SELECT * FROM job_history WHERE id_student = ?";
+$stmtJobHistory = $conexion->prepare($queryJobHistory);
+$stmtJobHistory->bind_param("i", $userId);
+$stmtJobHistory->execute();
+$resultJobHistory = $stmtJobHistory->get_result();
+$jobHistory = [];
+while ($row = $resultJobHistory->fetch_assoc()) {
+    $jobHistory[] = $row;
+}
+
+// Combinar datos de todas las tablas
+$student = array_merge($student, $address, ['courses_taken' => $courses], ['job_history' => $jobHistory]);
 ?>
 
 <!DOCTYPE html>
@@ -129,9 +152,9 @@ $student = array_merge($student, $address);
                         </select>
 
                         <label for="date_of_birth">Fecha de Nacimiento:</label>
-                        <input type="date" id="date_of_birth" name="date_of_birth" value="<?php echo htmlspecialchars($student['date_of_birth']); ?>" required>
+                        <input type="date" id="date_of_birth" name="date_of_birth" value="<?php echo htmlspecialchars(date('Y-m-d', strtotime($student['date_of_birth']))); ?>" required>
 
-                        <label for="job-category">Categoría:</label>
+                        <label for="job-category">Preferencias de Trabajo:</label>
                         <select id="job-category" name="job-category" required>
                             <option value="Tecnología e innovación" <?php echo ($student['job_preferences'] === '1') ? 'selected' : ''; ?>>Tecnología e innovación</option>
                             <option value="Marketing y publicidad" <?php echo ($student['job_preferences'] === '2') ? 'selected' : ''; ?>>Marketing y publicidad</option>
@@ -164,6 +187,26 @@ $student = array_merge($student, $address);
 
                         <label for="street">Calle:</label>
                         <input type="text" id="street" name="street" value="<?php echo htmlspecialchars($student['street']); ?>" required>
+
+     
+                            <label for="course_name">Nombre del Curso:</label>
+                            <input type="text" id="course_name" name="course_name" value="<?php echo htmlspecialchars($student['courses_taken'][0]['name_curso'] ?? ''); ?>" required>
+
+                            <label for="institution">Institución:</label>
+                            <input type="text" id="institution" name="institution" value="<?php echo htmlspecialchars($student['courses_taken'][0]['institution'] ?? ''); ?>" required>
+
+                            <label for="duration">Duración:</label>
+                            <input type="text" id="duration" name="duration" value="<?php echo htmlspecialchars($student['courses_taken'][0]['duration'] ?? ''); ?>" required>
+
+                            <label for="company">Empresa:</label>
+                            <input type="text" id="company" name="company" value="<?php echo htmlspecialchars($student['job_history'][0]['company'] ?? ''); ?>" required>
+
+                            <label for="job_position">Posición:</label>
+                            <input type="text" id="job_position" name="job_position" value="<?php echo htmlspecialchars($student['job_history'][0]['job_position'] ?? ''); ?>" required>
+
+                            <label for="period">Periodo:</label>
+                            <input type="text" id="period" name="period" value="<?php echo htmlspecialchars($student['job_history'][0]['period'] ?? ''); ?>" required>
+
 
                         <button type="submit" class="submit-button">Guardar Cambios</button>
                     </form>
