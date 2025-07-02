@@ -18,7 +18,7 @@
 
 body {
     font-family: 'roboto', sans-serif;
-    background-image: linear-gradient(0deg, rgba(11, 18, 17, 0.762), rgb(255, 255, 255)), url(../assets/1.png);
+    background-image: linear-gradient(0deg, rgba(26, 35, 134, 0.349), rgb(255, 255, 255)), url(../assets/loginBg.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
