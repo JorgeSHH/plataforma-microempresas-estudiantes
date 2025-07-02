@@ -1,4 +1,6 @@
 <?php
+// student-dashboard/studentDashboard.php
+
 require_once '../database/conexion.php';
 
 session_start();
@@ -6,12 +8,11 @@ session_start();
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     // Si no ha iniciado sesión, redirigir al login
-    header('Location: login.php');
+    header('Location: ../login/login.php'); // Asegúrate de que esta ruta sea correcta
     exit();
 }
 
 // Opcional: Verificar el rol si la página es específica para un rol
-// Por ejemplo, para dashboard_estudiante.php:
 if ($_SESSION['user_rol'] !== 'estudiante') {
     // Redirigir a una página de acceso denegado o al dashboard principal
     header('Location: ../index.php'); // O dashboard_empresa.php si es empresa
@@ -19,22 +20,28 @@ if ($_SESSION['user_rol'] !== 'estudiante') {
 }
 
 // Consultar las ofertas de trabajo desde la base de datos
+// Ahora usamos `duration_job` en lugar de `available`
+
 $query = "SELECT jobs.*, companies.company_name 
           FROM jobs 
           INNER JOIN companies ON jobs.id_company = companies.id_company";
 $result = $conexion->query($query);
 
+
 // Obtener datos de la tabla students
 $userId = $_SESSION['user_id']; // Asegúrate de que 'user_id' esté configurado en la sesión al iniciar sesión
 $queryStudent = "SELECT * FROM student WHERE id_student = ?";
 $stmtStudent = $conexion->prepare($queryStudent);
+if (!$stmtStudent) {
+    // Manejar error de preparación de consulta
+    die("Error al preparar la consulta de estudiante: " . $conexion->error);
+}
 $stmtStudent->bind_param("i", $userId);
 $stmtStudent->execute();
 $resultStudent = $stmtStudent->get_result();
 $student = $resultStudent->fetch_assoc();
+$stmtStudent->close(); // Cerrar el statement del estudiante
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -43,11 +50,11 @@ $student = $resultStudent->fetch_assoc();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú Lateral Desplegable</title>
     <link rel="stylesheet" href="./styleDashboar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.min.css">
 </head>
 <body>
     <div class="container-menu">
-              <!-- Menú lateral -->
-              <nav class="sidebar" id="sidebar">
+        <nav class="sidebar" id="sidebar">
             <div class="menu-toggle" id="menuToggle">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
@@ -83,37 +90,32 @@ $student = $resultStudent->fetch_assoc();
                     </div>
                 </li>
                 <li class="menu-item">
-                    <a href="'../index.php';" class="menu-link" ondblclick="window.location.href='../index.php';">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                    <a href="../login/logout.php" class="menu-link"> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
                         </svg>
                         <span class="menu-text">Cerrar sesión</span>
                     </a>
                 </li>
             </ul>
-            
         </nav>
         
-           <!-- Contenido principal -->
-           <main class="main-content" id="mainContent">
+        <main class="main-content" id="mainContent">
             <div class="profile-header">
-            <div class="profile-info">
-            <?php
-            if (!empty($student['img_profile'])) {
-                $imgData = base64_encode($student['img_profile']);
-                echo '<img src="data:image/jpeg;base64,' . $imgData . '" alt="Foto de perfil" class="profile-pic">';
-            } else {
-                echo '<img src="../assets/default-logo.png" alt="Foto de perfil por defecto" class="profile-pic">';
-            }
-            ?>
-   
-            <div class="user-details">
-            <!-- aca metemos el nombre del usuario -->
-            <div class="user-name"><?php echo htmlspecialchars($student['studen_name']); ?></div> 
-                     <!-- aca metemos el Apellido del usuario -->
-                     <div class="user-handle"><?php echo htmlspecialchars($student['student_email']); ?></div>
-            </div>
-            </div>
+                <div class="profile-info">
+                    <?php
+                    if (!empty($student['img_profile'])) {
+                        $imgData = base64_encode($student['img_profile']);
+                        $imgType = $student['img_perfil_type'] ?? 'image/jpeg'; // Fallback a jpeg si no está definido
+                        echo '<img src="data:' . htmlspecialchars($imgType) . ';base64,' . $imgData . '" alt="Foto de perfil" class="profile-pic">';
+                    } else {
+                        echo '<img src="../assets/default-logo.png" alt="Foto de perfil por defecto" class="profile-pic">';
+                    }
+                    ?>
+                    <div class="user-details">
+                        <div class="user-name"><?php echo htmlspecialchars($student['studen_name']); ?></div> 
+                        <div class="user-handle"><?php echo htmlspecialchars($student['student_email']); ?></div>
+                    </div>
+                </div>
             </div>
             <section class="welcome">
                 <h1>Bienvenido, Estudiante</h1>
@@ -121,177 +123,122 @@ $student = $resultStudent->fetch_assoc();
             </section>
                 
             <div id="contentSection">
-                <!-- Job card principal -->
-            <!-- <div class="job-card">
-                <div class="job-header">
-                    <h1 class="job-title">Desarrollador Frontend Senior</h1>
-                    <p class="job-company">Tech Solutions Inc.</p>
-                    <div class="job-meta">
-                        <span class="job-meta-item"><i>📅</i> Publicado: 15/05/2023</span>
-                        <span class="job-meta-item"><i>⏳</i> Tiempo limite: 12 meses</span>
-                        <span class="job-meta-item"><i>📍</i> Remoto</span>
-                        <span class="job-meta-item"><i>💰</i> <span class="job-salary">$3,500/mes</span></span>
+                <?php while ($row = $result->fetch_assoc()): ?>
+                    <div class="job-card" data-category="<?php echo htmlspecialchars($row['id_job']); ?>">
+                        <div class="job-header">
+                            <h1 class="job-title"><?php echo htmlspecialchars($row['job_title']); ?></h1>
+                            <p class="job-company"><?php echo htmlspecialchars($row['company_name']); ?></p>
+                            <div class="job-meta">
+                                <span class="job-meta-item"><i>📅</i> Publicado: <?php echo htmlspecialchars($row['published_job_date']); ?></span>
+                                <span class="job-meta-item"><i>⏳</i> Disponibilidad: <?php echo ($row['duration_job'] == 1) ? 'Disponible' : 'No disponible'; ?></span>
+                                <span class="job-meta-item"><i>📍</i> Tipo de Trabajo: <?php echo htmlspecialchars($row['type_job']); ?></span>
+                                <span class="job-meta-item"><i>💰</i> <span class="job-salary"><?php echo htmlspecialchars($row['salary']); ?></span></span>
+                            </div>
+                        </div>
+                        <div class="job-category">
+                            <span class="category-label">Categoría:</span>
+                            <?php
+                            $categoryNames = [
+                                1 => 'Tecnología e innovación',
+                                2 => 'Marketing y publicidad',
+                                3 => 'Recursos humanos',
+                                4 => 'Educación y formación',
+                                5 => 'Salud y bienestar',
+                                6 => 'Logística y transporte'
+                            ];
+                            $categoryName = isset($categoryNames[$row['id_job_category']]) ? $categoryNames[$row['id_job_category']] : 'Categoría desconocida';
+                            ?>
+                            <span class="category-value"><?php echo htmlspecialchars($categoryName); ?></span>
+                        </div>
+                        <div class="job-section">
+                            <h3 class="job-section-title">Descripción</h3>
+                            <p class="job-section-content"><?php echo htmlspecialchars($row['job_summary']); ?></p>
+                        </div>
+                        <div class="job-section">
+                            <h3 class="job-section-title">Requisitos</h3>
+                            <p class="job-section-content"><?php echo htmlspecialchars($row['job_requirements']); ?></p>
+                        </div>
+                        <div class="job-section">
+                            <h3 class="job-section-title">Ubicación</h3>
+                            <p class="job-section-content"><?php echo htmlspecialchars($row['job_address']); ?></p>
+                        </div>
+                        <div class="job-footer">
+                            <span>ID de oferta: #JOB-<?php echo htmlspecialchars($row['id_job']); ?></span>
+                            <button
+                                class="apply-button btn-postular"
+                                data-job-id="<?php echo htmlspecialchars($row['id_job']); ?>"
+                                data-student-id="<?php echo htmlspecialchars($userId); ?>"
+                                <?php echo ($row['duration_job'] == 0) ? 'disabled' : ''; ?> >
+                                <?php echo ($row['duration_job'] == 0) ? 'No Disponible' : 'Postularse'; ?> </button>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+            </div>
+        </main>
+        
+        <div class="sidebar-right">
+            <form method="POST" action="studentDashboard.php">
+                <div class="search-container">    
+                    <input type="search" placeholder="Buscar..." name="buscar" />
+                    <svg class="search-icon" viewBox="0 0 24 24" >
+                        <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.36 6.01 12.3 3 8.5 3S1.64 6.01 1.64 9.39c0 3.38 3.06 6.39 6.86 6.39 1.61 0 3.08-.59 4.19-1.56l.27.28v.79l5 4.99L20.49 19l-4.99-5zM8.5 14c-2.52 0-4.57-1.95-4.57-4.61S5.98 4.78 8.5 4.78s4.57 1.95 4.57 4.61S11.02 14 8.5 14z"/>
+                    </svg>
+                </div>
+            </form>
+            <div class="filters-section">
+                <div class="filter-buttons-container" style="max-height: 240px; overflow-y: auto;">
+                    <h3>Filtros de búsqueda</h3>
+                    <button class="filter-button" data-category="1">
+                        <i class="icon">💡</i> Tecnología e innovación
+                    </button>
+                    <button class="filter-button" data-category="2">
+                        <i class="icon">📈</i> Marketing y publicidad
+                    </button>
+                    <button class="filter-button" data-category="3">
+                        <i class="icon">👥</i> Recursos humanos
+                    </button>
+                    <button class="filter-button" data-category="4">
+                        <i class="icon">📚</i> Educación y formación
+                    </button>
+                    <button class="filter-button" data-category="5">
+                        <i class="icon">❤️</i> Salud y bienestar
+                    </button>
+                    <button class="filter-button" data-category="6">
+                        <i class="icon">🚚</i> Logística y transporte
+                    </button>
+                    <button class="filter-button" data-category="all">
+                        <i class="icon">🌍</i> Mostrar todos
+                    </button>
+                </div>
+            </div>
+
+            <div class="contracts-section">
+                <div class="filter-buttons-container" style="max-height: 240px; overflow-y: auto;">
+                    <h3>Contratos</h3>
+                    <div class="contracts-container">
+                        <div class="contract-item">
+                            <div>
+                                <div class="company-name">Nombre de la empresa</div>
+                                <div class="job-title">Título del empleo</div>
+                            </div>
+                            <button class="view-button">Ver</button>
+                        </div>
+                        
+                        <div class="contract-item">
+                            <div>
+                                <div class="company-name">Nombre de la empresa</div>
+                                <div class="job-title">Título del empleo</div>
+                            </div>
+                            <button class="view-button">Ver</button>
+                        </div>
                     </div>
                 </div>
-                <div class="job-category">
-                    <span class="category-label">Categoría:</span>
-                    <span class="category-value">Tecnología e innovación</span>
-                </div>
-                <div class="job-section">
-                    <h3 class="job-section-title">Resumen del puesto</h3>
-                    <p class="job-section-content">
-                        Buscamos un desarrollador Frontend Senior con experiencia en React.js para unirse a nuestro equipo de desarrollo de productos digitales. Trabajarás en proyectos innovadores para clientes internacionales.
-                    </p>
-                </div>
-                <div class="job-section">
-                    <h3 class="job-section-title">Requisitos</h3>
-                    <p class="job-section-content">
-                        • 5+ años de experiencia en desarrollo Frontend<br>
-                        • Dominio de React.js y Redux<br>
-                        • Experiencia con APIs REST<br>
-                        • Conocimientos de TypeScript<br>
-                        • Inglés intermedio-avanzado<br>
-                        • Capacidad para trabajar en equipo 
-                    </p>
-                </div>
-                <div class="job-section">
-                    <h3 class="job-section-title">Ubicación</h3>
-                    <p class="job-section-content">
-                        Av. Innovación 1234, Piso 5, Ciudad Tecnológica
-                    </p>
-                </div>
-                <div class="job-footer">
-                    <span>ID de oferta: #JOB-12345</span>
-                    <span>Válida hasta: 30/06/2023</span>
-                    <button class="apply-button">Postularse</button>
-                </div>
-            </div> -->
-
-           <!-- Job cards dinámicas -->
-           <?php while ($row = $result->fetch_assoc()): ?>
-    <div class="job-card" data-category="<?php echo htmlspecialchars($row['id_job_category']); ?>">
-        <div class="job-header">
-            <h1 class="job-title"><?php echo htmlspecialchars($row['job_title']); ?></h1>
-            <p class="job-company"><?php echo htmlspecialchars($row['company_name']); ?></p>
-            <div class="job-meta">
-                <span class="job-meta-item"><i>📅</i> Publicado: <?php echo htmlspecialchars($row['published_job_date']); ?></span>
-                <span class="job-meta-item"><i>⏳</i> Disponibilidad: <?php echo $row['duration_job'] ? 'Disponible' : 'No disponible'; ?></span>
-                <span class="job-meta-item"><i>📍</i> Tipo de Trabajo: <?php echo htmlspecialchars($row['type_job']); ?></span>
-                <span class="job-meta-item"><i>💰</i> <span class="job-salary"><?php echo htmlspecialchars($row['salary']); ?></span></span>
             </div>
         </div>
-        <div class="job-category">
-            <span class="category-label">Categoría:</span>
-            <?php
-            $categoryNames = [
-                1 => 'Tecnología e innovación',
-                2 => 'Marketing y publicidad',
-                3 => 'Recursos humanos',
-                4 => 'Educación y formación',
-                5 => 'Salud y bienestar',
-                6 => 'Logística y transporte'
-            ];
-            $categoryName = isset($categoryNames[$row['id_job_category']]) ? $categoryNames[$row['id_job_category']] : 'Categoría desconocida';
-            ?>
-            <span class="category-value"><?php echo htmlspecialchars($categoryName); ?></span>
-        </div>
-        <div class="job-section">
-            <h3 class="job-section-title">Descripción</h3>
-            <p class="job-section-content"><?php echo htmlspecialchars($row['job_summary']); ?></p>
-        </div>
-        <div class="job-section">
-            <h3 class="job-section-title">Requisitos</h3>
-            <p class="job-section-content"><?php echo htmlspecialchars($row['job_requirements']); ?></p>
-        </div>
-        <div class="job-section">
-            <h3 class="job-section-title">Ubicación</h3>
-            <p class="job-section-content"><?php echo htmlspecialchars($row['job_address']); ?></p>
-        </div>
-        <div class="job-footer">
-            <span>Válida hasta: <?php echo htmlspecialchars($row['time_limit']); ?></span>
-            <button class="apply-button" onclick="alert('Funcionalidad de postulación en desarrollo')">Postularse</button>
-        </div>
-    </div>
-<?php endwhile; ?>
-        </div>
-    </main>
-                  <!-- Contenido Principal -->
-
-
-          <!-- Columna Derecha -->
-          <div class="sidebar-right">
-    <!-- Barra de búsqueda -->
-    <form method="POST" action="studentDashboard.php">
-    <div class="search-container">     
-    <input type="search" placeholder="Buscar..." name="buscar" />
-    <svg class="search-icon" viewBox="0 0 24 24" >
-      <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.36 6.01 12.3 3 8.5 3S1.64 6.01 1.64 9.39c0 3.38 3.06 6.39 6.86 6.39 1.61 0 3.08-.59 4.19-1.56l.27.28v.79l5 4.99L20.49 19l-4.99-5zM8.5 14c-2.52 0-4.57-1.95-4.57-4.61S5.98 4.78 8.5 4.78s4.57 1.95 4.57 4.61S11.02 14 8.5 14z"/>
-    </svg>
-  </div>
-  </form>
-    <!-- Sección de Filtros -->
-    <div class="filters-section">
-    <div class="filter-buttons-container" style="max-height: 240px; overflow-y: auto;">
-        <h3>Filtros de búsqueda</h3>
-        <button class="filter-button" data-category="1">
-            <i class="icon">💡</i> Tecnología e innovación
-        </button>
-        <button class="filter-button" data-category="2">
-            <i class="icon">📈</i> Marketing y publicidad
-        </button>
-        <button class="filter-button" data-category="3">
-            <i class="icon">👥</i> Recursos humanos
-        </button>
-        <button class="filter-button" data-category="4">
-            <i class="icon">📚</i> Educación y formación
-        </button>
-        <button class="filter-button" data-category="5">
-            <i class="icon">❤️</i> Salud y bienestar
-        </button>
-        <button class="filter-button" data-category="6">
-            <i class="icon">🚚</i> Logística y transporte
-        </button>
-        <button class="filter-button" data-category="all">
-            <i class="icon">🌍</i> Mostrar todos
-        </button>
-    </div>
-</div>
-
-    <!-- Sección de Contratos con scroll -->
-    <div class="contracts-section">
-        
-        <div class="filter-buttons-container" style="max-height: 240px; overflow-y: auto;">
-        <h3>Contratos</h3>
-        <div class="contracts-container">
-            <!-- Elemento repetido de contrato -->
-            <div class="contract-item">
-                <div>
-                    <div class="company-name">Nombre de la empresa</div>
-                    <div class="job-title">Título del empleo</div>
-                </div>
-                <button class="view-button">Ver</button>
-            </div>
-            
-            <!-- Repetir elementos para demostrar el scroll -->
-            <div class="contract-item">
-                <div>
-                    <div class="company-name">Nombre de la empresa</div>
-                    <div class="job-title">Título del empleo</div>
-                </div>
-                <button class="view-button">Ver</button>
-            </div>
-            </div>
-        </div>
-         <!-- Más elementos... (repetir estructura según necesidad) -->
-    </div>
-</div>
-         <!-- Columna Derecha -->
-       
     </div>
 
-
-
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.all.min.js"></script>
+    <script src="../request/request.js"></script>
     <script src="./scriptDashboard.js"></script>
 </body>
 </html>
