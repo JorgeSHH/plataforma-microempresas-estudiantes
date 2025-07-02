@@ -71,7 +71,7 @@ WHERE id_student = ?";
 $stmtStudent = $conexion->prepare($queryStudent);
 
 if (!$stmtStudent) {
-    die("Error en la consulta: " . $conexion->error);
+    die("Error en la consultas12: " . $conexion->error);
 }
 
 $stmtStudent->bind_param(
@@ -106,7 +106,7 @@ WHERE id_student = ?";
 $stmtAddress = $conexion->prepare($queryAddress);
 
 if (!$stmtAddress) {
-    die("Error en la consulta: " . $conexion->error);
+    die("Error en la consultas: " . $conexion->error);
 }
 
 $stmtAddress->bind_param("ssssi", $state, $parish, $sector, $street, $userId);
@@ -115,6 +115,42 @@ if (!$stmtAddress->execute()) {
     die("Error al actualizar los datos de dirección: " . $stmtAddress->error);
 }
 $stmtAddress->close();
+
+// Eliminar los registros existentes para evitar duplicados
+$queryDeleteCourses = "DELETE FROM courses_taken WHERE id_student = ?";
+$stmtDeleteCourses = $conexion->prepare($queryDeleteCourses);
+$stmtDeleteCourses->bind_param("i", $userId);
+$stmtDeleteCourses->execute();
+
+// Insertar el nuevo curso realizado
+$courseName = $_POST['course_name'] ?? '';
+$institution = $_POST['institution'] ?? '';
+$duration = $_POST['duration'] ?? '';
+
+if (!empty($courseName) && !empty($institution) && !empty($duration)) {
+    $queryInsertCourse = "INSERT INTO courses_taken (id_student, name_curso, institution, duration) VALUES (?, ?, ?, ?)";
+    $stmtInsertCourse = $conexion->prepare($queryInsertCourse);
+    $stmtInsertCourse->bind_param("isss", $userId, $courseName, $institution, $duration);
+    $stmtInsertCourse->execute();
+}
+
+// Eliminar los registros existentes para evitar duplicados
+$queryDeleteJobHistory = "DELETE FROM job_history WHERE id_student = ?";
+$stmtDeleteJobHistory = $conexion->prepare($queryDeleteJobHistory);
+$stmtDeleteJobHistory->bind_param("i", $userId);
+$stmtDeleteJobHistory->execute();
+
+// Insertar el nuevo historial de trabajos
+$company = $_POST['company'] ?? '';
+$jobPosition = $_POST['job_position'] ?? '';
+$period = $_POST['period'] ?? '';
+
+if (!empty($company) && !empty($jobPosition) && !empty($period)) {
+    $queryInsertJob = "INSERT INTO job_history (id_student, company, job_position, period) VALUES (?, ?, ?, ?)";
+    $stmtInsertJob = $conexion->prepare($queryInsertJob);
+    $stmtInsertJob->bind_param("isss", $userId, $company, $jobPosition, $period);
+    $stmtInsertJob->execute();
+}
 
 // Redirigir al perfil del estudiante con un mensaje de éxito
 header('Location: studentProfile.php?success=1');

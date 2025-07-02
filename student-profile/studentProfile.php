@@ -14,10 +14,10 @@ if ($_SESSION['user_rol'] !== 'estudiante') {
     exit();
 }
 
-// Obtener los datos actuales de la compañía desde la base de datos
+// Obtener el ID del estudiante desde la sesión
 $userId = $_SESSION['user_id'];
 
-// Obtener datos de la tabla companies
+// Obtener datos de la tabla student
 $queryStudent = "SELECT * FROM student WHERE id_student = ?";
 $stmtStudent = $conexion->prepare($queryStudent);
 $stmtStudent->bind_param("i", $userId);
@@ -25,7 +25,7 @@ $stmtStudent->execute();
 $resultStudent = $stmtStudent->get_result();
 $student = $resultStudent->fetch_assoc();
 
-// Obtener datos de la tabla company_address
+// Obtener datos de la tabla student_address
 $queryAddress = "SELECT * FROM student_address WHERE id_student = ?";
 $stmtAddress = $conexion->prepare($queryAddress);
 $stmtAddress->bind_param("i", $userId);
@@ -33,8 +33,30 @@ $stmtAddress->execute();
 $resultAddress = $stmtAddress->get_result();
 $address = $resultAddress->fetch_assoc();
 
-// Combinar datos de ambas tablas
-$student = array_merge($student, $address);
+// Obtener datos de la tabla courses_taken
+$queryCourses = "SELECT * FROM courses_taken WHERE id_student = ?";
+$stmtCourses = $conexion->prepare($queryCourses);
+$stmtCourses->bind_param("i", $userId);
+$stmtCourses->execute();
+$resultCourses = $stmtCourses->get_result();
+$courses = [];
+while ($row = $resultCourses->fetch_assoc()) {
+    $courses[] = $row;
+}
+
+// Obtener datos de la tabla job_history
+$queryJobHistory = "SELECT * FROM job_history WHERE id_student = ?";
+$stmtJobHistory = $conexion->prepare($queryJobHistory);
+$stmtJobHistory->bind_param("i", $userId);
+$stmtJobHistory->execute();
+$resultJobHistory = $stmtJobHistory->get_result();
+$jobHistory = [];
+while ($row = $resultJobHistory->fetch_assoc()) {
+    $jobHistory[] = $row;
+}
+
+// Combinar datos de todas las tablas
+$student = array_merge($student, $address, ['courses_taken' => $courses], ['job_history' => $jobHistory]);
 ?>
 
 
@@ -134,7 +156,7 @@ $student = array_merge($student, $address);
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
                                             <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 1 0V1zm11 3H1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3z"/>
                                             <path d="M2.5 4a.5.5 0 0 1 .5.5v.5h10v-.5a.5.5 0 0 1 1 0v.5a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-.5a.5.5 0 0 1 .5-.5z"/>
-                                        </svg> <?php echo htmlspecialchars($student['date_of_birth']); ?>
+                                        </svg> <?php echo htmlspecialchars(date('Y-m-d', strtotime($student['date_of_birth']))); ?>
                                     </p>
                                 <p>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-briefcase-fill" viewBox="0 0 16 16">
@@ -184,9 +206,30 @@ $student = array_merge($student, $address);
                             </ul>
                         </section>
 
-              
+                        <section class="cv-section education">
+                            <h3><i class="fas fa-graduation-cap"></i> Cursos Realizados</h3>
+                            <?php if (!empty($student['courses_taken'])): ?>
+                                <ul>
+                                    <?php foreach ($student['courses_taken'] as $course): ?>
+                                        <li>
+                                            <ul>
+                                                <li><strong>Nombre del Curso:</strong> <?php echo htmlspecialchars($course['name_curso']); ?></li>
+                                                <li><strong>Institución:</strong> <?php echo htmlspecialchars($course['institution']); ?></li>
+                                                <li><strong>Duración:</strong> <?php echo htmlspecialchars($course['duration']); ?></li>
+                                            </ul>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php else: ?>
+                                <p>No se han registrado cursos.</p>
+                            <?php endif; ?>
 
+
+                            
                     </div>
+
+                                
+
 
                     <div class="right-column">
                         <section class="cv-section experience">
@@ -228,6 +271,25 @@ $student = array_merge($student, $address);
                                 </p>
                             </div>
 
+                        </section>
+
+                        <section class="cv-section education">
+                            <h3><i class="fas fa-briefcase"></i> Historial de Trabajos</h3>
+                            <?php if (!empty($student['job_history'])): ?>
+                                <ul>
+                                    <?php foreach ($student['job_history'] as $job): ?>
+                                        <li>
+                                            <ul>
+                                                <li><strong>Empresa:</strong> <?php echo htmlspecialchars($job['company']); ?></li>
+                                                <li><strong>Posición:</strong> <?php echo htmlspecialchars($job['job_position']); ?></li>
+                                                <li><strong>Periodo:</strong> <?php echo htmlspecialchars($job['period']); ?></li>
+                                            </ul>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php else: ?>
+                                <p>No se ha registrado historial de trabajos.</p>
+                            <?php endif; ?>
                         </section>
 
                      

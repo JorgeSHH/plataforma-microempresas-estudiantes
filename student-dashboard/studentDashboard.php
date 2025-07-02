@@ -208,7 +208,7 @@ $student = $resultStudent->fetch_assoc();
             <p class="job-section-content"><?php echo htmlspecialchars($row['job_address']); ?></p>
         </div>
         <div class="job-footer">
-            <span>Válida hasta: <?php echo htmlspecialchars($row['time_limit']); ?></span>
+            <span>Válida hasta: <?php echo htmlspecialchars(date('Y-m-d', strtotime($row['time_limit']))); ?></span>
             <button class="apply-button" onclick="alert('Funcionalidad de postulación en desarrollo')">Postularse</button>
         </div>
     </div>
