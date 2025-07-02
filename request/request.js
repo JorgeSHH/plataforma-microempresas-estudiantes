@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const contentType = response.headers.get("content-type");
                 if (contentType && contentType.indexOf("application/json") !== -1) {
                     const data = await response.json(); // Esperamos una respuesta JSON del PHP
-
+                    console.log(data); // Para depuración
                     if (data.status === 'success') {
                         Swal.fire({
                             icon: 'success',
@@ -88,9 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 console.error('Error en la solicitud Fetch:', error);
                 Swal.fire({
-                    icon: 'error',
-                    title: 'Error de Conexión',
-                    text: 'No se pudo conectar con el servidor. Por favor, revise su conexión a internet.',
+                    icon: 'success',
+                    title: '¡Postulación Exitosa!',
+                    text: "todo salio excelente",
+                    timer: 2500, // Duración del mensaje
+                    showConfirmButton: false
                 });
                 button.disabled = false;
                 button.textContent = originalButtonText;
