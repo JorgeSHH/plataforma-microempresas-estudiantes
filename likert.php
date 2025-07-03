@@ -452,7 +452,7 @@
         
     fetch('.gestion-solicitud-empresa/calificar.php', {
          method: 'POST',
-         body: registroData
+         body: promedio
      })
      .then(response => response.text())
      .then(data => {
