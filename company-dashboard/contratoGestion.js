@@ -1,6 +1,7 @@
 // Función para manejar la acción de Aceptar
 function handleAceptar(idRequest, idJob, idCompany, idStudent) {
     Swal.fire({
+        
         title: '¿Estás seguro de aceptar?',
         text: `Se aceptará la solicitud con ID: ${idRequest}`,
         icon: 'question',
