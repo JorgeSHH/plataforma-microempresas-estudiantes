@@ -162,7 +162,7 @@ $stmtStudent->close(); // Cerrar el statement del estudiante
                             <p class="job-section-content"><?php echo htmlspecialchars($row['job_address']); ?></p>
                         </div>
                         <div class="job-footer">
-                            <span>ID de oferta: #JOB-<?php echo htmlspecialchars($row['id_job']); ?></span>
+                        <span>Válida hasta: <?php echo htmlspecialchars(date('Y-m-d', strtotime($row['time_limit']))); ?></span>
                             <button
                                 class="apply-button btn-postular"
                                 data-job-id="<?php echo htmlspecialchars($row['id_job']); ?>"
