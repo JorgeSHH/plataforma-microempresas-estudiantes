@@ -604,7 +604,8 @@ button:hover{
 .contracts-section .contracts-container {
     flex: 1; /* Permite que el contenedor ocupe todo el espacio disponible */
     overflow-y: auto; /* Permite desplazamiento vertical si el contenido excede la altura */
-    margin-top: 1rem;
+    margin-top: 2rem;
+
     padding: 1rem;
     background: var(--hvr2); /* Fondo para diferenciar el contenedor */
     border-radius: 8px;
@@ -616,7 +617,9 @@ button:hover{
 display: block;
 height: 100vh;
 min-height: 100vh;
+margin-bottom: 20px;
 }
+
 
 
 .contract-item {
@@ -624,11 +627,13 @@ min-height: 100vh;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    margin-bottom: 1rem;
+
     background: var(--hvr2);
     border-radius: 8px;
     transition: transform 0.2s;
 }
+
+
 
 .contract-item:hover {
     transform: translateX(15px);
@@ -644,6 +649,24 @@ min-height: 100vh;
     color: #404040;
 }
 
+
+.contract-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.contract-actions .view-button {
+ background-color: #3b55a285;
+    color: white;
+    border: none;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s, color 0.3s;
+}
+
 .view-button {
     background: var(--hvr1);
     color: white;
@@ -652,6 +675,7 @@ min-height: 100vh;
     border-radius: 20px;
     cursor: pointer;
     font-size: 0.9rem;
+
 }
 
 .view-button:hover {
@@ -659,28 +683,25 @@ min-height: 100vh;
     color: var(--hvr2);
 }
 
-/* Botón de postularse */
-.apply-button {
-    background: var(--hvr1);
+.contract-actions .likert:hover {
+    background:var(--btm);
     color: var(--hvr2);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: background 0.3s, color 0.3s;
 }
 
-.apply-button:hover {
-    background: var(--btm);
+.contract-actions .rechazar:hover {
+    background: #f24141;
     color: var(--hvr2);
-    transform: scale(1.05);
+    transition: background 0.3s, color 0.3s;
 }
 
-.apply-button:active {
-    transform: scale(0.95);
+.contract-actions .aceptar:hover {
+    background: #41f250;
+    color: var(--hvr2);
+    transition: background 0.3s, color 0.3s;
 }
+
+
 
 /* Botón para abrir la ventana modal */
 .add-button-container {
