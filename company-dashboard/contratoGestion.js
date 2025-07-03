@@ -1,37 +1,59 @@
 // Función para manejar la acción de Aceptar
+// Función para manejar la acción de Aceptar
 function handleAceptar(idRequest, idJob, idCompany, idStudent) {
-    Swal.fire({
-        
+    // Datos a enviar
+    const data = {
+        idRequest: idRequest, // ¡Aquí estaba el error! Cambiado de 'idRequeste' a 'idRequest'
+        idJob: idJob,
+        idCompany: idCompany,
+        idStudent: idStudent
+    };
 
-        title: '¿Estás seguro de aceptar?',
-        text: `Se aceptará la solicitud con ID: ${idRequest}`,
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Sí, aceptar!',
-        cancelButtonText: 'Cancelar'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Aquí puedes añadir la lógica para enviar la solicitud de aceptación al servidor
-            // Por ejemplo, usando fetch() o XMLHttpRequest
-            console.log('Aceptar solicitud:', { idRequest, idJob, idCompany, idStudent });
-            Swal.fire(
-                '¡Aceptado!',
-                'La solicitud ha sido aceptada.',
-                'success'
-            );
+    console.log(JSON.stringify(data, null, 2));
+
+    // Enviar al servidor
+    fetch('../gestion-solicitud-empresa/acepetar.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Primero ver el texto crudo para depuración
+        return response.text().then(text => {
+            console.log('Respuesta cruda:', text);
+            try {
+                return JSON.parse(text);
+            } catch (e) {
+                console.error('Error parseando JSON:', e);
+                throw new Error('Respuesta no es JSON válido');
+            }
+        });
+    })
+    .then(data => {
+        // Procesar data como JSON
+        console.log('Respuesta JSON:', data);
+        if (data.success) {
+            alert('¡Operación completada exitosamente!');
+            // Opcional: recargar la página o actualizar la UI
+            location.reload(); 
+        } else {
+            alert('Error en la operación: ' + data.message);
         }
+    })
+    .catch(error => {
+        console.error('Error completo en la solicitud fetch:', error);
+        alert('Hubo un error al procesar la solicitud. Por favor, inténtalo de nuevo.');
     });
 }
-
 // Función para manejar la acción de Rechazar
 function handleRechazar(idRequest, idJob, idCompany, idStudent) {
     Swal.fire({
         title: '¿Estás seguro de rechazar?',
         text: `Se rechazará la solicitud con ID: ${idRequest}`,
         icon: 'warning',
-        showCancelButton: true,
+        showCancelButton: true, 
         confirmButtonColor: '#d33',
         cancelButtonColor: '#3085d6',
         confirmButtonText: 'Sí, rechazar!',
