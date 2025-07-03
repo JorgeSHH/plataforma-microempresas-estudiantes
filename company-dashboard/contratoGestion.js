@@ -1,31 +1,12 @@
 // Función para manejar la acción de Aceptar
-function handleAceptar(idRequest, idJob, idCompany, idStudent) {
-    Swal.fire({
-        
-        title: '¿Estás seguro de aceptar?',
-        text: `Se aceptará la solicitud con ID: ${idRequest}`,
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Sí, aceptar!',
-        cancelButtonText: 'Cancelar'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // Aquí puedes añadir la lógica para enviar la solicitud de aceptación al servidor
-            // Por ejemplo, usando fetch() o XMLHttpRequest
-            console.log('Aceptar solicitud:', { idRequest, idJob, idCompany, idStudent });
-            Swal.fire(
-                '¡Aceptado!',
-                'La solicitud ha sido aceptada.',
-                'success'
-            );
-        }
-    });
-}
+// Función para manejar la acción de Aceptar
+
 
 // Función para manejar la acción de Rechazar
-function handleRechazar(idRequest, idJob, idCompany, idStudent) {
+function handleRechazar(idRequest, idStudent) {
+    const formData = new FormData();
+    formData.append('request_id', idRequest); // Usar idRequest en lugar de requestId
+    
     Swal.fire({
         title: '¿Estás seguro de rechazar?',
         text: `Se rechazará la solicitud con ID: ${idRequest}`,
@@ -37,16 +18,40 @@ function handleRechazar(idRequest, idJob, idCompany, idStudent) {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            // Aquí puedes añadir la lógica para enviar la solicitud de rechazo al servidor
-            console.log('Rechazar solicitud:', { idRequest, idJob, idCompany, idStudent });
-            Swal.fire(
-                '¡Rechazado!',
-                'La solicitud ha sido rechazada.',
-                'error'
-            );
+            // Enviar la solicitud al servidor para eliminar el contrato
+            fetch('../gestion-solicitud-empresa/rechazar.php', {
+                method: 'POST', // Asegúrate de que sea POST
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    Swal.fire('Error', data.error, 'error');
+                } else {
+                    Swal.fire(
+                        '¡Rechazado!',
+                        data.message,
+                        'success'
+                    ).then(() => {
+                        // Opcional: Recargar la página o actualizar la tabla
+                        location.reload();
+                    });
+                    
+                    // Aquí puedes usar data.request_id si necesitas hacer algo con él
+                    console.log("ID Request asociado:", data.request_id);
+                }
+            })
+            .catch(error => {
+                console.error('Error al eliminar el contrato:', error);
+                Swal.fire('Error', 'Ocurrió un error al rechazar la solicitud', 'error');
+            });
         }
     });
 }
+
+
+
+
 
 // Función para manejar la acción de Ver
 function handleVer(idRequest, idJob, idCompany, idStudent) {
