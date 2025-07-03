@@ -85,6 +85,18 @@ button:hover{
     overflow: hidden;
     
 }
+.colorH{
+    width: 250px;
+    background: rgba(255, 255, 255, 0.638);
+    color: white;
+    transition: all 0.3s;
+    height: 100vh;
+    position: fixed;
+    z-index: 100;
+    border: var(--btm) 2px solid;
+    overflow: hidden;
+    
+}
 
 .sidebar:hover {
     background-color: white;

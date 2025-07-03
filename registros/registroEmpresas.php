@@ -25,7 +25,7 @@
     <p id="ancla2">.</p>
     <article class="parte1">
         <div class="barra-progreso">
-            Soy la barra de progreso
+
         </div>
         <h2 class="tituloDos">Creacion de la cuentas</h2>
         <div class="containerformulario">
@@ -68,9 +68,9 @@
     </article>
     <article class="parte2">
         <div class="barra-progreso">
-            Soy la barra de progreso
+
         </div>
-        <h2 class="tituloDos">Creacion de la cuentas</h2>
+ 
         <div class="containerFormulario2">
             <div class="caja-inputs">
                 <h3>Datos de la empresa</h3>
@@ -119,7 +119,7 @@
 
         </div>
         <a href="/plataforma-microempresas-estudiantes/registros/registroEmpresas.php#ancla2" class="btn-basico">volver</a>
-        <input type="submit" value="Enviar">
+        <input type="submit" value="Enviar" class="btn-basico">
         </form>
     </article>
 

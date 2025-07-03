@@ -25,7 +25,7 @@
     <p id="ancla2">.</p>
     <article class="parte1">
         <div class="barra-progreso">
-            Soy la barra de progreso
+    
         </div>
         <h2 class="tituloDos">Creacion de la cuentas</h2>
         <div class="containerformulario">
@@ -37,7 +37,7 @@
                             <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5"/>
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
                           </svg>
-                          agrege imagen para el perfil
+                          <h4>agrege imagen para el perfil</h4>
                         <input type="file" name="imagenEstudiante" id="imagenEstudiante" style="display: none;">
                     </label>
                     <div class="datos-empresa">
@@ -66,7 +66,7 @@
     <p id="ancla2-1">.</p>
     <article class="parte2">
         <div class="barra-progreso">
-            Soy la barra de progreso
+
         </div>
         <h2 class="tituloDos"></h2>
         <div class="containerFormulario2">
@@ -147,11 +147,11 @@
             <div class="caja-con-scroll">
                 <div class="contenido-form3">
                     <div class="barra-progreso">
-                        Soy la barra de progreso
+     
                     </div>
                     <h2 class="tituloDos">Creacion de la cuentas</h2>
                     <p class="textoAdition">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure nesciunt dolorem odio!
+                      
                     </p>
                     <div class="containerFormulario3">
                         <div class="caja-inputs">
@@ -207,7 +207,7 @@
                         <hr>
                         <!-- registros individuales manejar lo del registro individual con atencion -->
                         <div class="caja-inputs">
-                            <h4>Cursos realizados</h4>
+                  
                             <div class="caja-generadora-cursos">
                                 <div class="marco-inputs-curso">
                                     <label for="cursoNombre" class="label-basico">
@@ -245,7 +245,7 @@
                         </div>
 
                         <div class="caja-inputs">
-                            <h4>Historial de empleos anteriores</h4>
+             
                             <div class="caja-generadora-empleos">
                                 <div class="marco-inputs-empleo">
                                     <label for="empleoEmpresa" class="label-basico">
