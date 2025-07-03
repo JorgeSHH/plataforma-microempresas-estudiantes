@@ -168,7 +168,7 @@ $student = array_merge($student, $address, ['courses_taken' => $courses], ['job_
                     </div>
                 </header>
                 
-<!-- informacion general de la cuenta del estudiante -->
+          <!-- informacion general de la cuenta del estudiante -->
                 <div class="cv-content">
                     <div class="left-column">
                         <section class="cv-section about">
