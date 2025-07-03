@@ -70,35 +70,19 @@ function handleVer(idRequest, idJob, idCompany, idStudent) {
 
 // Función para manejar la acción de Calificar
 function handleCalificar(idRequest, idJob, idCompany, idStudent) {
-    Swal.fire({
-        title: 'Calificar Solicitud',
-        html: `
-            <p>Vas a calificar la solicitud con ID: ${idRequest}.</p>
-            <input type="number" id="rating" class="swal2-input" placeholder="Ingresa una calificación (1-5)" min="1" max="5">
-        `,
-        icon: 'success',
-        showCancelButton: true,
-        confirmButtonText: 'Enviar Calificación',
-        cancelButtonText: 'Cancelar',
-        preConfirm: () => {
-            const rating = Swal.getPopup().querySelector('#rating').value;
-            if (!rating || rating < 1 || rating > 5) {
-                Swal.showValidationMessage(`Por favor, ingresa una calificación válida (1-5)`);
-            }
-            return rating;
-        }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            const ratingValue = result.value;
-            // Aquí puedes añadir la lógica para enviar la calificación al servidor
-            console.log('Calificar solicitud:', { idRequest, idJob, idCompany, idStudent, rating: ratingValue });
-            Swal.fire(
-                '¡Calificado!',
-                `Has calificado la solicitud con ${ratingValue} estrellas.`,
-                'success'
-            );
-        }
-    });
+    // Redirige a likert.php pasando los IDs como parámetros en la URL
+    // Codificamos los parámetros para evitar problemas con caracteres especiales
+    const params = new URLSearchParams();
+    params.append('idRequest', idRequest);
+    params.append('idJob', idJob);
+    params.append('idCompany', idCompany);
+    params.append('idStudent', idStudent);
+
+    location.href = `../likert.php?${params.toString()}`;
+
+    // Los fetch y SweetAlerts comentados aquí no se ejecutarán porque la página se redirige.
+    // fetch("") // Este fetch no tiene sentido aquí
+    // ...
 }
 
 // Esperar a que el DOM esté completamente cargado
