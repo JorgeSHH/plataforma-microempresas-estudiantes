@@ -373,5 +373,6 @@ if (!$resultRequests) {
 <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.min.css " rel="stylesheet">
     <script src="./contratoGestion.js" ></script>
     <script src="./scriptCDashboard.js"></script>
+<link rel="stylesheet" href="../student-profile/styleSProfile.css">
 </body>
 </html>
