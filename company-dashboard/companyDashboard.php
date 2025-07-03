@@ -38,7 +38,41 @@ $stmtCompany->execute();
 $resultCompany = $stmtCompany->get_result();
 $company = $resultCompany->fetch_assoc();
 
+// Obtener datos de la tabla requests
+$queryRequests = "SELECT
+            r.id_requests,
+            r.id_job,
+            r.id_company,
+            r.id_student,
+            j.job_title,    -- Corregido de job_title a title_job
+            c.company_name, -- Corregido de company_name a name_company
+            s.studen_name  -- Corregido de studen_name a name_student
+        FROM
+            requests AS r
+        INNER JOIN
+            jobs AS j ON r.id_job = j.id_job
+        INNER JOIN
+            companies AS c ON r.id_company = c.id_company
+        INNER JOIN
+            student AS s ON r.id_student = s.id_student
+        WHERE
+            r.id_company = ?"; // Filtrar por id_company
+$stmtRequests = $conexion->prepare($queryRequests);
+$stmtRequests->bind_param("i", $userId);
+$stmtRequests->execute();
+$resultRequests = $stmtRequests->get_result();
+// Verificar si la consulta fue exitosa
+if (!$resultRequests) {
+    die("Error en la consulta SQL: " . $conexion->error);
+}
+
+
+
 ?>
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -193,7 +227,6 @@ $company = $resultCompany->fetch_assoc();
     
 
    
-
     <!-- Sección de Contratos con scroll -->
     <div class="contracts-section">
         
@@ -203,8 +236,8 @@ $company = $resultCompany->fetch_assoc();
             <!-- Elemento repetido de contrato -->
             <div class="contract-item">
                             <div>
-                                <div class="company-name">Nombre de la empresa</div>
-                                <div class="job-title">Título del empleo</div>
+                                <div class="company-name">Tacos</div>
+                                <div class="job-title">Necesito tacos</div>
                             </div>
                             <button class="view-button" id="verPerfil">Ver</button>
                         </div>
@@ -223,21 +256,51 @@ $company = $resultCompany->fetch_assoc();
                 <img src="../assets/like-right-svgrepo-com.svg" width="25" height="25" alt="Like Icon" style="filter: invert(100%);">
             </button>
             </div>
+            </div>
+            <!-- Repetir elementos dinamicos para demostrar el scroll -->
+        
             
-            <!-- Repetir elementos para demostrar el scroll -->
+            <?php if ($resultRequests->num_rows > 0): ?>
+    <div class="contracts-container">
+        <?php while ($row = $resultRequests->fetch_assoc()): ?>
             <div class="contract-item">
                 <div>
-                    <div class="company-name">Nombre del Estudiante</div>
-                    <div class="job-title">Título del tranajo</div>
+                    <div class="company-name"><?php echo htmlspecialchars($row['company_name']); ?></div>
+                    <div class="job-title"><?php echo htmlspecialchars($row['job_title']); ?></div>
                 </div>
-                <button class="view-button calificar">Ver</button>
+                <button class="view-button" id="verPerfil">Ver</button>
             </div>
-     
-            
+            <div class="contract-actions">
+                <button class="view-button aceptar" id="aceptar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 10.97a.75.75 0 0 0 1.06 0l3.992-3.992a.75.75 0 0 0-1.06-1.06L7.5 9.44 5.53 7.47a.75.75 0 0 0-1.06 1.06l2.5 2.5z"/>
+                    </svg>
+                </button>
+                <button class="view-button rechazar" id="rechazar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646-2.647a.5.5 0 0 0-.708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                    </svg>
+                </button>
+                <button class="view-button likert" id="calificar">
+                    <img src="../assets/like-right-svgrepo-com.svg" width="25" height="25" alt="Like Icon" style="filter: invert(100%);">
+                </button>
             </div>
-        </div>
-         <!-- Más elementos... (repetir estructura según necesidad) -->
+        <?php endwhile; ?>
     </div>
+<?php else: ?>
+    <p>No hay contratos disponibles.</p>
+<?php endif; ?>
+            
+         
+               <!-- Más elementos... (repetir estructura según necesidad) -->
+
+
+
+        </div>
+    </div>
+
+
+
 </div>
          <!-- Columna Derecha -->
        
