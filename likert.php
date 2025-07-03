@@ -377,7 +377,7 @@
             
             // Calcular promedio
             const promedio = (q1 + q2 + q3 + q4 + q5) / 5;
-            
+
             // Determinar nivel de satisfacción
             let nivel = "";
             let color = "";
@@ -433,6 +433,9 @@
                 }
             });
         });
+
+         // Asegura que el promedio se muestre con un decimal
+        
         
         // Animación para los elementos de la encuesta
         document.querySelectorAll('.question').forEach((question, index) => {
@@ -445,6 +448,19 @@
             question.style.transform = 'translateY(20px)';
             question.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         });
+
+        
+    fetch('.gestion-solicitud-empresa/calificar.php', {
+         method: 'POST',
+         body: registroData
+     })
+     .then(response => response.text())
+     .then(data => {
+         
+     })
+
+        console.log(promedio);
+        
     </script>
 </body>
 </html>
