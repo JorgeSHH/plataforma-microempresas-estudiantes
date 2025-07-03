@@ -36,16 +36,29 @@ function handleAceptar(idRequest, idJob, idCompany, idStudent) {
         // Procesar data como JSON
         console.log('Respuesta JSON:', data);
         if (data.success) {
-            alert('¡Operación completada exitosamente!');
+            Swal.fire({
+                title: "¡Operación completada exitosamente!",
+                icon: "success",
+                draggable: true
+              })
             // Opcional: recargar la página o actualizar la UI
             location.reload(); 
         } else {
-            alert('Error en la operación: ' + data.message);
+            Swal.fire({
+                title: "¡Al pareser hay problemas en el sistema intente mas tarde!",
+                icon: "error",
+                draggable: true
+              })
+            console.log('Error en la operación: ' + data.message);
         }
     })
     .catch(error => {
         console.error('Error completo en la solicitud fetch:', error);
-        alert('Hubo un error al procesar la solicitud. Por favor, inténtalo de nuevo.');
+        Swal.fire({
+            title: "Hubo un error al procesar la solicitud. Por favor, inténtalo de nuevo.",
+            icon: "error",
+            draggable: true
+          })
     });
 }
 
