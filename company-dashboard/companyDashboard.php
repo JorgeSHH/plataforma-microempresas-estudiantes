@@ -259,31 +259,59 @@ if (!$resultRequests) {
             </div>
             <!-- Repetir elementos dinamicos para demostrar el scroll -->
         
-            
             <?php if ($resultRequests->num_rows > 0): ?>
     <div class="contracts-container">
         <?php while ($row = $resultRequests->fetch_assoc()): ?>
             <div class="contract-item">
                 <div>
-                    <div class="company-name"><?php echo htmlspecialchars($row['company_name']); ?></div>
+                    <div class="company-name"><?php echo htmlspecialchars($row['studen_name']); ?></div>
                     <div class="job-title"><?php echo htmlspecialchars($row['job_title']); ?></div>
+                    <div class="job-title"><?php echo htmlspecialchars($row['id_requests']); ?></div>
                 </div>
-                <button class="view-button" data-action="verPerfil">Ver</button>
-</div>
-<div class="contract-actions">
-    <button class="view-button aceptar" data-action="aceptar">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 10.97a.75.75 0 0 0 1.06 0l3.992-3.992a.75.75 0 0 0-1.06-1.06L7.5 9.44 5.53 7.47a.75.75 0 0 0-1.06 1.06l2.5 2.5z"/>
-        </svg>
-    </button>
-    <button class="view-button rechazar" data-action="rechazar">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646-2.647a.5.5 0 0 0-.708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
-        </svg>
-    </button>
-    <button class="view-button likert" data-action="calificar">
-        <img src="../assets/like-right-svgrepo-com.svg" width="25" height="25" alt="Like Icon" style="filter: invert(100%);">
-    </button>
+                <button
+                    class="view-button"
+                    data-action="verPerfil"
+                    data-id-request="<?php echo htmlspecialchars($row['id_requests']); ?>"
+                    data-id-job="<?php echo htmlspecialchars($row['id_job']); ?>"
+                    data-id-company="<?php echo htmlspecialchars($row['id_company']); ?>"
+                    data-id-student="<?php echo htmlspecialchars($row['id_student']); ?>"
+                >Ver</button>
+            </div>
+            <div class="contract-actions">
+                <button
+                    class="view-button aceptar"
+                    data-action="aceptar"
+                    data-id-request="<?php echo htmlspecialchars($row['id_requests']); ?>"
+                    data-id-job="<?php echo htmlspecialchars($row['id_job']); ?>"
+                    data-id-company="<?php echo htmlspecialchars($row['id_company']); ?>"
+                    data-id-student="<?php echo htmlspecialchars($row['id_student']); ?>"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 10.97a.75.75 0 0 0 1.06 0l3.992-3.992a.75.75 0 0 0-1.06-1.06L7.5 9.44 5.53 7.47a.75.75 0 0 0-1.06 1.06l2.5 2.5z"/>
+                    </svg>
+                </button>
+                <button
+                    class="view-button rechazar"
+                    data-action="rechazar"
+                    data-id-request="<?php echo htmlspecialchars($row['id_requests']); ?>"
+                    data-id-job="<?php echo htmlspecialchars($row['id_job']); ?>"
+                    data-id-company="<?php echo htmlspecialchars($row['id_company']); ?>"
+                    data-id-student="<?php echo htmlspecialchars($row['id_student']); ?>"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                    </svg>
+                </button>
+                <button
+                    class="view-button likert"
+                    data-action="calificar"
+                    data-id-request="<?php echo htmlspecialchars($row['id_requests']); ?>"
+                    data-id-job="<?php echo htmlspecialchars($row['id_job']); ?>"
+                    data-id-company="<?php echo htmlspecialchars($row['id_company']); ?>"
+                    data-id-student="<?php echo htmlspecialchars($row['id_student']); ?>"
+                >
+                    <img src="../assets/like-right-svgrepo-com.svg" width="25" height="25" alt="Like Icon" style="filter: invert(100%);">
+                </button>
             </div>
         <?php endwhile; ?>
     </div>
